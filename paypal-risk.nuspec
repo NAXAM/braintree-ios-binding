@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>Naxam.PayPal.Risk.iOS</id>
+        <version>4.8.2</version>
+        <description>Xamarin Binding Library - PayPal Risk</description>
+        <authors>Vu Duc Tuyen</authors>
+        <owners>NAXAM CO.,LTD</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <title>Naxam - PayPal Risk</title>
+        <releaseNotes>PayPal Risk v4.8.2</releaseNotes>
+        <summary>Xamarin Binding Library - PayPal Risk</summary>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.PayPal.Risk.iOS</projectUrl>
+        <copyright>Copyright (c) 2017 NAXAM</copyright>
+        <tags>Xamarin.iOS, paypal, risk, paypal-risk</tags>
+    </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <file src="Naxam.PayPal.Risk.iOS/bin/Release/Naxam.PayPal.Risk.iOS.dll" target="lib/Xamarin.iOS10/Naxam.PayPal.Risk.iOS.dll" />
+    </files>
+</package>
