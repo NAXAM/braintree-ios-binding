@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>Naxam.PayPalDataCollector.iOS</id>
+        <version>4.8.2.1</version>
+        <description>Xamarin Binding Library - Braintree iOS SDK- PayPalDataCollector</description>
+        <authors>Vu Duc Tuyen</authors>
+        <owners>NAXAM CO.,LTD</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <title>Naxam - Braintree iOS SDK- PayPalDataCollector</title>
+        <releaseNotes>Braintree iOS SDK v4.8.2- PayPalDataCollector</releaseNotes>
+        <summary>Xamarin Binding Library - Braintree iOS SDK- PayPalDataCollector</summary>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.PayPalDataCollector.iOS</projectUrl>
+        <copyright>Copyright (c) 2017 NAXAM</copyright>
+        <tags>Xamarin.iOS, braintree, paypal, paypal-data-collector</tags>
+        <dependencies>
+            <dependency id="Naxam.PayPal.Risk.iOS" version="4.8.2" />
+            <dependency id="Naxam.PayPalUtils.iOS" version="4.8.2" />
+        </dependencies>
+    </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <file src="Naxam.PayPalDataCollector.iOS/bin/Release/Naxam.PayPalDataCollector.iOS.dll" target="lib/Xamarin.iOS10/Naxam.PayPalDataCollector.iOS.dll" />
+    </files>
+</package>
