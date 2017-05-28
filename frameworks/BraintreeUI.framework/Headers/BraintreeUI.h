@@ -23,3 +23,4 @@ FOUNDATION_EXPORT const unsigned char BraintreeUIVersionString[];
 #import "BTUISummaryView.h"
 #import "BTUIVenmoButton.h"
 #import "UIColor+BTUI.h"
+#import "BTUIPayPalWordmarkVectorArtView.h"

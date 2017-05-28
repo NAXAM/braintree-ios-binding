@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using BraintreeCore;
 using BraintreeUI;
 using CoreGraphics;
@@ -8,141 +8,18 @@ using UIKit;
 
 namespace BraintreeUI
 {
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern double BraintreeCoreVersionNumber;
-		[Field ("BraintreeCoreVersionNumber", "__Internal")]
-		double BraintreeCoreVersionNumber { get; }
+	// [Static]
+	// [Verify (ConstantsInterfaceAssociation)]
+	// partial interface Constants
+	// {
+	// 	// extern double BraintreeUIVersionNumber;
+	// 	[Field ("BraintreeUIVersionNumber", "__Internal")]
+	// 	double BraintreeUIVersionNumber { get; }
 
-		// extern const unsigned char [] BraintreeCoreVersionString;
-		[Field ("BraintreeCoreVersionString", "__Internal")]
-		byte[] BraintreeCoreVersionString { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern NSString *const _Nonnull BTJSONErrorDomain;
-		[Field ("BTJSONErrorDomain", "__Internal")]
-		NSString BTJSONErrorDomain { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern NSString *const _Nonnull BTAPIClientErrorDomain;
-		[Field ("BTAPIClientErrorDomain", "__Internal")]
-		NSString BTAPIClientErrorDomain { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern NSString *const _Nonnull BTAppSwitchWillSwitchNotification;
-		[Field ("BTAppSwitchWillSwitchNotification", "__Internal")]
-		NSString BTAppSwitchWillSwitchNotification { get; }
-
-		// extern NSString *const _Nonnull BTAppSwitchDidSwitchNotification;
-		[Field ("BTAppSwitchDidSwitchNotification", "__Internal")]
-		NSString BTAppSwitchDidSwitchNotification { get; }
-
-		// extern NSString *const _Nonnull BTAppSwitchWillProcessPaymentInfoNotification;
-		[Field ("BTAppSwitchWillProcessPaymentInfoNotification", "__Internal")]
-		NSString BTAppSwitchWillProcessPaymentInfoNotification { get; }
-
-		// extern NSString *const _Nonnull BTAppSwitchNotificationTargetKey;
-		[Field ("BTAppSwitchNotificationTargetKey", "__Internal")]
-		NSString BTAppSwitchNotificationTargetKey { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern NSString *const _Nonnull BTClientTokenKeyVersion;
-		[Field ("BTClientTokenKeyVersion", "__Internal")]
-		NSString BTClientTokenKeyVersion { get; }
-
-		// extern NSString *const _Nonnull BTClientTokenErrorDomain;
-		[Field ("BTClientTokenErrorDomain", "__Internal")]
-		NSString BTClientTokenErrorDomain { get; }
-
-		// extern NSString *const _Nonnull BTClientTokenKeyAuthorizationFingerprint;
-		[Field ("BTClientTokenKeyAuthorizationFingerprint", "__Internal")]
-		NSString BTClientTokenKeyAuthorizationFingerprint { get; }
-
-		// extern NSString *const _Nonnull BTClientTokenKeyConfigURL;
-		[Field ("BTClientTokenKeyConfigURL", "__Internal")]
-		NSString BTClientTokenKeyConfigURL { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern NSString *const _Nonnull BTCustomerInputBraintreeValidationErrorsKey;
-		[Field ("BTCustomerInputBraintreeValidationErrorsKey", "__Internal")]
-		NSString BTCustomerInputBraintreeValidationErrorsKey { get; }
-
-		// extern NSString *const BTHTTPErrorDomain;
-		[Field ("BTHTTPErrorDomain", "__Internal")]
-		NSString BTHTTPErrorDomain { get; }
-
-		// extern NSString *const BTHTTPURLResponseKey;
-		[Field ("BTHTTPURLResponseKey", "__Internal")]
-		NSString BTHTTPURLResponseKey { get; }
-
-		// extern NSString *const BTHTTPJSONResponseBodyKey;
-		[Field ("BTHTTPJSONResponseBodyKey", "__Internal")]
-		NSString BTHTTPJSONResponseBodyKey { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern NSString *const _Nonnull BTTokenizationServiceErrorDomain;
-		[Field ("BTTokenizationServiceErrorDomain", "__Internal")]
-		NSString BTTokenizationServiceErrorDomain { get; }
-
-		// extern NSString *const _Nonnull BTTokenizationServiceAppSwitchDelegateOption;
-		[Field ("BTTokenizationServiceAppSwitchDelegateOption", "__Internal")]
-		NSString BTTokenizationServiceAppSwitchDelegateOption { get; }
-
-		// extern NSString *const _Nonnull BTTokenizationServiceViewPresentingDelegateOption;
-		[Field ("BTTokenizationServiceViewPresentingDelegateOption", "__Internal")]
-		NSString BTTokenizationServiceViewPresentingDelegateOption { get; }
-
-		// extern NSString *const _Nonnull BTTokenizationServicePayPalScopesOption;
-		[Field ("BTTokenizationServicePayPalScopesOption", "__Internal")]
-		NSString BTTokenizationServicePayPalScopesOption { get; }
-
-		// extern NSString *const _Nonnull BTTokenizationServiceAmountOption;
-		[Field ("BTTokenizationServiceAmountOption", "__Internal")]
-		NSString BTTokenizationServiceAmountOption { get; }
-
-		// extern NSString *const _Nonnull BTTokenizationServiceNonceOption;
-		[Field ("BTTokenizationServiceNonceOption", "__Internal")]
-		NSString BTTokenizationServiceNonceOption { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern double BraintreeUIVersionNumber;
-		[Field ("BraintreeUIVersionNumber", "__Internal")]
-		double BraintreeUIVersionNumber { get; }
-
-		// extern const unsigned char [] BraintreeUIVersionString;
-		[Field ("BraintreeUIVersionString", "__Internal")]
-		byte[] BraintreeUIVersionString { get; }
-	}
+	// 	// extern const unsigned char [] BraintreeUIVersionString;
+	// 	[Field ("BraintreeUIVersionString", "__Internal")]
+	// 	byte[] BraintreeUIVersionString { get; }
+	// }
 
 	// @interface BTDropInViewController : UIViewController
 	[BaseType (typeof(UIViewController))]
@@ -162,7 +39,6 @@ namespace BraintreeUI
 
 		// @property (nonatomic, strong) NSArray * _Nonnull paymentMethodNonces;
 		[Export ("paymentMethodNonces", ArgumentSemantic.Strong)]
-		[Verify (StronglyTypedNSArray)]
 		NSObject[] PaymentMethodNonces { get; set; }
 
 		[Wrap ("WeakDelegate")]
@@ -291,212 +167,170 @@ namespace BraintreeUI
 		// +(BTUI *)braintreeTheme;
 		[Static]
 		[Export ("braintreeTheme")]
-		[Verify (MethodToProperty)]
 		BTUI BraintreeTheme { get; }
 
 		// -(UIColor *)idealGray;
 		[Export ("idealGray")]
-		[Verify (MethodToProperty)]
 		UIColor IdealGray { get; }
 
 		// -(UIColor *)defaultTintColor;
 		[Export ("defaultTintColor")]
-		[Verify (MethodToProperty)]
 		UIColor DefaultTintColor { get; }
 
 		// -(UIColor *)viewBackgroundColor;
 		[Export ("viewBackgroundColor")]
-		[Verify (MethodToProperty)]
 		UIColor ViewBackgroundColor { get; }
 
 		// -(UIColor *)callToActionColor;
 		[Export ("callToActionColor")]
-		[Verify (MethodToProperty)]
 		UIColor CallToActionColor { get; }
 
 		// -(UIColor *)callToActionColorHighlighted;
 		[Export ("callToActionColorHighlighted")]
-		[Verify (MethodToProperty)]
 		UIColor CallToActionColorHighlighted { get; }
 
 		// -(UIColor *)disabledButtonColor;
 		[Export ("disabledButtonColor")]
-		[Verify (MethodToProperty)]
 		UIColor DisabledButtonColor { get; }
 
 		// -(UIColor *)titleColor;
 		[Export ("titleColor")]
-		[Verify (MethodToProperty)]
 		UIColor TitleColor { get; }
 
 		// -(UIColor *)detailColor;
 		[Export ("detailColor")]
-		[Verify (MethodToProperty)]
 		UIColor DetailColor { get; }
 
 		// -(UIColor *)borderColor;
 		[Export ("borderColor")]
-		[Verify (MethodToProperty)]
 		UIColor BorderColor { get; }
 
 		// -(UIColor *)textFieldTextColor;
 		[Export ("textFieldTextColor")]
-		[Verify (MethodToProperty)]
 		UIColor TextFieldTextColor { get; }
 
 		// -(UIColor *)textFieldPlaceholderColor;
 		[Export ("textFieldPlaceholderColor")]
-		[Verify (MethodToProperty)]
 		UIColor TextFieldPlaceholderColor { get; }
 
 		// -(UIColor *)sectionHeaderTextColor;
 		[Export ("sectionHeaderTextColor")]
-		[Verify (MethodToProperty)]
 		UIColor SectionHeaderTextColor { get; }
 
 		// -(UIColor *)textFieldFloatLabelTextColor;
 		[Export ("textFieldFloatLabelTextColor")]
-		[Verify (MethodToProperty)]
 		UIColor TextFieldFloatLabelTextColor { get; }
 
 		// -(UIColor *)cardHintBorderColor;
 		[Export ("cardHintBorderColor")]
-		[Verify (MethodToProperty)]
 		UIColor CardHintBorderColor { get; }
 
 		// -(UIColor *)errorBackgroundColor;
 		[Export ("errorBackgroundColor")]
-		[Verify (MethodToProperty)]
 		UIColor ErrorBackgroundColor { get; }
 
 		// -(UIColor *)errorForegroundColor;
 		[Export ("errorForegroundColor")]
-		[Verify (MethodToProperty)]
 		UIColor ErrorForegroundColor { get; }
 
 		// -(CGFloat)highlightedBrightnessAdjustment;
 		[Export ("highlightedBrightnessAdjustment")]
-		[Verify (MethodToProperty)]
 		nfloat HighlightedBrightnessAdjustment { get; }
 
 		// -(UIColor *)payBlue;
 		[Export ("payBlue")]
-		[Verify (MethodToProperty)]
 		UIColor PayBlue { get; }
 
 		// -(UIColor *)palBlue;
 		[Export ("palBlue")]
-		[Verify (MethodToProperty)]
 		UIColor PalBlue { get; }
 
 		// -(UIColor *)payPalButtonBlue;
 		[Export ("payPalButtonBlue")]
-		[Verify (MethodToProperty)]
 		UIColor PayPalButtonBlue { get; }
 
 		// -(UIColor *)payPalButtonActiveBlue;
 		[Export ("payPalButtonActiveBlue")]
-		[Verify (MethodToProperty)]
 		UIColor PayPalButtonActiveBlue { get; }
 
 		// -(UIColor *)venmoPrimaryBlue;
 		[Export ("venmoPrimaryBlue")]
-		[Verify (MethodToProperty)]
 		UIColor VenmoPrimaryBlue { get; }
 
 		// -(UIColor *)coinbasePrimaryBlue;
 		[Export ("coinbasePrimaryBlue")]
-		[Verify (MethodToProperty)]
 		UIColor CoinbasePrimaryBlue { get; }
 
 		// -(UIFont *)controlFont;
 		[Export ("controlFont")]
-		[Verify (MethodToProperty)]
 		UIFont ControlFont { get; }
 
 		// -(UIFont *)controlTitleFont;
 		[Export ("controlTitleFont")]
-		[Verify (MethodToProperty)]
 		UIFont ControlTitleFont { get; }
 
 		// -(UIFont *)controlDetailFont;
 		[Export ("controlDetailFont")]
-		[Verify (MethodToProperty)]
 		UIFont ControlDetailFont { get; }
 
 		// -(UIFont *)textFieldFont;
 		[Export ("textFieldFont")]
-		[Verify (MethodToProperty)]
 		UIFont TextFieldFont { get; }
 
 		// -(UIFont *)textFieldFloatLabelFont;
 		[Export ("textFieldFloatLabelFont")]
-		[Verify (MethodToProperty)]
 		UIFont TextFieldFloatLabelFont { get; }
 
 		// -(UIFont *)sectionHeaderFont;
 		[Export ("sectionHeaderFont")]
-		[Verify (MethodToProperty)]
 		UIFont SectionHeaderFont { get; }
 
 		// -(NSDictionary *)textFieldTextAttributes;
 		[Export ("textFieldTextAttributes")]
-		[Verify (MethodToProperty)]
 		NSDictionary TextFieldTextAttributes { get; }
 
 		// -(NSDictionary *)textFieldPlaceholderAttributes;
 		[Export ("textFieldPlaceholderAttributes")]
-		[Verify (MethodToProperty)]
 		NSDictionary TextFieldPlaceholderAttributes { get; }
 
 		// -(CGFloat)borderWidth;
 		[Export ("borderWidth")]
-		[Verify (MethodToProperty)]
 		nfloat BorderWidth { get; }
 
 		// -(CGFloat)cornerRadius;
 		[Export ("cornerRadius")]
-		[Verify (MethodToProperty)]
 		nfloat CornerRadius { get; }
 
 		// -(CGFloat)formattedEntryKerning;
 		[Export ("formattedEntryKerning")]
-		[Verify (MethodToProperty)]
 		nfloat FormattedEntryKerning { get; }
 
 		// -(CGFloat)horizontalMargin;
 		[Export ("horizontalMargin")]
-		[Verify (MethodToProperty)]
 		nfloat HorizontalMargin { get; }
 
 		// -(CGFloat)paymentButtonMinHeight;
 		[Export ("paymentButtonMinHeight")]
-		[Verify (MethodToProperty)]
 		nfloat PaymentButtonMinHeight { get; }
 
 		// -(CGFloat)paymentButtonMaxHeight;
 		[Export ("paymentButtonMaxHeight")]
-		[Verify (MethodToProperty)]
 		nfloat PaymentButtonMaxHeight { get; }
 
 		// -(CGFloat)paymentButtonWordMarkHeight __attribute__((deprecated("")));
 		[Export ("paymentButtonWordMarkHeight")]
-		[Verify (MethodToProperty)]
 		nfloat PaymentButtonWordMarkHeight { get; }
 
 		// -(CGFloat)quickTransitionDuration;
 		[Export ("quickTransitionDuration")]
-		[Verify (MethodToProperty)]
 		nfloat QuickTransitionDuration { get; }
 
 		// -(CGFloat)transitionDuration;
 		[Export ("transitionDuration")]
-		[Verify (MethodToProperty)]
 		nfloat TransitionDuration { get; }
 
 		// -(CGFloat)minimumVisibilityTime;
 		[Export ("minimumVisibilityTime")]
-		[Verify (MethodToProperty)]
 		nfloat MinimumVisibilityTime { get; }
 
 		// -(BTUIVectorArtView *)vectorArtViewForPaymentInfoType:(NSString *)typeString;
@@ -798,7 +632,7 @@ namespace BraintreeUI
 		UIColor Bt_colorFromHex (string hex, nfloat alpha);
 
 		// -(instancetype)bt_adjustedBrightness:(CGFloat)adjustment;
-		[Export ("bt_adjustedBrightness:")]
+		[Static, Export ("bt_adjustedBrightness:")]
 		UIColor Bt_adjustedBrightness (nfloat adjustment);
 	}
 
