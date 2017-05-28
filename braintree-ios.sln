@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.PayPalDataCollector.i
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreeCard.iOS", "Naxam.BraintreeCard.iOS\Naxam.BraintreeCard.iOS.csproj", "{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.Braintree3DSecure.iOS", "Naxam.Braintree3DSecure.iOS\Naxam.Braintree3DSecure.iOS.csproj", "{A3A0F2A3-DD4C-4A76-A95D-7B36AF4D74E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreeApplePay.iOS", "Naxam.BraintreeApplePay.iOS\Naxam.BraintreeApplePay.iOS.csproj", "{64726ED5-269E-4802-A41B-25275366716F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,5 +41,13 @@ Global
 		{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3A0F2A3-DD4C-4A76-A95D-7B36AF4D74E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3A0F2A3-DD4C-4A76-A95D-7B36AF4D74E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3A0F2A3-DD4C-4A76-A95D-7B36AF4D74E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3A0F2A3-DD4C-4A76-A95D-7B36AF4D74E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64726ED5-269E-4802-A41B-25275366716F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64726ED5-269E-4802-A41B-25275366716F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64726ED5-269E-4802-A41B-25275366716F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64726ED5-269E-4802-A41B-25275366716F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

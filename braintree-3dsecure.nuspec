@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>Naxam.Braintree3DSecure.iOS</id>
+        <version>4.8.2</version>
+        <description>Xamarin Binding Library - Braintree iOS SDK - 3DSecure</description>
+        <authors>Vu Duc Tuyen</authors>
+        <owners>NAXAM CO.,LTD</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <title>Naxam - Braintree iOS SDK - 3DSecure</title>
+        <releaseNotes>Braintree iOS SDK v4.8.2 - 3DSecure</releaseNotes>
+        <summary>Xamarin Binding Library - Braintree iOS SDK - 3DSecure</summary>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.Braintree3DSecure.iOS</projectUrl>
+        <copyright>Copyright (c) 2017 NAXAM</copyright>
+        <tags>Xamarin.iOS, braintree, 3d-secure,  braintree-3d-secure</tags>
+        <dependencies>
+            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.2" />
+        </dependencies>
+    </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <file src="Naxam.Braintree3DSecure.iOS/bin/Release/Naxam.Braintree3DSecure.iOS.dll" target="lib/Xamarin.iOS10/Naxam.Braintree3DSecure.iOS.dll" />
+    </files>
+</package>
