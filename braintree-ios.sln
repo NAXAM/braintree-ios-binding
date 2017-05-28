@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.PayPal.Risk.iOS", "Na
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BrainTreeCore.iOS", "Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj", "{CD32710E-D053-4BBF-8A9B-359E65A2671C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.PayPalUtils.iOS", "Naxam.PayPalUtils.iOS\Naxam.PayPalUtils.iOS.csproj", "{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{CD32710E-D053-4BBF-8A9B-359E65A2671C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD32710E-D053-4BBF-8A9B-359E65A2671C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD32710E-D053-4BBF-8A9B-359E65A2671C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
