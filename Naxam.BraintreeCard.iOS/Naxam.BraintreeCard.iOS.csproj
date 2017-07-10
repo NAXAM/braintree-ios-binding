@@ -47,5 +47,11 @@
   <ItemGroup>
     <BundleResource Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="..\frameworks\BraintreeCard.framework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

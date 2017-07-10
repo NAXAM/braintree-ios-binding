@@ -3,7 +3,7 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BraintreeVenmo.iOS</id>
-        <version>4.8.2.1</version>
+        <version>4.8.2.2</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - Venmo</description>
         <authors>Vu Duc Tuyen</authors>
         <owners>NAXAM CO.,LTD</owners>
@@ -16,7 +16,7 @@
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, venmo, braintree-venmo</tags>
         <dependencies>
-            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.2" />
+            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.3" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->

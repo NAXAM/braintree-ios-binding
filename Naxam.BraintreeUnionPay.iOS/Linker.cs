@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Naxam.BraintreeUnionPay.iOS
+namespace BraintreeUnionPay
 {
     [Foundation.Preserve(AllMembers = true)]
     public static class Linker
