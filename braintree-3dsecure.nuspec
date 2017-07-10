@@ -3,7 +3,7 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.Braintree3DSecure.iOS</id>
-        <version>4.8.2.2</version>
+        <version>4.8.2.4</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - 3DSecure</description>
         <authors>Vu Duc Tuyen</authors>
         <owners>NAXAM CO.,LTD</owners>
@@ -16,7 +16,7 @@
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, 3d-secure,  braintree-3d-secure</tags>
         <dependencies>
-            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.3" />
+            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.5" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->
