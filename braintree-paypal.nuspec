@@ -3,13 +3,13 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BraintreePayPal.iOS</id>
-        <version>4.8.2</version>
+        <version>4.8.2.1</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - BraintreePayPal</description>
         <authors>Vu Duc Tuyen</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - Braintree iOS SDK - BraintreePayPal</title>
-        <releaseNotes>Braintree iOS SDK v4.8.2 - BraintreePayPal</releaseNotes>
+        <releaseNotes>Braintree iOS SDK v4.8.2 - BraintreePayPal/Make sure all Paypal stuff are included.</releaseNotes>
         <summary>Xamarin Binding Library - Braintree iOS SDK - BraintreePayPal</summary>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreePayPal.iOS</projectUrl>
