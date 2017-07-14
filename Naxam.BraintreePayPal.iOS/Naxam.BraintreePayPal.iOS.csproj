@@ -61,6 +61,7 @@
     <NativeReference Include="..\frameworks\BraintreePayPal.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
   </ItemGroup>
   <ItemGroup>

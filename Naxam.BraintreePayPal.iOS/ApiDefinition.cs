@@ -6,8 +6,6 @@ using PayPalOneTouch;
 
 namespace BraintreePayPal
 {
-    partial interface IBTPayPalApprovalDelegate { }
-
     // [Static]
     // [Verify (ConstantsInterfaceAssociation)]
     // partial interface Constants
@@ -179,8 +177,10 @@ namespace BraintreePayPal
         NSString ErrorDomain { get; }
     }
 
-    // @protocol BTPayPalApprovalDelegate
-    [Protocol, Model]
+    partial interface IBTPayPalApprovalDelegate {}
+	// @protocol BTPayPalApprovalDelegate
+	[Protocol, Model]
+	[BaseType(typeof(NSObject))]
     interface BTPayPalApprovalDelegate
     {
         // @required -(void)onApprovalComplete:(NSURL * _Nonnull)url;
@@ -194,6 +194,7 @@ namespace BraintreePayPal
         void OnApprovalCancel();
     }
 
+    partial interface IBTPayPalApprovalHandler {}
     // @protocol BTPayPalApprovalHandler
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
@@ -208,7 +209,7 @@ namespace BraintreePayPal
     // @interface BTPayPalDriver : NSObject <BTAppSwitchHandler, BTPayPalApprovalDelegate>
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface BTPayPalDriver : IBTAppSwitchHandler, IBTPayPalApprovalDelegate
+    interface BTPayPalDriver : IBTAppSwitchHandler, BTPayPalApprovalDelegate
     {
         // -(instancetype _Nonnull)initWithAPIClient:(BTAPIClient * _Nonnull)apiClient;
         [Export("initWithAPIClient:")]
@@ -228,7 +229,7 @@ namespace BraintreePayPal
 
         // -(void)requestOneTimePayment:(BTPayPalRequest * _Nonnull)request handler:(id<BTPayPalApprovalHandler> _Nonnull)handler completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
         [Export("requestOneTimePayment:handler:completion:")]
-        void RequestOneTimePayment(BTPayPalRequest request, BTPayPalApprovalHandler handler, Action<BTPayPalAccountNonce, NSError> completionBlock);
+        void RequestOneTimePayment(BTPayPalRequest request, IBTPayPalApprovalHandler handler, Action<BTPayPalAccountNonce, NSError> completionBlock);
 
         // -(void)requestBillingAgreement:(BTPayPalRequest * _Nonnull)request completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
         [Export("requestBillingAgreement:completion:")]
@@ -236,7 +237,7 @@ namespace BraintreePayPal
 
         // -(void)requestBillingAgreement:(BTPayPalRequest * _Nonnull)request handler:(id<BTPayPalApprovalHandler> _Nonnull)handler completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
         [Export("requestBillingAgreement:handler:completion:")]
-        void RequestBillingAgreement(BTPayPalRequest request, BTPayPalApprovalHandler handler, Action<BTPayPalAccountNonce, NSError> completionBlock);
+        void RequestBillingAgreement(BTPayPalRequest request, IBTPayPalApprovalHandler handler, Action<BTPayPalAccountNonce, NSError> completionBlock);
 
         [Wrap("WeakAppSwitchDelegate")]
         [NullAllowed]
