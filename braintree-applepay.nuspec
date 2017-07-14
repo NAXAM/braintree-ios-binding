@@ -3,13 +3,13 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BraintreeApplePay.iOS</id>
-        <version>4.8.2</version>
+        <version>4.8.2.1</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - ApplePay</description>
         <authors>Vu Duc Tuyen</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - Braintree iOS SDK - ApplePay</title>
-        <releaseNotes>Braintree iOS SDK v4.8.2 - ApplePay</releaseNotes>
+        <releaseNotes>Braintree iOS SDK v4.8.2 - ApplePay/Add linker</releaseNotes>
         <summary>Xamarin Binding Library - Braintree iOS SDK - ApplePay</summary>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreeApplePay.iOS</projectUrl>

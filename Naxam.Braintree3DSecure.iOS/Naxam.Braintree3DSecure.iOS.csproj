@@ -35,12 +35,12 @@
       <HintPath>..\packages\Naxam.BrainTreeCore.iOS.4.8.2\lib\Xamarin.iOS10\Naxam.BrainTreeCore.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Naxam.BraintreeCard.iOS">
-      <HintPath>..\packages\Naxam.BraintreeCard.iOS.4.8.2.2\lib\Xamarin.iOS10\Naxam.BraintreeCard.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.BraintreeCard.iOS.4.8.2.5\lib\Xamarin.iOS10\Naxam.BraintreeCard.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Linker.cs" />
+    <Compile Include="Extras.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
