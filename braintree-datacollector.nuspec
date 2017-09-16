@@ -18,7 +18,7 @@
         <tags>Xamarin.iOS, braintree, data-collector,  braintree-data-collector</tags>
         <dependencies>
             <dependency id="Naxam.BraintreeCore.iOS" version="4.9.0" />
-            <dependency id="Naxam.Kount.iOS" version="3.1" />
+            <dependency id="Naxam.Kount.iOS" version="3.2" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->

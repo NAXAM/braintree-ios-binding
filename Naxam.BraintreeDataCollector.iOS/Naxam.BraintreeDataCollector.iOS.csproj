@@ -32,7 +32,7 @@
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Naxam.Kount.iOS">
-      <HintPath>..\packages\Naxam.Kount.iOS.3.1\lib\Xamarin.iOS10\Naxam.Kount.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.Kount.iOS.3.2\lib\Xamarin.iOS10\Naxam.Kount.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -52,13 +52,13 @@
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
       <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
       <Name>Naxam.BrainTreeCore.iOS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>
