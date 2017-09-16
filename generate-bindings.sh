@@ -1,7 +1,7 @@
 #! /bin/bash
 
 function generate() {
-    sharpie bind -sdk iphoneos10.3 -f ./frameworks/$1 -output ./bindings/$1 -namespace $1
+    sharpie bind -sdk iphoneos -dry-run -output ./bindings/$1 -namespace $1 ./frameworks/$1.framework/Headers/*.h
 }
 
 frameworks=(

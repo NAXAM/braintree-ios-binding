@@ -177,10 +177,10 @@ namespace BraintreePayPal
         NSString ErrorDomain { get; }
     }
 
-    partial interface IBTPayPalApprovalDelegate {}
-	// @protocol BTPayPalApprovalDelegate
-	[Protocol, Model]
-	[BaseType(typeof(NSObject))]
+    partial interface IBTPayPalApprovalDelegate { }
+    // @protocol BTPayPalApprovalDelegate
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
     interface BTPayPalApprovalDelegate
     {
         // @required -(void)onApprovalComplete:(NSURL * _Nonnull)url;
@@ -194,7 +194,7 @@ namespace BraintreePayPal
         void OnApprovalCancel();
     }
 
-    partial interface IBTPayPalApprovalHandler {}
+    partial interface IBTPayPalApprovalHandler { }
     // @protocol BTPayPalApprovalHandler
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
