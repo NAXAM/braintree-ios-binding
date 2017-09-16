@@ -4,15 +4,16 @@
         <!-- Required elements-->
         <id>Naxam.BrainTreeCore.iOS</id>
         <version>4.9.0</version>
-        <description>Xamarin Binding Library - BrainTree iOS SDK - Core</description>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>Naxam - BrainTree iOS SDK - Core</title>
-        <releaseNotes>BrainTree iOS SDK - Core v4.9.0</releaseNotes>
-        <summary>Xamarin Binding Library - BrainTree iOS SDK - Core</summary>
+        <title>Naxam - BrainTree Core for iOS</title>
+        <summary>Xamarin iOS Binding Library - BrainTree Core</summary>
+        <description>Xamarin iOS Binding Library - BrainTree Core</description>
+        <releaseNotes>BrainTree Core v4.9.0</releaseNotes>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BrainTreeCore.iOS</projectUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/tree/master/Naxam.BrainTreeCore.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, braintree-core</tags>
     </metadata>

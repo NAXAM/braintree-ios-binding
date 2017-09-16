@@ -4,17 +4,18 @@
         <!-- Required elements-->
         <id>Naxam.PayPal.Risk.iOS</id>
         <version>4.9.0</version>
-        <description>Xamarin Binding Library - PayPal Risk</description>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>Naxam - PayPal Risk</title>
-        <releaseNotes>PayPal Risk v4.9.0</releaseNotes>
-        <summary>Xamarin Binding Library - PayPal Risk</summary>
+        <title>Naxam - BrainTree PayPalRisk for iOS </title>
+        <summary>Xamarin iOS Binding Library - BrainTree PayPalRisk</summary>
+        <description>Xamarin iOS Binding Library - BrainTree PayPalRisk</description>
+        <releaseNotes>BrainTree PayPal Risk v4.9.0</releaseNotes>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.PayPal.Risk.iOS</projectUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/tree/master/Naxam.PayPal.Risk.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
-        <tags>Xamarin.iOS, paypal, risk, paypal-risk</tags>
+        <tags>Xamarin.iOS, braintree, paypal, risk, paypal-risk</tags>
     </metadata>
     <!-- Optional 'files' node -->
     <files>

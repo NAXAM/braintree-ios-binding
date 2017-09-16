@@ -13,7 +13,7 @@ using Foundation;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Naxam.BraintreeApplePay.iOS")]
-[assembly: AssemblyDescription("Xamarin Binding Library - Braintree iOS SDK - ApplePay")]
+[assembly: AssemblyDescription("Xamarin iOS Binding Library - Braintree ApplePay")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NAXAM COMPANY LIMITED")]
 [assembly: AssemblyProduct("X Bindings")]

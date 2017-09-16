@@ -4,15 +4,16 @@
         <!-- Required elements-->
         <id>Naxam.BraintreeUI.iOS</id>
         <version>4.9.0</version>
-        <description>Xamarin Binding Library - Braintree iOS SDK - UI</description>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>Naxam - Braintree iOS SDK - UI</title>
+        <title>Naxam - Braintree UI for iOS</title>
+        <summary>Xamarin iOS Binding Library - Braintree UI</summary>
+        <description>Xamarin iOS Binding Library - Braintree UI</description>
         <releaseNotes>Braintree iOS SDK v4.9.0 - UI</releaseNotes>
-        <summary>Xamarin Binding Library - Braintree iOS SDK - UI</summary>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreeUI.iOS</projectUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/tree/master/Naxam.BraintreeUI.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, braintree-ui</tags>
         <dependencies>

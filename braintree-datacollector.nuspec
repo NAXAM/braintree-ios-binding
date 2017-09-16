@@ -4,15 +4,16 @@
         <!-- Required elements-->
         <id>Naxam.BraintreeDataCollector.iOS</id>
         <version>4.9.0</version>
-        <description>Xamarin Binding Library - Braintree iOS SDK - DataCollector</description>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>Naxam - Braintree iOS SDK - DataCollector</title>
-        <releaseNotes>Braintree iOS SDK v4.9.0 - DataCollector/Add linker</releaseNotes>
-        <summary>Xamarin Binding Library - Braintree iOS SDK - DataCollector</summary>
+        <title>Naxam - Braintree DataCollector for iOS</title>
+        <summary>Xamarin iOS Binding Library - Braintree DataCollector</summary>
+        <description>Xamarin iOS Binding Library - Braintree DataCollector</description>
+        <releaseNotes>Braintree iOS SDK v4.9.0 - DataCollector</releaseNotes>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreeDataCollector.iOS</projectUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/tree/master/Naxam.BraintreeDataCollector.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, data-collector,  braintree-data-collector</tags>
         <dependencies>

@@ -1,4 +1,4 @@
-# Xamarin Binding Library - Braintree iOS SDK
+# Xamarin iOS Binding Library - Braintree iOS SDK
 https://github.com/braintree/braintree_ios
 
 ## Braintree Core

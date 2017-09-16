@@ -4,15 +4,16 @@
         <!-- Required elements-->
         <id>Naxam.Braintree3DSecure.iOS</id>
         <version>4.9.0</version>
-        <description>Xamarin Binding Library - Braintree iOS SDK - 3DSecure</description>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>Naxam - Braintree iOS SDK - 3DSecure/Add linker</title>
+        <title>Naxam - Braintree 3DSecure for iOS</title>
+        <summary>Xamarin iOS Binding Library - Braintree 3DSecure</summary>
+        <description>Xamarin iOS Binding Library - Braintree 3DSecure</description>
         <releaseNotes>Braintree iOS SDK v4.9.0 - 3DSecure</releaseNotes>
-        <summary>Xamarin Binding Library - Braintree iOS SDK - 3DSecure</summary>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.Braintree3DSecure.iOS</projectUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-ios-binding/tree/master/Naxam.Braintree3DSecure.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, 3d-secure,  braintree-3d-secure</tags>
         <dependencies>
