@@ -3,20 +3,20 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BraintreeCard.iOS</id>
-        <version>4.8.2.6</version>
+        <version>4.9.0</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - Card</description>
-        <authors>Vu Duc Tuyen</authors>
+        <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - Braintree iOS SDK - Card</title>
-        <releaseNotes>Braintree iOS SDK v4.8.2 - Card/Add linker</releaseNotes>
+        <releaseNotes>Braintree iOS SDK v4.9.0 - Card/Add linker</releaseNotes>
         <summary>Xamarin Binding Library - Braintree iOS SDK - Card</summary>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreeCard.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, card,  braintree-card</tags>
         <dependencies>
-            <dependency id="Naxam.BraintreeCore.iOS" version="4.8.2" />
+            <dependency id="Naxam.BraintreeCore.iOS" version="4.9.0" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->

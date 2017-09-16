@@ -3,20 +3,20 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BraintreeVenmo.iOS</id>
-        <version>4.8.2.5</version>
+        <version>4.9.0</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - Venmo</description>
-        <authors>Vu Duc Tuyen</authors>
+        <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - Braintree iOS SDK - Venmo</title>
-        <releaseNotes>Braintree iOS SDK v4.8.2 - Venmo/Add linker</releaseNotes>
+        <releaseNotes>Braintree iOS SDK v4.9.0 - Venmo/Add linker</releaseNotes>
         <summary>Xamarin Binding Library - Braintree iOS SDK - Venmo/Add linker</summary>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreeVenmo.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, venmo, braintree-venmo</tags>
         <dependencies>
-            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.6" />
+            <dependency id="Naxam.BraintreeCard.iOS" version="4.9.0" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->

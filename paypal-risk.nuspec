@@ -3,13 +3,13 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.PayPal.Risk.iOS</id>
-        <version>4.8.2</version>
+        <version>4.9.0</version>
         <description>Xamarin Binding Library - PayPal Risk</description>
-        <authors>Vu Duc Tuyen</authors>
+        <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - PayPal Risk</title>
-        <releaseNotes>PayPal Risk v4.8.2</releaseNotes>
+        <releaseNotes>PayPal Risk v4.9.0</releaseNotes>
         <summary>Xamarin Binding Library - PayPal Risk</summary>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.PayPal.Risk.iOS</projectUrl>

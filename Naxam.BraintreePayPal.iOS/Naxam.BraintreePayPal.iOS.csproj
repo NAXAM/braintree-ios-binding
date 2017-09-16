@@ -32,19 +32,19 @@
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Naxam.BrainTreeCore.iOS">
-      <HintPath>..\packages\Naxam.BrainTreeCore.iOS.4.8.2\lib\Xamarin.iOS10\Naxam.BrainTreeCore.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.BrainTreeCore.iOS.4.9.0\lib\Xamarin.iOS10\Naxam.BrainTreeCore.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Naxam.PayPal.Risk.iOS">
-      <HintPath>..\packages\Naxam.PayPal.Risk.iOS.4.8.2\lib\Xamarin.iOS10\Naxam.PayPal.Risk.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.PayPal.Risk.iOS.4.9.0\lib\Xamarin.iOS10\Naxam.PayPal.Risk.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Naxam.PayPalUtils.iOS">
-      <HintPath>..\packages\Naxam.PayPalUtils.iOS.4.8.2\lib\Xamarin.iOS10\Naxam.PayPalUtils.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.PayPalUtils.iOS.4.9.0\lib\Xamarin.iOS10\Naxam.PayPalUtils.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Naxam.PayPalDataCollector.iOS">
-      <HintPath>..\packages\Naxam.PayPalDataCollector.iOS.4.8.2.2\lib\Xamarin.iOS10\Naxam.PayPalDataCollector.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.PayPalDataCollector.iOS.4.9.0\lib\Xamarin.iOS10\Naxam.PayPalDataCollector.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Naxam.PayPalOneTouch.iOS">
-      <HintPath>..\packages\Naxam.PayPalOneTouch.iOS.4.8.2\lib\Xamarin.iOS10\Naxam.PayPalOneTouch.iOS.dll</HintPath>
+      <HintPath>..\packages\Naxam.PayPalOneTouch.iOS.4.9.0\lib\Xamarin.iOS10\Naxam.PayPalOneTouch.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +66,28 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
+      <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
+      <Name>Naxam.BrainTreeCore.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPal.Risk.iOS\Naxam.PayPal.Risk.iOS.csproj">
+      <Project>{1A95E0D6-AB90-48EC-ADB7-8386E5650A68}</Project>
+      <Name>Naxam.PayPal.Risk.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPalDataCollector.iOS\Naxam.PayPalDataCollector.iOS.csproj">
+      <Project>{6985CBE0-FD24-4416-93E7-71D7D4109C9B}</Project>
+      <Name>Naxam.PayPalDataCollector.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPalOneTouch.iOS\Naxam.PayPalOneTouch.iOS.csproj">
+      <Project>{DE5DFC91-5EDB-413B-BE59-05DC15D670F5}</Project>
+      <Name>Naxam.PayPalOneTouch.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPalUtils.iOS\Naxam.PayPalUtils.iOS.csproj">
+      <Project>{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}</Project>
+      <Name>Naxam.PayPalUtils.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

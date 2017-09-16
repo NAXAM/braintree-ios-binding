@@ -31,12 +31,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Naxam.BrainTreeCore.iOS">
-      <HintPath>..\packages\Naxam.BrainTreeCore.iOS.4.8.2\lib\Xamarin.iOS10\Naxam.BrainTreeCore.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.BraintreeCard.iOS">
-      <HintPath>..\packages\Naxam.BraintreeCard.iOS.4.8.2.5\lib\Xamarin.iOS10\Naxam.BraintreeCard.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Naxam.BraintreeCard.iOS\Naxam.BraintreeCard.iOS.csproj">
+      <Project>{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}</Project>
+      <Name>Naxam.BraintreeCard.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
+      <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
+      <Name>Naxam.BrainTreeCore.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

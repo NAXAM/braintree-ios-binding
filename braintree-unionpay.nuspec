@@ -3,20 +3,20 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BraintreeUnionPay.iOS</id>
-        <version>4.8.2.5</version>
+        <version>4.9.0</version>
         <description>Xamarin Binding Library - Braintree iOS SDK - UnionPay</description>
-        <authors>Vu Duc Tuyen</authors>
+        <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - Braintree iOS SDK - UnionPay</title>
-        <releaseNotes>Braintree iOS SDK v4.8.2 - UnionPay/Add linker</releaseNotes>
+        <releaseNotes>Braintree iOS SDK v4.9.0 - UnionPay/Add linker</releaseNotes>
         <summary>Xamarin Binding Library - Braintree iOS SDK - UnionPay</summary>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/Naxam.BraintreeUnionPay.iOS</projectUrl>
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, braintree-ui</tags>
         <dependencies>
-            <dependency id="Naxam.BraintreeCard.iOS" version="4.8.2.6" />
+            <dependency id="Naxam.BraintreeCard.iOS" version="4.9.0" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->
