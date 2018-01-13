@@ -3,14 +3,14 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BrainTreeCore.iOS</id>
-        <version>4.9.0</version>
+        <version>4.10.0</version>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - BrainTree Core for iOS</title>
         <summary>Xamarin iOS Binding Library - BrainTree Core</summary>
         <description>Xamarin iOS Binding Library - BrainTree Core</description>
-        <releaseNotes>BrainTree Core v4.9.0</releaseNotes>
+        <releaseNotes>BrainTree Core v4.10.0</releaseNotes>
         <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-ios-binding/tree/master/Naxam.BrainTreeCore.iOS</projectUrl>

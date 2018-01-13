@@ -30,7 +30,7 @@ namespace BraintreeCard
         [Export("initWithParameters:")]
         [DesignatedInitializer]
         IntPtr Constructor(NSDictionary parameters);
-
+ 
         // @property (copy, nonatomic) NSString * _Nullable number;
         [NullAllowed, Export("number")]
         string Number { get; set; }
@@ -86,6 +86,22 @@ namespace BraintreeCard
         // @property (nonatomic, nullable, copy) NSString *lastName;
         [NullAllowed, Export("lastName")]
         string LastName { get; set; }
+
+        //@property (nonatomic, nullable, copy) NSString *company;
+        [NullAllowed, Export("company")]
+        string Company { get; set; }
+
+        //@property (nonatomic, nullable, copy) NSString *extendedAddress;
+        [NullAllowed, Export("extendedAddress")]
+        string ExtendedAddress { get; set; }
+
+        //@property (nonatomic, nullable, copy) NSString *countryCodeAlpha3;
+        [NullAllowed, Export("countryCodeAlpha3")]
+        string CountryCodeAlpha3 { get; set; }
+
+        //@property (nonatomic, nullable, copy) NSString *countryCodeNumeric;
+        [NullAllowed, Export("countryCodeNumeric")]
+        string CountryCodeNumeric { get; set; }
     }
 
     // @interface BTCardNonce : BTPaymentMethodNonce

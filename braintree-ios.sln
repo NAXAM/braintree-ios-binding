@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreeUnionPay.iOS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreeVenmo.iOS", "Naxam.BraintreeVenmo.iOS\Naxam.BraintreeVenmo.iOS.csproj", "{717ECBF2-EBC0-43FA-A4DA-06FAD35C24FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreeAmericanExpress.iOS", "Naxam.BraintreeAmericanExpress.iOS\Naxam.BraintreeAmericanExpress.iOS.csproj", "{86981131-0A3D-4F53-8385-F144B86ABE30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreePaymentFlow.iOS", "Naxam.BraintreePaymentFlow.iOS\Naxam.BraintreePaymentFlow.iOS.csproj", "{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,5 +89,13 @@ Global
 		{717ECBF2-EBC0-43FA-A4DA-06FAD35C24FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{717ECBF2-EBC0-43FA-A4DA-06FAD35C24FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{717ECBF2-EBC0-43FA-A4DA-06FAD35C24FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86981131-0A3D-4F53-8385-F144B86ABE30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86981131-0A3D-4F53-8385-F144B86ABE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86981131-0A3D-4F53-8385-F144B86ABE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86981131-0A3D-4F53-8385-F144B86ABE30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

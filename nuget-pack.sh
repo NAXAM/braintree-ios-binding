@@ -7,9 +7,11 @@ function generate() {
 frameworks=(
     braintree-3dsecure
     braintree-applepay
+    braintree-amerianexpress
     braintree-card
     braintree-core
     braintree-datacollector
+    braintree-paymentflow
     braintree-paypal
     braintree-venmo
     braintree-ui

@@ -12,12 +12,12 @@ using Foundation;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("Naxam.BrainTreeCore.iOS")]
-[assembly: AssemblyDescription("Xamarin iOS Binding Library - Braintree PayPalDataCollector")]
+[assembly: AssemblyTitle("Naxam.PayPalDataCollector.iOS")]
+[assembly: AssemblyDescription("Xamarin.iOS binding Library - Braintree PayPalDataCollector")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NAXAM COMPANY LIMITED")]
 [assembly: AssemblyProduct("X Bindings")]
-[assembly: AssemblyCopyright("Copyright (c) 2017 NAXAM")]
+[assembly: AssemblyCopyright("Copyright (c) 2018 NAXAM")]
 [assembly: AssemblyTrademark("NAXAM")]
 [assembly: AssemblyCulture("")]
 
@@ -25,7 +25,7 @@ using Foundation;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion("4.9.0")]
+[assembly: AssemblyVersion("4.10.0")]
 
 // The following attributes are used to specify the signing key for the assembly, 
 // if desired. See the Mono documentation for more information about signing.
