@@ -19,6 +19,7 @@ frameworks=(
     paypal-datacollector
     paypal-onetouch
     paypal-utils
+    paypal-risk
 )
 for framework in "${frameworks[@]}"
 do
