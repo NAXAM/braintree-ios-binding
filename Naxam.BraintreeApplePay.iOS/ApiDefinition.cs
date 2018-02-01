@@ -27,7 +27,7 @@ namespace BraintreeApplePay
         ///  @brief The BIN data for the card number associated with this nonce.
         ///</summary>
         // @property (nonatomic, readonly, strong) BTBinData *binData;
-        [Abstract, Export("binData")]
+        [Export("binData")]
         BTBinData BinData { get; }
 
         // - (nullable instancetype)initWithNonce:(NSString *)nonce localizedDescription:(nullable NSString *)description type:(NSString *)type json:(BTJSON *)json;
