@@ -124,6 +124,13 @@ namespace BraintreeCard
         [Static]
         [Export("cardNonceWithJSON:")]
         BTCardNonce CardNonceWithJSON(BTJSON cardJSON);
+
+        // /**
+        // @brief The 3D Secure info for the card number associated with this nonce.
+        // */
+        // @property (nonatomic, readonly, strong) BTThreeDSecureInfo *threeDSecureInfo;
+        [Export("threeDSecureInfo", ArgumentSemantic.Strong)]
+        BTThreeDSecureInfo ThreeDSecureInfo { get; }
     }
 
     [Static]
@@ -180,5 +187,37 @@ namespace BraintreeCard
         // @property (copy, nonatomic) NSString * _Nullable enrollmentID;
         [NullAllowed, Export("enrollmentID")]
         string EnrollmentID { get; set; }
+    }
+
+    // @interface BTThreeDSecureInfo : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BTThreeDSecureInfo  {
+        // /**
+        //  @brief Create a `BTThreeDSecureInfo` object from JSON.
+        //  */
+        // - (instancetype)initWithJSON:(BTJSON *)json;
+        [Export("initWithJSON:")]
+        IntPtr Constructor(BTJSON json);
+
+        // /**
+        //  @brief If the 3D Secure liability shift has occurred
+        //  */
+        // @property (nonatomic, readonly, assign) BOOL liabilityShifted;
+        [Export("liabilityShifted", ArgumentSemantic.Assign)]
+        bool LiabilityShifted { get; }
+
+        // /**
+        //  @brief If the 3D Secure liability shift is possible
+        //  */
+        // @property (nonatomic, readonly, assign) BOOL liabilityShiftPossible;
+        [Export("liabilityShiftPossible", ArgumentSemantic.Assign)]
+        bool LiabilityShiftPossible { get; }
+
+        // /**
+        //  @brief If the 3D Secure lookup was performed
+        //  */
+        // @property (nonatomic, readonly, assign) BOOL wasVerified;
+        [Export("wasVerified", ArgumentSemantic.Assign)]
+        bool WasVerified { get; }
     }
 }

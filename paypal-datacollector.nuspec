@@ -17,8 +17,6 @@
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.iOS, braintree, paypal, paypal-data-collector</tags>
         <dependencies>
-            <dependency id="Naxam.PayPal.Risk.iOS" version="4.10.0" />
-            <dependency id="Naxam.PayPalUtils.iOS" version="4.10.0" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->
