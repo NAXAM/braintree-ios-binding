@@ -5,37 +5,51 @@
 #import <BraintreeCore/BraintreeCore.h>
 #endif
 #import "BTThreeDSecureInfo.h"
+#import "BTAuthenticationInsight.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Contains information about a tokenized card.
+ */
 @interface BTCardNonce : BTPaymentMethodNonce
 
 /**
- @brief The card network.
+ The card network.
 */
 @property (nonatomic, readonly, assign) BTCardNetwork cardNetwork;
 
 /**
- @brief The last two digits of the card, if available.
+ The last two digits of the card, if available.
 */
 @property (nonatomic, nullable, readonly, copy) NSString *lastTwo;
 
 /**
- @brief The BIN data for the card number associated with this nonce.
+ The last four digits of the card, if available.
+*/
+@property (nonatomic, nullable, readonly, copy) NSString *lastFour;
+
+/**
+ The BIN number of the card, if available.
+ */
+@property (nonatomic, nullable, readonly, copy) NSString *bin;
+
+/**
+ The BIN data for the card number associated with this nonce.
  */
 @property (nonatomic, readonly, strong) BTBinData *binData;
 
 /**
- @brief The 3D Secure info for the card number associated with this nonce.
+ The 3D Secure info for the card number associated with this nonce.
  */
 @property (nonatomic, readonly, strong) BTThreeDSecureInfo *threeDSecureInfo;
 
-#pragma mark - Internal
-
 /**
- @brief Create a `BTCardNonce` object from JSON.
-*/
-+ (instancetype)cardNonceWithJSON:(BTJSON *)cardJSON;
+ Details about the regulatory environment and applicable customer authentication regulation
+ for a potential transaction. This can be used to make an informed decision whether to perform
+ 3D Secure authentication.
+ */
+@property (nonatomic, nullable, readonly, strong) BTAuthenticationInsight *authenticationInsight;
 
 @end
 

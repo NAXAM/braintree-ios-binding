@@ -49,6 +49,13 @@ Install-Package Naxam.BraintreeVenmo.iOS
 
 Plz follow official guide [here](https://github.com/braintree/braintree_ios/blob/master/README.md)
 
+## Upgrade
+
+1. Run Carthage to upgrade to latest package
+2. Run Carthage to build out framework assets
+3. Copy built framework assets to `frameworks` folder
+4. Check for changes and update/create API definitions
+
 ## License
 
 BrainTree binding library for iOS is released under the MIT license.

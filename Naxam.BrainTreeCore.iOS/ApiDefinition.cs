@@ -1,11 +1,236 @@
 ﻿using System;
 using BraintreeCore;
+using CoreFoundation;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
 
 namespace BraintreeCore
 {
+    // interface BTAnalyticsService : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BTAnalyticsService {
+        // - (instancetype)initWithAPIClient:(BTAPIClient *)apiClient;
+        [Export("initWithAPIClient:")]
+        IntPtr Constructor(BTAPIClient client);
+
+        // @property (nonatomic, assign) NSUInteger flushThreshold;
+        [Export("flustThreshold", ArgumentSemantic.Assign)]
+        uint FlushThreshold { get; set; }
+
+        // @property (nonatomic, strong) BTAPIClient *apiClient;
+        [Export("apiClient", ArgumentSemantic.Strong)]
+        BTAPIClient ApiClient { get; set; }
+
+        // - (void)sendAnalyticsEvent:(NSString *)eventKind;
+        [Export("sendAnalyticsEvent:")]
+        string SendAnalyticsEvent (string eventKind);
+
+        // - (void)flush:(nullable void (^)(NSError * _Nullable error))completionBlock;
+        [Export("flush:")]
+        void Flush (Action<NSError> completionBlock);
+
+        // @property (nonatomic, strong) BTHTTP *http;
+        [Export("http", ArgumentSemantic.Strong)]
+        BTHTTP Http { get; set; }
+    }
+
+    // interface BTAnalyticsMetadata : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BTAnalyticsMetadata {
+        // + (NSDictionary *)metadata;
+        [Static, Export("metadata")]
+        NSDictionary Metadata();
+    }
+
+    // interface BTGraphQLHTTP : BTHTTP
+    [BaseType(typeof(BTHTTP))]
+    interface BTGraphQLHTTP {
+    }
+
+    // interface BTAPIHTTP : BTHTTP <NSURLSessionDelegate>
+    [BaseType(typeof(BTHTTP))]
+    interface BTAPIHTTP : INSUrlSessionDelegate {
+        // - (instancetype)initWithBaseURL:(NSURL *)URL accessToken:(NSString *)accessToken;
+        [Export("initWithBaseURL:accessToken")]
+        IntPtr Constructor(NSUrl url, string accessToken);
+    }
+
+    // interface BTHTTP : NSObject<NSCopying>
+    [BaseType(typeof(NSObject))]
+    interface BTHTTP : INSCopying {
+        // @property (nonatomic, nullable, strong) NSArray<NSData *> *pinnedCertificates;
+        [Export("pinnedCertificates", ArgumentSemantic.Strong), NullAllowed]
+        [return: NullAllowed]
+        NSData[] PinnedCertificates { get; set; }
+
+        // - (instancetype)initWithBaseURL:(NSURL *)URL NS_DESIGNATED_INITIALIZER;
+        [DesignatedInitializer]
+        [Export("initWithBaseURL:")]
+        IntPtr Constructor(NSUrl url);
+
+        // - (instancetype)initWithBaseURL:(NSURL *)URL
+        //        authorizationFingerprint:(NSString *)authorizationFingerprint;
+        [Export("initWithBaseURL:authorizationFingerprint:")]
+        IntPtr Constructor(NSUrl url, string authorizationFingerprint);
+
+        // - (instancetype)initWithBaseURL:(NSURL *)URL tokenizationKey:(NSString *)tokenizationKey;
+        [Static, Export("initWithBaseURL:tokenizationKey:")]
+        BTHTTP InitWithBaseURL(NSUrl url, string tokenizationKey);
+
+        // - (instancetype)initWithClientToken:(BTClientToken *)clientToken;
+        [Export("initWithClientToken:")]
+        IntPtr Constructor(BTClientToken clientToken);
+
+        // - (instancetype)initWithPayPalUAT:(BTPayPalUAT *)payPalUAT;
+        [Export("initWithPayPalUAT:")]
+        IntPtr Constructor(BTPayPalUAT payPalUAT);
+
+        // - (NSString *)userAgentString;
+        [Export("userAgentString")]
+        string UserAgentString();
+
+        // - (NSString *)acceptString;
+        [Export("acceptString")]
+        string AcceptString();
+
+        // - (NSString *)acceptLanguageString;
+        [Export("acceptLanguageString")]
+        string AcceptLanguageString();
+
+        // @property (nonatomic, strong) NSURLSession *session;
+        [Export("session", ArgumentSemantic.Strong), NullAllowed]
+        NSUrlSession Session { get; set; }
+
+        // @property (nonatomic, readonly, strong) NSURL *baseURL;
+        [Export("baseURL", ArgumentSemantic.Strong), NullAllowed]
+        NSUrl baseURL { get; set; }
+
+        // @property (nonatomic, strong) dispatch_queue_t dispatchQueue;
+        [Export("dispatchQueue", ArgumentSemantic.Strong)]
+        DispatchQueue DispatchQueue { get; set; }
+
+        // - (void)GET:(NSString *)endpoint
+        //  completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("GET:completion:")]
+        void Get(string endpoint, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)GET:(NSString *)endpoint
+        //  parameters:(nullable NSDictionary <NSString *, NSString *> *)parameters
+        //  completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("GET:parameters:completion:")]
+        void Get(string endpoint, NSDictionary paramters, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)POST:(NSString *)endpoint
+        //   completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("POST:completion:")]
+        void Post(string endpoint, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)POST:(NSString *)endpoint
+        //   parameters:(nullable NSDictionary *)parameters
+        //   completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("POST:parameters:completion:")]
+        void Post(string endpoint, NSDictionary paramters, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)PUT:(NSString *)endpoint
+        //  completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("PUT:completion:")]
+        void Put(string endpoint, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)PUT:(NSString *)endpoint
+        //  parameters:(nullable NSDictionary *)parameters
+        //  completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("PUT:parameters:completion:")]
+        void Put(string endpoint, NSDictionary paramters, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)DELETE:(NSString *)endpoint
+        //     completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("DELETE:completion:")]
+        void Delete(string endpoint, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)DELETE:(NSString *)endpoint
+        //     parameters:(nullable NSDictionary *)parameters
+        //     completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("DELETE:parameters:completion:")]
+        void Delete(string endpoint, NSDictionary paramters, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)handleRequestCompletion:(nullable NSData *)data
+        //                        response:(nullable NSURLResponse *)response
+        //                           error:(nullable NSError *)error
+        //                 completionBlock:(void(^)(BTJSON *body, NSHTTPURLResponse *response, NSError *error))completionBlock;
+        [Export("handleRequestCompletion:response:error:completionBlock:")]
+        void HandleRequestCompletion(NSData data, NSUrlResponse response, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+
+        // - (void)callCompletionBlock:(void(^)(BTJSON *body, NSHTTPURLResponse *response, NSError *error))completionBlock
+        //                        body:(nullable BTJSON *)jsonBody
+        //                    response:(nullable NSHTTPURLResponse *)response
+        //                       error:(nullable NSError *)error;
+        [Export("callCompletionBlock:body:response:error:")]
+        void CallCompletionBlock(Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock, BTJSON jsonBody, NSHttpUrlResponse response, NSError error);
+    }
+
+    [BaseType(typeof(NSObject))]
+    partial interface BTURLUtils {
+        // + (NSString *)queryStringWithDictionary:(NSDictionary *)dict;
+        [Static, Export("queryStringWithDictionary:")]
+        string QueryStringWithDictionary(NSDictionary dict);
+        // + (NSDictionary<NSString *, NSString *> *)queryParametersForURL:(NSURL *)url;
+        [Static, Export("queryParametersForURL:")]
+        NSDictionary QueryParametersForURL(NSUrl url);
+    }
+
+
+    [BaseType(typeof(NSObject))]
+    partial interface BTPreferredPaymentMethodsResult {
+        // @property (nonatomic, readonly, assign) BOOL isPayPalPreferred;
+        [Export("isPayPalPreferred", ArgumentSemantic.Assign)]
+        bool IsPayPalPreferred { get; }
+        // @property (nonatomic, readonly, assign) BOOL isVenmoPreferred;
+        [Export("isVenmoPreferred", ArgumentSemantic.Assign)]
+        bool IsVenmoPreferred { get; }
+    }
+
+    [BaseType(typeof(NSObject))]
+    partial interface BTPreferredPaymentMethods {
+        // - (instancetype)initWithAPIClient:(BTAPIClient *)apiClient NS_DESIGNATED_INITIALIZER;
+        [Export("initWithAPIClient:"), DesignatedInitializer]
+        IntPtr Constructor(BTAPIClient apiClient);
+        // - (instancetype)init __attribute__((unavailable("Please use initWithAPIClient:")));
+
+        // - (void)fetchPreferredPaymentMethods:(void (^)(BTPreferredPaymentMethodsResult *))completion;
+        [Export("fetchPreferredPaymentMethods:")]
+        void FetchPreferredPaymentMethods(Action<BTPreferredPaymentMethodsResult> completion);
+}
+
+    [BaseType(typeof(NSObject))]
+    partial interface BTPayPalUAT {
+        // - (nullable instancetype)initWithUATString:(NSString *)payPalUAT error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+        [Export("initWithUATString:error:"), DesignatedInitializer]
+        IntPtr Constructor(string payPalUAT, NSError error);
+
+        // - (instancetype)init __attribute__((unavailable("Please use initWithPayPalUAT:error: instead.")));
+
+        // @property (nonatomic, readonly, copy) NSString *token;
+        [Export("token", ArgumentSemantic.Copy)]
+        string Token { get; }
+
+        // @property (nonatomic, readonly, strong) NSURL *configURL;
+        [Export("configURL", ArgumentSemantic.Strong)]
+        NSUrl ConfigURL { get; }
+
+        // @property (nonatomic, readonly, strong) NSURL *baseBraintreeURL;
+        [Export("baseBraintreeURL", ArgumentSemantic.Strong)]
+        NSUrl BaseBraintreeURL { get; }
+
+        // @property (nonatomic, readonly, strong) NSURL *basePayPalURL;
+        [Export("basePayPalURL", ArgumentSemantic.Strong)]
+        NSUrl BasePayPalURL { get; }
+
+        // @property (nonatomic, readonly, assign) BTPayPalUATEnvironment environment;
+        [Export("environment", ArgumentSemantic.Assign)]
+        BTPayPalUATEnvironment Environment { get; }
+    }
+
     partial interface IBTAppSwitchHandler { };
     partial interface IBTAppSwitchDelegate { };
     partial interface IBTViewControllerPresentingDelegate { };
@@ -163,6 +388,10 @@ namespace BraintreeCore
         [Export("isObject")]
         bool IsObject { get; }
 
+        // @property (nonatomic, assign, readonly) BOOL isBool;
+        [Export("isBool")]
+        bool IsBool { get; }
+
         // @property (readonly, assign, nonatomic) BOOL isTrue;
         [Export("isTrue")]
         bool IsTrue { get; }
@@ -199,6 +428,14 @@ namespace BraintreeCore
         [Static]
         [Export("setBetaPaymentOption:isEnabled:")]
         void SetBetaPaymentOption(string paymentOption, bool isEnabled);
+
+        // @property (nonatomic, readonly, assign) BOOL collectFraudData;
+        [Export("collectFraudData", ArgumentSemantic.Assign)]
+        bool CollectFraudData { get; }
+
+        // @property (nonatomic, readonly, assign) BOOL isGraphQLEnabled;
+        [Export("isGraphQLEnabled", ArgumentSemantic.Assign)]
+        bool IsGraphQLEnabled { get; }
     }
 
     [Static]
@@ -247,6 +484,84 @@ namespace BraintreeCore
         // -(void)POST:(NSString * _Nonnull)path parameters:(NSDictionary * _Nullable)parameters completion:(void (^ _Nullable)(BTJSON * _Nullable, NSHTTPURLResponse * _Nullable, NSError * _Nullable))completionBlock;
         [Export("POST:parameters:completion:")]
         void POST(string path, [NullAllowed] NSDictionary parameters, [NullAllowed] [BlockCallback]BTJsonCompletionBlock completionBlock);
+
+        // @property (nonatomic, copy, nullable) NSString *tokenizationKey;
+        [Export("tokenizationKey", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
+        string TokenizationKey {get;set;}
+
+        // @property (nonatomic, strong, nullable) BTClientToken *clientToken;
+        [Export("clientToken", ArgumentSemantic.Strong), NullAllowed]
+        [return: NullAllowed]
+        BTClientToken ClientToken {get;set;}
+
+        // @property (nonatomic, strong, nullable) BTPayPalUAT *payPalUAT;
+        [Export("payPalUAT", ArgumentSemantic.Strong), NullAllowed]
+        [return: NullAllowed]
+        BTPayPalUAT PayPalUAT {get;set;}
+
+        // @property (nonatomic, strong) BTHTTP *http;
+        [Export("http", ArgumentSemantic.Strong)]
+        BTHTTP Http {get;set;}
+
+        // @property (nonatomic, strong) BTHTTP *configurationHTTP;
+        [Export("configurationHTTP", ArgumentSemantic.Strong)]
+        BTHTTP ConfigurationHTTP {get;set;}
+
+        // @property (nonatomic, strong) BTAPIHTTP *braintreeAPI;
+        [Export("braintreeAPI", ArgumentSemantic.Strong)]
+        BTAPIHTTP BraintreeAPI {get;set;}
+
+        // @property (nonatomic, strong) BTGraphQLHTTP *graphQL;
+        [Export("graphQL", ArgumentSemantic.Strong), NullAllowed]
+        [return: NullAllowed]
+        BTGraphQLHTTP GraphQL {get;set;}
+        
+        // @property (nonatomic, readonly, strong) BTClientMetadata *metadata;
+        [Export("metadata", ArgumentSemantic.Strong)]
+        BTClientMetadata Metadata {get;}
+
+        // @property (nonatomic, strong) BTAnalyticsService *analyticsService;
+        [Export("analyticsService", ArgumentSemantic.Strong)]
+        BTAnalyticsService AnalyticsService {get;set;}
+
+        // - (void)sendAnalyticsEvent:(NSString *)eventName;
+        [Export("sendAnalyticsEvent:")]
+        void SendAnalyticsEvent(string eventName);
+
+
+        // - (void)queueAnalyticsEvent:(NSString *)eventName;
+        [Export("queueAnalyticsEvent:")]
+        void QueueAnalyticsEvent(string eventName);
+
+
+        // - (nullable instancetype)initWithAuthorization:(NSString *)authorization sendAnalyticsEvent:(BOOL)sendAnalyticsEvent;
+        [Export("initWithAuthorization:sendAnalyticsEvent:")]
+        IntPtr Constructor(string authorization, BTTokenizationService sendAnalyticsEvent);
+
+        // - (void)GET:(NSString *)path
+        // parameters:(nullable NSDictionary <NSString *, NSString *> *)parameters
+        // httpType:(BTAPIClientHTTPType)httpType
+        // completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("GET:parameters:httpType:completion:")]
+        void Get(string path, [NullAllowed] NSDictionary parameters, BTAPIClientHTTPType httpType, [NullAllowed] [BlockCallback]BTJsonCompletionBlock completionBlock);
+
+        // - (void)POST:(NSString *)path
+        // parameters:(nullable NSDictionary *)parameters
+        // httpType:(BTAPIClientHTTPType)httpType
+        // completion:(nullable void(^)(BTJSON * _Nullable body, NSHTTPURLResponse * _Nullable response, NSError * _Nullable error))completionBlock;
+        [Export("POST:parameters:httpType:completion:")]
+        void POST(string path, [NullAllowed] NSDictionary parameters, BTAPIClientHTTPType httpType, [NullAllowed] [BlockCallback]BTJsonCompletionBlock completionBlock);
+
+
+        // + (nullable NSURL *)graphQLURLForEnvironment:(NSString *)environment;
+        [Export("graphQLURLForEnvironment:")]
+        [return: NullAllowed]
+        NSUrl GraphQLURLForEnvironment(string environment);
+
+        // + (BTAPIClientAuthorizationType)authorizationTypeForAuthorization:(NSString *)authorization;
+        [Export("authorizationTypeForAuthorization:")]
+        BTAPIClientAuthorizationType AuthorizationTypeForAuthorization(string authorization);
     }
 
     // @interface BTAppSwitch : NSObject
@@ -277,6 +592,13 @@ namespace BraintreeCore
         [Export("handleOpenURL:options:")]
         bool HandleOpenURL(NSUrl url, NSDictionary options);
 
+        // + (BOOL)API_AVAILABLE(ios(13.0))handleOpenURLContext:(UIOpenURLContext *)URLContext NS_SWIFT_NAME(handleOpenURLContext(_:));
+        [Static]
+        [Introduced(PlatformName.iOS, 13, 0)]
+        [Export("handleOpenURLContext:")]
+        bool HandleOpenURLContext(UIOpenUrlContext context);
+
+
         // -(void)registerAppSwitchHandler:(Class<BTAppSwitchHandler> _Nonnull)handler;
         [Export("registerAppSwitchHandler:")]
         void RegisterAppSwitchHandler(IBTAppSwitchHandler handler);
@@ -285,8 +607,9 @@ namespace BraintreeCore
         [Export("unregisterAppSwitchHandler:")]
         void UnregisterAppSwitchHandler(IBTAppSwitchHandler handler);
 
-        // -(BOOL)handleOpenURL:(NSURL * _Nonnull)url sourceApplication:(NSString * _Nonnull)sourceApplication;
+        // - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication DEPRECATED_MSG_ATTRIBUTE("Use handleOpenURL:options: or handleOpenURLContext: instead.");
         [Export("handleOpenURL:sourceApplication:")]
+		[Deprecated(PlatformName.iOS, PlatformArchitecture.All, "Use handleOpenURL:options: or handleOpenURLContext: instead.")]
         bool HandleOpenURL(NSUrl url, string sourceApplication);
     }
 
@@ -310,6 +633,18 @@ namespace BraintreeCore
         NSString NotificationTargetKey { get; }
     }
 
+    [Static]
+    partial interface BTAppContextConstants
+    {
+        // extern NSString * const BTAppContextWillSwitchNotification;
+        [Field("BTAppContextWillSwitchNotification", "__Internal")]
+        NSString WillSwitchNotification { get; }
+
+        // extern NSString * const BTAppContextDidReturnNotification;
+        [Field("BTAppContextDidReturnNotification", "__Internal")]
+        NSString DidReturnNotification { get; }
+    }
+
     // @protocol BTAppSwitchDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
@@ -329,6 +664,14 @@ namespace BraintreeCore
         [Abstract]
         [Export("appSwitcherWillProcessPaymentInfo:")]
         void AppSwitcherWillProcessPaymentInfo(NSObject appSwitcher);
+
+        // - (void)appContextWillSwitch:(id)appSwitcher;
+        [Export("appContextWillSwitch:")]
+        void AppContextWillSwitch(NSObject appSwitcher);
+
+        // - (void)appContextDidReturn:(id)appSwitcher;
+        [Export("appContextDidReturn:")]
+        void AppContextDidReturn(NSObject appSwitcher);
     }
 
     // @protocol BTAppSwitchHandler
@@ -442,20 +785,23 @@ namespace BraintreeCore
         [NullAllowed, Export("recipientName")]
         string RecipientName { get; set; }
 
-        // @property (copy, nonatomic) NSString * _Nonnull streetAddress;
-        [Export("streetAddress")]
+        // @property (nonatomic, nullable, copy) NSString *streetAddress;
+        [Export("streetAddress", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
         string StreetAddress { get; set; }
 
         // @property (copy, nonatomic) NSString * _Nullable extendedAddress;
         [NullAllowed, Export("extendedAddress")]
         string ExtendedAddress { get; set; }
 
-        // @property (copy, nonatomic) NSString * _Nonnull locality;
-        [Export("locality")]
+        // @property (nonatomic, nullable, copy) NSString *locality;
+        [Export("locality", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
         string Locality { get; set; }
 
-        // @property (copy, nonatomic) NSString * _Nonnull countryCodeAlpha2;
-        [Export("countryCodeAlpha2")]
+        // @property (nonatomic, nullable, copy) NSString *countryCodeAlpha2;
+        [Export("countryCodeAlpha2", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
         string CountryCodeAlpha2 { get; set; }
 
         // @property (copy, nonatomic) NSString * _Nullable postalCode;

@@ -10,7 +10,7 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var VERSION = "4.11.0";
+var VERSION = "4.34.0";
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION

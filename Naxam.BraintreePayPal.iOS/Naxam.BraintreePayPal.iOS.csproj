@@ -65,7 +65,22 @@
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="packages.config" />
+    <ProjectReference Include="..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
+      <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
+      <Name>Naxam.BrainTreeCore.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPalOneTouch.iOS\Naxam.PayPalOneTouch.iOS.csproj">
+      <Project>{DE5DFC91-5EDB-413B-BE59-05DC15D670F5}</Project>
+      <Name>Naxam.PayPalOneTouch.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPalUtils.iOS\Naxam.PayPalUtils.iOS.csproj">
+      <Project>{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}</Project>
+      <Name>Naxam.PayPalUtils.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Naxam.PayPalDataCollector.iOS\Naxam.PayPalDataCollector.iOS.csproj">
+      <Project>{6985CBE0-FD24-4416-93E7-71D7D4109C9B}</Project>
+      <Name>Naxam.PayPalDataCollector.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

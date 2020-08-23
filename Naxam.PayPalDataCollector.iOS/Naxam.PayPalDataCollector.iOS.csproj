@@ -48,9 +48,6 @@
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Naxam.PayPal.Risk.iOS\Naxam.PayPal.Risk.iOS.csproj">
       <Project>{1A95E0D6-AB90-48EC-ADB7-8386E5650A68}</Project>
       <Name>Naxam.PayPal.Risk.iOS</Name>

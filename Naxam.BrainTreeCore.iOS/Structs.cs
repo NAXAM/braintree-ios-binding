@@ -4,6 +4,34 @@ using ObjCRuntime;
 namespace BraintreeCore
 {
     [Native]
+    public enum BTPayPalUATEnvironment : long {
+        Stage = 0,
+        Sand = 1,
+        Prod = 2
+    }
+
+    [Native]
+    public enum BTAPIClientHTTPType : long {
+        Gateway = 0,
+        BraintreeAPI,
+        GraphQLAPI,
+    }
+
+    [Native]
+    public enum BTAPIClientAuthorizationType : long {
+        TokenizationKey = 0,
+        ClientToken,
+        PayPalUAT,
+    }
+
+    [Native]
+    public enum BTPayPalUATError : long {
+        Unknown = 0,
+        Invalid,
+        UnlinkedAccount,
+    }
+
+    [Native]
     public enum BTClientMetadataSourceType : long
     {
         Unknown = 0,
@@ -67,6 +95,8 @@ namespace BraintreeCore
         Laser,
         Maestro,
         UnionPay,
+        Hiper,
+        Hipercard,
         Solo,
         Switch,
         UKMaestro

@@ -49,9 +49,6 @@
     </NativeReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
       <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
       <Name>Naxam.BrainTreeCore.iOS</Name>

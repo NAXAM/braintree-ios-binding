@@ -17,6 +17,7 @@ frameworks=(
     PayPalDataCollector
     PayPalOneTouch
     PayPalUtils
+    CardinalMobile
 )
 for framework in "${frameworks[@]}"
 do

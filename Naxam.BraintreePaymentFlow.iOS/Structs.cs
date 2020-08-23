@@ -4,6 +4,12 @@ using ObjCRuntime;
 namespace BraintreePaymentFlow
 {
     [Native]
+    public enum BTThreeDSecureVersion : long {
+        Version1,
+        Version2,
+    } 
+
+    [Native]
     public enum BTPaymentFlowDriverErrorType : long 
     {
         Unknown = 0,
@@ -31,11 +37,8 @@ namespace BraintreePaymentFlow
     public enum BTThreeDSecureFlowErrorType : long 
     {
         Unknown = 0,
-        
-        /// 3D Secure failed during the backend card lookup phase; please retry
         FailedLookup,
-        
-        /// 3D Secure failed during the user-facing authentication phase; please retry
         FailedAuthentication,
+        Configuration,
     }
 }

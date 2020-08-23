@@ -18,6 +18,19 @@ namespace BraintreeCard
     //	byte[] BraintreeCardVersionString { get; }
     //}
 
+    [BaseType(typeof(NSObject))]
+    interface BTAuthenticationInsight
+    {
+        // @property (nonatomic, nullable, copy) NSString *regulationEnvironment;
+        [NullAllowed, Export("regulationEnvironment")]
+        string RegulationEnvironment { get; set; }
+
+        // - (instancetype)initWithJSON:(BTJSON *)json;
+        [Export("initWithJSON:")]
+        IntPtr Constructor(BTJSON json);
+
+    }
+
     // @interface BTCard : NSObject
     [BaseType(typeof(NSObject))]
     interface BTCard
@@ -102,6 +115,31 @@ namespace BraintreeCard
         //@property (nonatomic, nullable, copy) NSString *countryCodeNumeric;
         [NullAllowed, Export("countryCodeNumeric")]
         string CountryCodeNumeric { get; set; }
+
+        // @property (nonatomic, assign) BOOL authenticationInsightRequested;
+        [Export("authenticationInsightRequested")]
+        bool AuthenticationInsightRequested { get; set; }
+
+
+        // @property (nonatomic, nullable, copy) NSString *merchantAccountId;
+        [NullAllowed, Export("merchantAccountId")]
+        string MerchantAccountId { get; set; }
+
+        // - (NSDictionary *)parameters;
+        [NullAllowed, Export("parameters")]
+        string Parameters { get; set; }
+
+        // - (NSDictionary *)graphQLParameters;
+        [NullAllowed, Export("graphQLParameters")]
+        string GraphQLParameters { get; set; }
+
+        // extern NSString * const BTCardGraphQLTokenizationMutation;
+        [Field("BTCardGraphQLTokenizationMutation", "__Internal")]
+        NSString BTCardGraphQLTokenizationMutation { get; }
+
+        // extern NSString * const BTCardGraphQLTokenizationWithAuthenticationInsightMutation;
+        [Field("BTCardGraphQLTokenizationWithAuthenticationInsightMutation", "__Internal")]
+        NSString BTCardGraphQLTokenizationWithAuthenticationInsightMutation { get; }
     }
 
     // @interface BTCardNonce : BTPaymentMethodNonce
@@ -116,14 +154,17 @@ namespace BraintreeCard
         [NullAllowed, Export("lastTwo", ArgumentSemantic.Copy)]
         string LastTwo { get; }
 
+        // @property (nonatomic, nullable, readonly, copy) NSString *lastFour;
+        [NullAllowed, Export("lastFour", ArgumentSemantic.Strong)]
+        string LastFour { get; }
+
+        // @property (nonatomic, nullable, readonly, copy) NSString *bin;
+        [NullAllowed, Export("bin", ArgumentSemantic.Strong)]
+        string Bin { get; }
+
         // @property (nonatomic, readonly, strong) BTBinData *binData;
         [Export("binData", ArgumentSemantic.Strong)]
         BTBinData BinData { get; }
-
-        // +(instancetype _Nonnull)cardNonceWithJSON:(BTJSON * _Nonnull)cardJSON;
-        [Static]
-        [Export("cardNonceWithJSON:")]
-        BTCardNonce CardNonceWithJSON(BTJSON cardJSON);
 
         // /**
         // @brief The 3D Secure info for the card number associated with this nonce.
@@ -131,6 +172,26 @@ namespace BraintreeCard
         // @property (nonatomic, readonly, strong) BTThreeDSecureInfo *threeDSecureInfo;
         [Export("threeDSecureInfo", ArgumentSemantic.Strong)]
         BTThreeDSecureInfo ThreeDSecureInfo { get; }
+
+        // @property (nonatomic, nullable, readonly, strong) BTAuthenticationInsight *authenticationInsight;
+        [NullAllowed, Export("authenticationInsight", ArgumentSemantic.Strong)]
+        BTAuthenticationInsight AuthenticationInsight { get; }
+
+        // /**
+        // Create a `BTCardNonce` object from JSON.
+        // */
+        // + (instancetype)cardNonceWithJSON:(BTJSON *)cardJSON;
+        [Static]
+        [Export("cardNonceWithJSON:")]
+        BTCardNonce CardNonceWithJSON(BTJSON cardJSON);
+
+        // /**
+        // Create a `BTCardNonce` object from GraphQL JSON.
+        // */
+        // + (instancetype)cardNonceWithGraphQLJSON:(BTJSON *)json;
+        [Static]
+        [Export("cardNonceWithGraphQLJSON:")]
+        BTCardNonce cardNonceWithGraphQLJSON(BTJSON cardJSON);
     }
 
     [Static]
@@ -158,6 +219,18 @@ namespace BraintreeCard
         // -(void)tokenizeCard:(BTCardRequest * _Nonnull)request options:(NSDictionary * _Nullable)options completion:(void (^ _Nonnull)(BTCardNonce * _Nullable, NSError * _Nullable))completion;
         [Export("tokenizeCard:options:completion:")]
         void TokenizeCard(BTCardRequest request, [NullAllowed] NSDictionary options, Action<BTCardNonce, NSError> completion);
+
+        // + (NSDictionary *)validationErrorUserInfo:(NSDictionary *)userInfo;
+        [Export("validationErrorUserInfo:")]
+        void ValidationErrorUserInfo(NSDictionary userInfo);
+
+        // + (void)setPayPalDataCollectorClassString:(nonnull NSString *)payPalDataCollectorClassString;
+        [Export("setPayPalDataCollectorClassString:")]
+        void SetPayPalDataCollectorClassString(string payPalDataCollectorClassString);
+
+        // + (void)setPayPalDataCollectorClass:(nonnull Class)payPalDataCollectorClass;
+        [Export("setPayPalDataCollectorClass:")]
+        void SetPayPalDataCollectorClass(Class payPalDataCollectorClass);
     }
 
     // @interface BTCardRequest : NSObject
@@ -189,6 +262,14 @@ namespace BraintreeCard
         string EnrollmentID { get; set; }
     }
 
+    [Category]
+	[BaseType (typeof(BTConfiguration))]
+    interface BTConfiguration_Card {
+        // @property (nonatomic, readonly, assign) BOOL collectFraudData;
+        [Export("collectFraudData")]
+        bool GetCollectFraudData();
+    }
+
     // @interface BTThreeDSecureInfo : NSObject
     [BaseType(typeof(NSObject))]
     interface BTThreeDSecureInfo  {
@@ -199,16 +280,66 @@ namespace BraintreeCard
         [Export("initWithJSON:")]
         IntPtr Constructor(BTJSON json);
 
-        // /**
-        //  @brief If the 3D Secure liability shift has occurred
-        //  */
+        // @property (nonatomic, readonly, nullable) NSString *acsTransactionId;
+        [NullAllowed, Export("acsTransactionId", ArgumentSemantic.None)]
+        string acsTransactionId { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *authenticationTransactionStatus;
+        [NullAllowed, Export("authenticationTransactionStatus", ArgumentSemantic.None)]
+        string AuthenticationTransactionStatus { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *authenticationTransactionStatusReason;
+        [NullAllowed, Export("authenticationTransactionStatusReason", ArgumentSemantic.None)]
+        string AuthenticationTransactionStatusReason { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *cavv;
+        [NullAllowed,Export("cavv", ArgumentSemantic.None)]
+        string Cavv { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *dsTransactionId;
+        [NullAllowed, Export("dsTransactionId", ArgumentSemantic.None)]
+        string DsTransactionId { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *eciFlag;
+        [Export("eciFlag", ArgumentSemantic.None)]
+        string EciFlag { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *enrolled;
+        [Export("enrolled", ArgumentSemantic.None)]
+        bool Enrolled { get; }
+
         // @property (nonatomic, readonly, assign) BOOL liabilityShifted;
-        [Export("liabilityShifted", ArgumentSemantic.Assign)]
+        [Export("liabilityShifted", ArgumentSemantic.None)]
         bool LiabilityShifted { get; }
 
-        // /**
-        //  @brief If the 3D Secure liability shift is possible
-        //  */
+        // @property (nonatomic, readonly, nullable) NSString *lookupTransactionStatus;
+        [NullAllowed, Export("lookupTransactionStatus", ArgumentSemantic.None)]
+        string LookupTransactionStatus { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *lookupTransactionStatusReason;
+        [NullAllowed, Export("lookupTransactionStatusReason", ArgumentSemantic.None)]
+        string LookupTransactionStatusReason { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *paresStatus;
+        [NullAllowed, Export("paresStatus", ArgumentSemantic.None)]
+        string ParesStatus { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *status;
+        [NullAllowed, Export("status", ArgumentSemantic.None)]
+        string Status { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *threeDSecureAuthenticationId;
+        [NullAllowed, Export("threeDSecureAuthenticationId", ArgumentSemantic.None)]
+        string ThreeDSecureAuthenticationId { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *threeDSecureServerTransactionId;
+        [NullAllowed, Export("threeDSecureServerTransactionId", ArgumentSemantic.None)]
+        string ThreeDSecureServerTransactionId { get; }
+
+        // @property (nonatomic, readonly, nullable) NSString *threeDSecureVersion;
+        [NullAllowed, Export("threeDSecureVersion", ArgumentSemantic.None)]
+        string ThreeDSecureVersion { get; }
+
         // @property (nonatomic, readonly, assign) BOOL liabilityShiftPossible;
         [Export("liabilityShiftPossible", ArgumentSemantic.Assign)]
         bool LiabilityShiftPossible { get; }
@@ -219,5 +350,13 @@ namespace BraintreeCard
         // @property (nonatomic, readonly, assign) BOOL wasVerified;
         [Export("wasVerified", ArgumentSemantic.Assign)]
         bool WasVerified { get; }
+        
+        // @property (nonatomic, readonly, nullable) NSString *xid;
+        [NullAllowed, Export("xid", ArgumentSemantic.None)]
+        string Xid { get; }
+
+        // @property (nonatomic, nullable, copy) NSString *errorMessage;
+        [NullAllowed, Export("errorMessage", ArgumentSemantic.None)]
+        string ErrorMessage { get; }
     }
 }

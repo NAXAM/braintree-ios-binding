@@ -5,4 +5,10 @@
 
 - (NSDictionary *)parameters;
 
+- (NSDictionary *)graphQLParameters;
+
+extern NSString * const BTCardGraphQLTokenizationMutation;
+
+extern NSString * const BTCardGraphQLTokenizationWithAuthenticationInsightMutation;
+
 @end

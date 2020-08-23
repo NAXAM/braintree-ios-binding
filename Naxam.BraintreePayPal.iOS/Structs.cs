@@ -4,6 +4,12 @@ using ObjCRuntime;
 namespace BraintreePayPal
 {
 	[Native]
+	public enum BTPayPalLineItemKind : long {
+		Debit = 1,
+		Credit,
+	}
+
+	[Native]
 	public enum BTPayPalRequestIntent : long
 	{
 		Authorize = 1,

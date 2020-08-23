@@ -46,8 +46,13 @@ namespace BraintreeDataCollector
         [Export("initWithAPIClient:")]
         IntPtr Constructor(BTAPIClient apiClient);
 
-        // -(void)collectFraudData:(void (^ _Nonnull)(NSString * _Nonnull))completion;
+        // - (void)collectDeviceData:(void (^)(NSString *deviceData))completion;
+        [Export("collectDeviceData:")]
+        void CollectDeviceData(Action<NSString> completion);
+
+        // - (void)collectFraudData:(void (^)(NSString *deviceData))completion DEPRECATED_MSG_ATTRIBUTE("Use BTDataCollector -collectDeviceData: instead");
         [Export("collectFraudData:")]
+        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "Use BTDataCollector -collectDeviceData: instead")]
         void CollectFraudData(Action<NSString> completion);
 
         // -(void)collectCardFraudData:(void (^ _Nonnull)(NSString * _Nonnull))completion;
@@ -58,24 +63,30 @@ namespace BraintreeDataCollector
         [Export("setFraudMerchantId:")]
         void SetFraudMerchantId(string fraudMerchantId);
 
-        // -(void)setCollectorUrl:(NSString * _Nonnull)url __attribute__((deprecated("The collector URL is no longer used. The environment will be automatically chosen.")));
+        // - (void)setCollectorUrl:(NSString *)url DEPRECATED_MSG_ATTRIBUTE("The collector URL is no longer used. The environment will be automatically chosen.");
         [Export("setCollectorUrl:")]
+        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "The collector URL is no longer used. The environment will be automatically chosen.")]
         void SetCollectorUrl(string url);
 
-        // +(NSString * _Nullable)payPalClientMetadataId __attribute__((deprecated("Integrate PayPalDataCollector and use PPDataCollector +clientMetadataID instead.")));
+        // + (nullable NSString *)payPalClientMetadataId DEPRECATED_MSG_ATTRIBUTE("Integrate PayPalDataCollector and use PPDataCollector +clientMetadataID instead.");
         [Static]
+        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "Integrate PayPalDataCollector and use PPDataCollector +clientMetadataID instead.")]
         [NullAllowed, Export("payPalClientMetadataId")]
         string PayPalClientMetadataId { get; }
 
-        // -(NSString * _Nonnull)collectCardFraudData __attribute__((deprecated("Use BTDataCollector -collectCardFraudData: instead")));
+        // - (NSString *)collectCardFraudData DEPRECATED_MSG_ATTRIBUTE("Use BTDataCollector -collectCardFraudData: instead");
+        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "Use BTDataCollector -collectCardFraudData: instead")]
         [Export("collectCardFraudData")]
         string CollectCardFraudData();
-        // -(NSString * _Nonnull)collectPayPalClientMetadataId __attribute__((deprecated("Integrate PayPalDataCollector and use PPDataCollector +collectPayPalDeviceData instead.")));
+
+        // - (NSString *)collectPayPalClientMetadataId DEPRECATED_MSG_ATTRIBUTE("Integrate PayPalDataCollector and use PPDataCollector +collectPayPalDeviceData instead.");
         [Export("collectPayPalClientMetadataId")]
+        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "Integrate PayPalDataCollector and use PPDataCollector +collectPayPalDeviceData instead.")]
         string CollectPayPalClientMetadataId();
 
-        // -(NSString * _Nonnull)collectFraudData __attribute__((deprecated("Use BTDataCollector -collectFraudData: instead")));
+        // - (NSString *)collectFraudData DEPRECATED_MSG_ATTRIBUTE("Use BTDataCollector -collectDeviceData: instead");
         [Export("collectFraudData")]
+        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "Use BTDataCollector -collectDeviceData: instead")]
         string CollectFraudData();
     }
 

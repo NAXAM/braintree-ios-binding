@@ -3,9 +3,90 @@ using BraintreeCore;
 using Foundation;
 using ObjCRuntime;
 using PayPalOneTouch;
+using SafariServices;
 
 namespace BraintreePayPal
 {
+    // interface BTPayPalRequestFactory : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BTPayPalRequestFactory {
+        // - (PPOTCheckoutRequest *)checkoutRequestWithApprovalURL:(NSURL *)approvalURL
+        //                                                clientID:(NSString *)clientID
+        //                                             environment:(NSString *)environment
+        //                                       callbackURLScheme:(NSString *)callbackURLScheme;
+        [Export("checkoutRequestWithApprovalURL:clientID:environment:callbackURLScheme:")]
+        PPOTCheckoutRequest CheckoutRequestWithApprovalURL(NSUrl approvalURL, string clientId, string environment, string callbackURLScheme);
+
+        // - (PPOTBillingAgreementRequest *)billingAgreementRequestWithApprovalURL:(NSURL *)approvalURL
+        //                                                                clientID:(NSString *)clientID
+        //                                                             environment:(NSString *)environment
+        //                                                       callbackURLScheme:(NSString *)callbackURLScheme;
+        [Export("billingAgreementRequestWithApprovalURL:clientID:environment:callbackURLScheme:")]
+        PPOTBillingAgreementRequest BillingAgreementRequestWithApprovalURL(NSUrl approvalURL, string clientId, string environment, string callbackURLScheme);
+
+        // - (PPOTAuthorizationRequest *)requestWithScopeValues:(NSSet *)scopeValues
+        //                                           privacyURL:(NSURL *)privacyURL
+        //                                         agreementURL:(NSURL *)agreementURL
+        //                                             clientID:(NSString *)clientID
+        //                                          environment:(NSString *)environment
+        //                                    callbackURLScheme:(NSString *)callbackURLScheme;
+        [Export("requestWithScopeValues:privacyURL:agreementURL:clientID:environment:callbackURLScheme:")]
+        PPOTAuthorizationRequest RequestWithScopeValues(NSUrl approvalURL, string privacyURL, string agreementURL, string clientId, string environment, string callbackURLScheme);
+    }
+
+    [BaseType(typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface BTPayPalLineItem {
+        // @property (nonatomic, readonly, copy) NSString *quantity;
+        [Export("quantity", ArgumentSemantic.Copy)]
+        string Quantity { get; }
+
+        // @property (nonatomic, readonly, copy) NSString *unitAmount;
+        [Export("unitAmount", ArgumentSemantic.Copy)]
+        string UnitAmount { get; }
+
+        // @property (nonatomic, readonly, copy) NSString *name;
+        [Export("name", ArgumentSemantic.Copy)]
+        string Name { get; }
+
+        // @property (nonatomic, readonly, assign) BTPayPalLineItemKind kind;
+        [Export("kind", ArgumentSemantic.Assign)]
+        BTPayPalLineItemKind Kind { get; }
+
+        // @property (nonatomic, nullable, copy) NSString *unitTaxAmount;
+        [Export("unitTaxAmount", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
+        string UnitTaxAmount { get; }
+
+        // @property (nonatomic, nullable, copy) NSString *itemDescription;
+        [Export("itemDescription", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
+        string ItemDescription { get; }
+
+        // @property (nonatomic, nullable, copy) NSString *productCode;
+        [Export("productCode", ArgumentSemantic.Copy), NullAllowed]
+        [return: NullAllowed]
+        string ProductCode { get; }
+
+        // @property (nonatomic, nullable, strong) NSURL *url;
+        [Export("url", ArgumentSemantic.Strong), NullAllowed]
+        [return: NullAllowed]
+        NSUrl Url { get; set; }
+
+        // - (instancetype)initWithQuantity:(NSString *)quantity
+        //                     unitAmount:(NSString *)unitAmount
+        //                             name:(NSString *)name
+        //                             kind:(BTPayPalLineItemKind)kind;
+        [Export("initWithQuantity:unitAmount:name:kind:", ArgumentSemantic.Copy)]
+        IntPtr Constructor (string quantity, string unitAmount, string name, BTPayPalLineItemKind kind);
+
+        // - (instancetype)init __attribute__((unavailable("Please use initWithQuantity:unitAmount:name:kind:")));
+
+        // - (NSDictionary *)requestParameters;
+        [Export("requestParameters", ArgumentSemantic.Copy)]
+        NSDictionary RequestParameters();
+    }
+
     // [Static]
     // [Verify (ConstantsInterfaceAssociation)]
     // partial interface Constants
@@ -49,6 +130,10 @@ namespace BraintreePayPal
         [Export("shippingAddressRequired")]
         bool ShippingAddressRequired { [Bind("isShippingAddressRequired")] get; set; }
 
+        // @property (nonatomic, getter=isShippingAddressEditable) BOOL shippingAddressEditable;
+        [Export("shippingAddressEditable")]
+        bool ShippingAddressEditable { [Bind("isShippingAddressEditable")] get; set; }
+
         // @property (copy, nonatomic) NSString * _Nullable currencyCode;
         [NullAllowed, Export("currencyCode")]
         string CurrencyCode { get; set; }
@@ -84,6 +169,14 @@ namespace BraintreePayPal
         // @property (nonatomic) BOOL offerCredit;
         [Export("offerCredit")]
         bool OfferCredit { get; set; }
+
+        // @property (nonatomic, nullable, copy) NSString *merchantAccountId;
+        [Export("merchantAccountId", ArgumentSemantic.Copy), NullAllowed]
+        string MerchantAccountId { get; set; }
+
+        // @property (nonatomic, nullable, copy) NSArray<BTPayPalLineItem *> *lineItems;
+        [Export("lineItems", ArgumentSemantic.Copy), NullAllowed]
+        BTPayPalLineItem[] LineItems { get; set; }
     }
 
     // @interface BTPayPalCreditFinancingAmount : NSObject
@@ -254,5 +347,79 @@ namespace BraintreePayPal
         // @property (nonatomic, weak) id<BTViewControllerPresentingDelegate> _Nullable viewControllerPresentingDelegate;
         [NullAllowed, Export("viewControllerPresentingDelegate", ArgumentSemantic.Weak)]
         NSObject WeakViewControllerPresentingDelegate { get; set; }
+
+        // - (void)setOneTimePaymentAppSwitchReturnBlock:(void (^)(BTPayPalAccountNonce * _Nullable tokenizedCheckout, NSError * _Nullable error))completionBlock;
+        [Export("setOneTimePaymentAppSwitchReturnBlock:")]
+        void SetOneTimePaymentAppSwitchReturnBlock(Action<BTPayPalAccountNonce, NSError> completionBlock);
+
+        // - (void)setBillingAgreementAppSwitchReturnBlock:(void (^)(BTPayPalAccountNonce * _Nullable tokenizedAccount, NSError * _Nullable error))completionBlock;
+        [Export("setBillingAgreementAppSwitchReturnBlock:")]
+        void SetBillingAgreementAppSwitchReturnBlock(Action<BTPayPalAccountNonce, NSError> completionBlock);
+
+        // - (void)setAuthorizationAppSwitchReturnBlock:(void (^)(BTPayPalAccountNonce * _Nullable tokenizedAccount, NSError * _Nullable error))completionBlock;
+        [Export("setAuthorizationAppSwitchReturnBlock:")]
+        void SetAuthorizationAppSwitchReturnBlock(Action<BTPayPalAccountNonce, NSError> completionBlock);
+
+        // - (void)informDelegatePresentingViewControllerRequestPresent:(NSURL*) appSwitchURL;
+        [Export("informDelegatePresentingViewControllerRequestPresent:")]
+        void InformDelegatePresentingViewControllerRequestPresent(NSUrl appSwitchURL);
+
+        // - (void)informDelegatePresentingViewControllerNeedsDismissal;
+        [Export("informDelegatePresentingViewControllerNeedsDismissal")]
+        void InformDelegatePresentingViewControllerNeedsDismissal();
+
+        // @property (nonatomic, strong) BTPayPalRequestFactory *requestFactory;
+        [Export("requestFactory", ArgumentSemantic.Strong)]
+        BTPayPalRequestFactory RequestFactory { get; set; }
+
+        // + (void)setPayPalClass:(Class)payPalClass;
+        [Export("setPayPalClass:")]
+        void setPayPalClass(Class paypalClass);
+
+        // @property (nonatomic, copy) NSString *returnURLScheme;
+        [Export("returnURLScheme", ArgumentSemantic.Copy)]
+        string ReturnURLScheme { get; set; }
+
+        // @property (nonatomic, strong, nullable) BTAPIClient *apiClient;
+        [NullAllowed, Export("apiClient", ArgumentSemantic.Strong)]
+        BTAPIClient ApiClient { get; set; }
+
+        // @property (nonatomic, strong) NSString *clientMetadataId;
+        [NullAllowed, Export("clientMetadataId", ArgumentSemantic.Strong)]
+        string ClientMetadataId { get; set; }
+
+        // @property (nonatomic, strong) BTPayPalRequest *payPalRequest;
+        [Export("payPalRequest", ArgumentSemantic.Strong)]
+        BTPayPalRequest payPalRequest { get; set; }
+
+        // @property (nonatomic, strong, nullable) SFSafariViewController *safariViewController API_AVAILABLE(ios(9.0));
+        [iOS(9, 0)]
+        [NullAllowed, Export("safariViewController", ArgumentSemantic.Strong)]
+        SFSafariViewController SafariViewController { get; set; }
+
+        // @property (nonatomic, strong, nullable) SFAuthenticationSession *safariAuthenticationSession API_AVAILABLE(ios(11.0));
+        [iOS(11, 0)]
+        [NullAllowed, Export("safariAuthenticationSession", ArgumentSemantic.Strong)]
+        SFAuthenticationSession SafariAuthenticationSession { get; set; }
+
+        // @property (nonatomic, assign) BOOL isSFAuthenticationSessionStarted;
+        [Export("isSFAuthenticationSessionStarted", ArgumentSemantic.Assign)]
+        bool IsSFAuthenticationSessionStarted { get; set; }
+
+        // @property (nonatomic, assign) BOOL disableSFAuthenticationSession;
+        [Export("disableSFAuthenticationSession", ArgumentSemantic.Assign)]
+        bool DisableSFAuthenticationSession { get; set; }
+
+        // - (void)authorizeAccountWithAdditionalScopes:(NSSet<NSString *> *)additionalScopes forceFuturePaymentFlow:(BOOL)forceFuturePaymentFlow completion:(void (^)(BTPayPalAccountNonce *, NSError *))completionBlock;
+        [Export("authorizeAccountWithAdditionalScopes:forceFuturePaymentFlow:completion:")]
+        void authorizeAccountWithAdditionalScopes(NSSet additionalScopes, bool forceFuturePaymentFlow, Action<BTPaymentMethodNonce, NSError> completionBlock);
+
+        // + (nullable BTPayPalCreditFinancingAmount *)creditFinancingAmountFromJSON:(BTJSON *)amountJSON;
+        [Export("creditFinancingAmountFromJSON:")]
+        BTPayPalCreditFinancingAmount creditFinancingAmountFromJSON(BTJSON json);
+
+        // + (nullable BTPayPalCreditFinancing *)creditFinancingFromJSON:(BTJSON *)creditFinancingOfferedJSON;
+        [Export("creditFinancingFromJSON:")]
+        BTPayPalCreditFinancing creditFinancingFromJSON(BTJSON json);
     }
 }
