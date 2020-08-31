@@ -125,21 +125,22 @@ namespace BraintreeCard
         [NullAllowed, Export("merchantAccountId")]
         string MerchantAccountId { get; set; }
 
-        // - (NSDictionary *)parameters;
-        [NullAllowed, Export("parameters")]
-        string Parameters { get; set; }
+        // Internal APIs
+        // // - (NSDictionary *)parameters;
+        // [NullAllowed, Export("parameters")]
+        // string Parameters { get; set; }
 
-        // - (NSDictionary *)graphQLParameters;
-        [NullAllowed, Export("graphQLParameters")]
-        string GraphQLParameters { get; set; }
+        // // - (NSDictionary *)graphQLParameters;
+        // [NullAllowed, Export("graphQLParameters")]
+        // string GraphQLParameters { get; set; }
 
-        // extern NSString * const BTCardGraphQLTokenizationMutation;
-        [Field("BTCardGraphQLTokenizationMutation", "__Internal")]
-        NSString BTCardGraphQLTokenizationMutation { get; }
+        // // extern NSString * const BTCardGraphQLTokenizationMutation;
+        // [Field("BTCardGraphQLTokenizationMutation", "__Internal")]
+        // NSString BTCardGraphQLTokenizationMutation { get; }
 
-        // extern NSString * const BTCardGraphQLTokenizationWithAuthenticationInsightMutation;
-        [Field("BTCardGraphQLTokenizationWithAuthenticationInsightMutation", "__Internal")]
-        NSString BTCardGraphQLTokenizationWithAuthenticationInsightMutation { get; }
+        // // extern NSString * const BTCardGraphQLTokenizationWithAuthenticationInsightMutation;
+        // [Field("BTCardGraphQLTokenizationWithAuthenticationInsightMutation", "__Internal")]
+        // NSString BTCardGraphQLTokenizationWithAuthenticationInsightMutation { get; }
     }
 
     // @interface BTCardNonce : BTPaymentMethodNonce
@@ -149,6 +150,14 @@ namespace BraintreeCard
         // @property (readonly, assign, nonatomic) BTCardNetwork cardNetwork;
         [Export("cardNetwork", ArgumentSemantic.Assign)]
         BTCardNetwork CardNetwork { get; }
+        
+        // @property (nonatomic, nullable, readonly, copy) NSString *expirationMonth;
+        [Export("expirationMonth", ArgumentSemantic.Copy)]
+        string ExpirationMonth { get; }
+
+        // @property (nonatomic, nullable, readonly, copy) NSString *expirationYear;
+        [Export("expirationYear", ArgumentSemantic.Copy)]
+        string ExpirationYear { get; }
 
         // @property (readonly, copy, nonatomic) NSString * _Nullable lastTwo;
         [NullAllowed, Export("lastTwo", ArgumentSemantic.Copy)]
@@ -176,18 +185,28 @@ namespace BraintreeCard
         // @property (nonatomic, nullable, readonly, strong) BTAuthenticationInsight *authenticationInsight;
         [NullAllowed, Export("authenticationInsight", ArgumentSemantic.Strong)]
         BTAuthenticationInsight AuthenticationInsight { get; }
+// - (instancetype)initWithNonce:(nonnull NSString *)nonce
+//                   description:(nullable NSString *)description
+//                   cardNetwork:(BTCardNetwork)cardNetwork
+//               expirationMonth:(nullable NSString *)expirationMonth
+//                expirationYear:(nullable NSString *)expirationYear
+//                       lastTwo:(nullable NSString *)lastTwo
+//                      lastFour:(nullable NSString *)lastFour
+//                     isDefault:(BOOL)isDefault
+//                      cardJSON:(BTJSON *)cardJSON
+//               authInsightJSON:(nullable BTJSON *)authInsightJSON;
+        [Export("initWithNonce:description:cardNetwork:expirationMonth:expirationYear:lastTwo:lastFour:isDefault:cardJSON:authInsightJSON:")]
+        IntPtr Constructor(
+            string nonce, [NullAllowed] string description, BTCardNetwork cardNetwork, 
+            [NullAllowed] string expirationMonth, [NullAllowed] string expirationYear, 
+            [NullAllowed] string lastTwo, [NullAllowed] string lastFour, bool isDefault,
+            BTJSON cardJSON, [NullAllowed] BTJSON authInsightJSON);
 
-        // /**
-        // Create a `BTCardNonce` object from JSON.
-        // */
         // + (instancetype)cardNonceWithJSON:(BTJSON *)cardJSON;
         [Static]
         [Export("cardNonceWithJSON:")]
         BTCardNonce CardNonceWithJSON(BTJSON cardJSON);
 
-        // /**
-        // Create a `BTCardNonce` object from GraphQL JSON.
-        // */
         // + (instancetype)cardNonceWithGraphQLJSON:(BTJSON *)json;
         [Static]
         [Export("cardNonceWithGraphQLJSON:")]

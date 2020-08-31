@@ -6,6 +6,8 @@
 
 #pragma mark Localization helpers
 
++ (void)setCustomTranslations:(NSArray *)locales;
+
 + (NSString *)insertIntoLocalizedString:(NSString *)string replacement:(NSString* )replacement;
 
 + (NSString *)insertIntoLocalizedString:(NSString *)string replacement:(NSString* )replacement token:(NSString *)token;
@@ -40,7 +42,6 @@
 + (NSString *)EDIT_ACTION;
 + (NSString *)NEXT_ACTION;
 + (NSString *)TOP_LEVEL_ERROR_ALERT_VIEW_OK_BUTTON_TEXT;
-+ (NSString *)SCAN_CARD_IO_ACTION;
 + (NSString *)EDIT_PAYMENT_METHOD;
 + (NSString *)THERE_WAS_AN_ERROR;
 + (NSString *)REVIEW_AND_TRY_AGAIN;
@@ -68,6 +69,8 @@
 + (NSString *)CARD_NUMBER_PLACEHOLDER;
 + (NSString *)EXPIRY_PLACEHOLDER_FOUR_DIGIT_YEAR;
 + (NSString *)EXPIRY_PLACEHOLDER_TWO_DIGIT_YEAR;
++ (NSString *)CARDHOLDER_NAME_LABEL;
++ (NSString *)SAVE_CARD_LABEL;
 
 + (NSString *)PAYPAL;
 + (NSString *)CARD_TYPE_AMERICAN_EXPRESS;
@@ -78,6 +81,8 @@
 + (NSString *)CARD_TYPE_JCB;
 + (NSString *)CARD_TYPE_MAESTRO;
 + (NSString *)CARD_TYPE_UNION_PAY;
++ (NSString *)CARD_TYPE_HIPER;
++ (NSString *)CARD_TYPE_HIPERCARD;
 + (NSString *)BRANDING_COINBASE;
 + (NSString *)BRANDING_VENMO;
 + (NSString *)BRANDING_APPLE_PAY;

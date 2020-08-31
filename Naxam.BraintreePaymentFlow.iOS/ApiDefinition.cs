@@ -322,7 +322,7 @@ namespace BraintreePaymentFlow
         //             shippingAddress:(BTPostalAddress *)shippingAddress
         //             clientMetadataId:(NSString *)clientMetadataId
         //                     payerId:(NSString *)payerId;
-        [Export("initWithNonce:description:type:email:firstName:lastName:phone:billingAddress:shippingAddress:clientMetadataId:payerId")]
+        [Export("initWithNonce:description:type:email:firstName:lastName:phone:billingAddress:shippingAddress:clientMetadataId:payerId:")]
         IntPtr Constructor(
             string nonce, string description, string type, 
             string email, string firstName, string lastName, string phone, 
@@ -409,179 +409,7 @@ namespace BraintreePaymentFlow
         bool IsLocalPaymentEnabled();
     }
     
-    //    /**
-    // @brief Category on BTConfiguration for iDEAL
-    // */
-    //    @interface BTConfiguration(Ideal)
-    [Category, BaseType(typeof(BTConfiguration))]
-    interface BTConfiguration_Ideal
-    {
-
-        ///**
-        // @brief Indicates whether iDEAL is enabled for the merchant account.
-        // */
-        //@property(nonatomic, readonly, assign) BOOL isIdealEnabled;
-        [Export("isIdealEnabled")]
-        bool IsIdealEnabled();
-
-        ///**
-        // @brief Returns the RouteId used by the iDEAL.
-        // */
-        //@property(nonatomic, readonly, copy) NSString* routeId;
-        [Export("routeId")]
-        string RouteId();
-
-        ///**
-        // @brief The base iDEAL assets URL
-        // */
-        //@property(nonatomic, readonly, copy) NSString* idealAssetsUrl;
-        [Export("idealAssetsUrl")]
-        string IdealAssetsUrl();
-    }
-
-    //    /**
-    // @brief iDEAL issuing bank.
-    //  */
-    //    @interface BTIdealBank : NSObject
-    [BaseType(typeof(NSObject))]
-    interface BTIdealBank
-    {
-
-        ///**
-        // @brief Initialize a BTIdealBank.
-
-        // @return A BTIdealBank.
-        // */
-        //- (instancetype) initWithCountryCode:(NSString*) countryCode issuerId:(NSString*) issuerId name:(NSString*) name imageUrl:(NSString*) imageUrl;
-        [Export("initWithCountryCode:issuerId:name:imageUrl:")]
-        IntPtr Constructor(string countryCode, string issuerId, string name, string imageUrl);
-
-        ///**
-        // @brief The country code of the bank.
-        // */
-        //@property(nonatomic, readonly, copy) NSString* countryCode;
-        [Export("countryCode")]
-        string CountryCode { get; }
-
-        ///**
-        // @brief The ID of the issuing bank.
-
-        // @discussion See `BTPaymentFlowDriver+Ideal` and `BTIdealBank`.
-        // */
-        //@property(nonatomic, readonly, copy) NSString* issuerId;
-        [Export("issuerId")]
-        string IssuerId { get; }
-
-        ///**
-        // @brief The bank name, appropriate to display in UI.
-        // */
-        //@property(nonatomic, readonly, copy) NSString* name;
-        [Export("name")]
-        string Name { get; }
-
-        ///**
-        // @brief The URL of an image associated with the bank, appropriate to display in UI.
-        // */
-        //@property(nonatomic, readonly, copy) NSString* imageUrl;
-        [Export("imageUrl")]
-        string ImageUrl { get; }
-    }
-
-    partial interface IBTIdealRequestDelegate
-    {
-
-    }
-
-    //    /**
-    // @brief Used to initialize an iDEAL payment flow
-    // */
-    //    @interface BTIdealRequest : BTPaymentFlowRequest<BTPaymentFlowRequestDelegate>
-    [BaseType(typeof(BTPaymentFlowRequest))]
-    interface BTIdealRequest : BTPaymentFlowRequestDelegate
-    {
-        //    /**
-        //     @brief A unique ID provided by you to associate with this transaction.
-        //     */
-        //    @property(nonatomic, copy) NSString* orderId;
-        [Export("orderId")]
-        string OrderId { get; set; }
-
-        ///**
-        // @brief The issuing bank for the iDEAL transaction.
-
-        // @discussion See `BTPaymentFlowDriver+Ideal` and `BTIdealBank`.
-        // */
-        //@property(nonatomic, copy) NSString* issuer;
-        [Export("issuer")]
-        string Issuer { get; set; }
-
-        ///**
-        // @brief The currency of the transaction.
-        // */
-        //@property(nonatomic, copy) NSString* currency;
-        [Export("currency")]
-        string Currency { get; set; }
-
-        ///**
-        // @brief The amount for the transaction.
-        // */
-        //@property(nonatomic, copy) NSString* amount;
-        [Export("amount")]
-        string Amount { get; set; }
-
-        ///**
-        // @brief A delegate for receiving information about the iDEAL payment.
-        // */
-        //@property(nonatomic, weak) id<BTIdealRequestDelegate> idealPaymentFlowDelegate;
-        [Export("idealPaymentFlowDelegate", ArgumentSemantic.Weak)]
-        IBTIdealRequestDelegate IdealPaymentFlowDelegate { get; set; }
-    }
-
-    //    @protocol BTIdealRequestDelegate
-    [Protocol, BaseType(typeof(NSObject))]
-    interface BTIdealRequestDelegate
-    {
-
-        //@required
-
-        ///**
-        // @brief Returns the BTIdealResult with the iDEAL ID and status of `PENDING` before the flow starts. The ID should be used in conjunction with webhooks to detect the change in status.
-        // */
-        //- (void) idealPaymentStarted:(BTIdealResult*) result;
-        [Abstract, Export("idealPaymentStarted:")]
-        void IdealPaymentStarted(BTIdealResult result);
-    }
-
-    //    /**
-    // @brief The result of an iDEAL payment flow
-    // */
-    //    @interface BTIdealResult : BTPaymentFlowResult
-    [BaseType(typeof(BTPaymentFlowResult))]
-    interface BTIdealResult
-    {
-
-        //    /**
-        //     @brief The status of the iDEAL payment. Possible values are [PENDING, COMPLETE, FAILED].
-        //     */
-        //    @property(nonatomic, copy) NSString* status;
-        [Export("status")]
-        string Status { get; set; }
-
-        ///**
-        // @brief The identifier for the iDEAL payment.
-        // */
-        //@property(nonatomic, copy) NSString* idealId;
-        [Export("idealId")]
-        string IdealId { get; set; }
-
-        ///**
-        // @brief A shortened form of the identifier for the iDEAL payment.
-        // */
-        //@property(nonatomic, copy) NSString* shortIdealId;
-        [Export("shortIdealId")]
-        string ShortIdealId { get; set; }
-    }
-
+    
     partial interface IBTPaymentFlowDriverDelegate { }
 
     //    /**
@@ -726,37 +554,6 @@ namespace BraintreePaymentFlow
         //@property(nonatomic, weak, nullable) id<BTViewControllerPresentingDelegate> viewControllerPresentingDelegate;
         [Export("viewControllerPresentingDelegate", ArgumentSemantic.Weak), NullAllowed]
         IBTViewControllerPresentingDelegate ViewControllerPresentingDelegate { get; set; }
-    }
-
-    //        /**
-    // @brief Category on BTPaymentFlowDriver for iDEAL
-    // */
-    //        @interface BTPaymentFlowDriver(Ideal)
-    [Category, BaseType(typeof(BTPaymentFlowDriver))]
-    interface BTPaymentFlowDriver_Ideal
-    {
-
-        ///**
-        // @brief Fetch an array of issuing banks supported by your iDEAL integration.
-
-        // @param completionBlock This completion will be invoked when the request is complete or an error occurs.
-        // On success, returns an array of `BTIdealBank` instances; on failure, an error.
-        // */
-        //- (void) fetchIssuingBanks:(void (^)(NSArray<BTIdealBank*>* _Nullable banks, NSError * _Nullable error))completionBlock;
-        [Export("fetchIssuingBanks:error:")]
-        void FetchIssuingBanks(BTIdealBank[] banks, NSError error);
-
-        ///**
-        // @brief Poll until the `status` of the iDEAL payment is no longer `PENDING` or we exceed the maximum number of retries.
-
-        // @param idealId The id of the ideal payment for which you'd like to check the status.
-        // @param retries The number of retries to attempt. Valid values 0 - 10.
-        // @param delay The number of milliseconds to wait between retries. Valid values 1000 - 10000.
-        // @param completionBlock This completion block will be invoked when the status of the payment has changed from `PENDING` or we exceed the maximum number of retries.
-        // */
-        //- (void) pollForCompletionWithId:(NSString*) idealId retries:(int) retries delay:(int) delay completion:(void (^)(BTPaymentFlowResult* _Nullable result, NSError * _Nullable error))completionBlock;
-        [Export("pollForCompletionWithId:retries::delay:completion:")]
-        void PollForCompletionWithId(string idealId, int retries, int delay, Action<BTPaymentFlowRequest, NSError> completion);
     }
 
     //    @interface BTPaymentFlowDriver (ThreeDSecure)

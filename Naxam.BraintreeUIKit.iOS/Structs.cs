@@ -4,6 +4,14 @@ using ObjCRuntime;
 namespace BraintreeUIKit
 {
 	[Native]
+	public enum BTUIKColorScheme : long {
+		Light,
+		Dark,
+		[iOS(13, 0)]
+		Dynamic,
+	}
+
+	[Native]
 	public enum BTUIKCardNumberFormFieldState : long
 	{
 		Default = 0,
@@ -24,13 +32,15 @@ namespace BraintreeUIKit
 		Laser,
 		Maestro,
 		UnionPay,
+		Hiper,
+		Hipercard,
 		Solo,
 		Switch,
 		UKMaestro,
 		PayPal,
 		Coinbase,
 		Venmo,
-		ApplePay
+		ApplePay,
 	}
 
 	[Native]

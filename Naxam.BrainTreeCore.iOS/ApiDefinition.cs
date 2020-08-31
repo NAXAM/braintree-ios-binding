@@ -7,6 +7,44 @@ using UIKit;
 
 namespace BraintreeCore
 {
+    // @interface BTPayPalIDToken : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BTPayPalIDToken {
+        // - (nullable instancetype)initWithIDTokenString:(NSString *)payPalIDToken error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+        [Export("initWithIDTokenString:error:")]
+        IntPtr Constructor(string paypalIDToken, NSError error);
+        
+        // - (instancetype)init __attribute__((unavailable("Please use initWithPayPalIDToken:error: instead.")));
+
+        // @property (nonatomic, readonly, copy) NSString *token;
+        [Export("token", ArgumentSemantic.Copy)]
+        string Token { get; }
+        
+        // @property (nonatomic, readonly, strong) NSURL *configURL;
+        [Export("configURL", ArgumentSemantic.Strong)]
+        NSUrl ConfigURL { get; }
+        
+        // @property (nonatomic, readonly, strong) NSURL *baseBraintreeURL;
+        [Export("baseBraintreeURL", ArgumentSemantic.Strong)]
+        NSUrl BaseBraintreeURL { get; }
+        
+        // @property (nonatomic, readonly, strong) NSURL *basePayPalURL;
+        [Export("basePayPalURL", ArgumentSemantic.Strong)]
+        NSUrl BasePayPalURL { get; }
+        
+        // @property (nonatomic, readonly, strong) NSString *paypalMerchantID;
+        [Export("paypalMerchantID", ArgumentSemantic.Strong)]
+        string PaypalMerchantID { get; }
+        
+        // @property (nonatomic, readonly, strong) NSString *braintreeMerchantID;
+        [Export("braintreeMerchantID", ArgumentSemantic.Strong)]
+        string BraintreeMerchantID { get; }
+        
+        // @property (nonatomic, readonly, assign) BTPayPalIDTokenEnvironment environment;
+        [Export("environment", ArgumentSemantic.Assign)]
+        BTPayPalIDTokenEnvironment Environment { get; }
+    }
+
     // interface BTAnalyticsService : NSObject
     [BaseType(typeof(NSObject))]
     interface BTAnalyticsService {
@@ -52,7 +90,7 @@ namespace BraintreeCore
     [BaseType(typeof(BTHTTP))]
     interface BTAPIHTTP : INSUrlSessionDelegate {
         // - (instancetype)initWithBaseURL:(NSURL *)URL accessToken:(NSString *)accessToken;
-        [Export("initWithBaseURL:accessToken")]
+        [Export("initWithBaseURL:accessToken:")]
         IntPtr Constructor(NSUrl url, string accessToken);
     }
 
@@ -82,9 +120,9 @@ namespace BraintreeCore
         [Export("initWithClientToken:")]
         IntPtr Constructor(BTClientToken clientToken);
 
-        // - (instancetype)initWithPayPalUAT:(BTPayPalUAT *)payPalUAT;
-        [Export("initWithPayPalUAT:")]
-        IntPtr Constructor(BTPayPalUAT payPalUAT);
+        // - (instancetype)initWithPayPalIDToken:(BTPayPalIDToken *)payPalIDToken;
+        [Export("initWithPayPalIDToken:")]
+        IntPtr Constructor(BTPayPalIDToken payPalIDToken);
 
         // - (NSString *)userAgentString;
         [Export("userAgentString")]
@@ -159,7 +197,7 @@ namespace BraintreeCore
         //                           error:(nullable NSError *)error
         //                 completionBlock:(void(^)(BTJSON *body, NSHTTPURLResponse *response, NSError *error))completionBlock;
         [Export("handleRequestCompletion:response:error:completionBlock:")]
-        void HandleRequestCompletion(NSData data, NSUrlResponse response, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
+        void HandleRequestCompletion(NSData data, NSUrlResponse response, NSError eror, Action<BTJSON, NSHttpUrlResponse, NSError> completionBlock);
 
         // - (void)callCompletionBlock:(void(^)(BTJSON *body, NSHTTPURLResponse *response, NSError *error))completionBlock
         //                        body:(nullable BTJSON *)jsonBody
@@ -200,35 +238,6 @@ namespace BraintreeCore
         // - (void)fetchPreferredPaymentMethods:(void (^)(BTPreferredPaymentMethodsResult *))completion;
         [Export("fetchPreferredPaymentMethods:")]
         void FetchPreferredPaymentMethods(Action<BTPreferredPaymentMethodsResult> completion);
-}
-
-    [BaseType(typeof(NSObject))]
-    partial interface BTPayPalUAT {
-        // - (nullable instancetype)initWithUATString:(NSString *)payPalUAT error:(NSError **)error NS_DESIGNATED_INITIALIZER;
-        [Export("initWithUATString:error:"), DesignatedInitializer]
-        IntPtr Constructor(string payPalUAT, NSError error);
-
-        // - (instancetype)init __attribute__((unavailable("Please use initWithPayPalUAT:error: instead.")));
-
-        // @property (nonatomic, readonly, copy) NSString *token;
-        [Export("token", ArgumentSemantic.Copy)]
-        string Token { get; }
-
-        // @property (nonatomic, readonly, strong) NSURL *configURL;
-        [Export("configURL", ArgumentSemantic.Strong)]
-        NSUrl ConfigURL { get; }
-
-        // @property (nonatomic, readonly, strong) NSURL *baseBraintreeURL;
-        [Export("baseBraintreeURL", ArgumentSemantic.Strong)]
-        NSUrl BaseBraintreeURL { get; }
-
-        // @property (nonatomic, readonly, strong) NSURL *basePayPalURL;
-        [Export("basePayPalURL", ArgumentSemantic.Strong)]
-        NSUrl BasePayPalURL { get; }
-
-        // @property (nonatomic, readonly, assign) BTPayPalUATEnvironment environment;
-        [Export("environment", ArgumentSemantic.Assign)]
-        BTPayPalUATEnvironment Environment { get; }
     }
 
     partial interface IBTAppSwitchHandler { };
@@ -495,10 +504,10 @@ namespace BraintreeCore
         [return: NullAllowed]
         BTClientToken ClientToken {get;set;}
 
-        // @property (nonatomic, strong, nullable) BTPayPalUAT *payPalUAT;
-        [Export("payPalUAT", ArgumentSemantic.Strong), NullAllowed]
+        // @property (nonatomic, strong, nullable) BTPayPalIDToken *payPalIDToken;
+        [Export("payPalIDToken", ArgumentSemantic.Strong), NullAllowed]
         [return: NullAllowed]
-        BTPayPalUAT PayPalUAT {get;set;}
+        BTPayPalIDToken PayPalIDToken {get;set;}
 
         // @property (nonatomic, strong) BTHTTP *http;
         [Export("http", ArgumentSemantic.Strong)]

@@ -4,9 +4,21 @@ using ObjCRuntime;
 namespace BraintreeCore
 {
     [Native]
-    public enum BTPayPalUATEnvironment : long {
+    public enum BTPayPalIDTokenError : long {
+        Unknown = 0,
+        Invalid,
+        UnlinkedAccount,
+    }
+
+    [Native]
+    public enum BTPayPalIDTokenEnvironment : long {
+        /// Staging
         Stage = 0,
+
+        /// Sandbox
         Sand = 1,
+
+        /// Production
         Prod = 2
     }
 
@@ -21,7 +33,7 @@ namespace BraintreeCore
     public enum BTAPIClientAuthorizationType : long {
         TokenizationKey = 0,
         ClientToken,
-        PayPalUAT,
+        PayPalIDToken,
     }
 
     [Native]

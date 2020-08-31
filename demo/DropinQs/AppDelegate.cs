@@ -33,6 +33,7 @@ namespace DropinQs
             //});
 
             BraintreePayPal.BraintreePayPalLinker.Init();
+            
 
             var paypal = BTTokenizationService.SharedService().IsTypeAvailable("PayPal");
             System.Diagnostics.Debug.WriteLine($"Paypal: {paypal}");

@@ -7,6 +7,28 @@ using UIKit;
 
 namespace BraintreeUIKit
 {
+	// @interface BTUIKSwitchFormField : UIView
+	interface BTUIKSwitchFormField {
+		// - (instancetype)initWithTitle:(NSString *)title;
+		IntPtr Constructor(string title);
+
+		// @property (nonatomic, strong) UISwitch *switchControl;
+		[Export("switchControl", ArgumentSemantic.Strong)]
+		UISwitch SwitchControl { get; set; }
+	}
+
+	// @interface BTUIKCardholderNameFormField : BTUIKFormField
+	[BaseType(typeof(BTUIKFormField))]
+	interface BTUIKCardholderNameFormField {
+		// @property (nonatomic, strong, readonly) NSString *cardholderName;
+		[Export("cardholderName", ArgumentSemantic.Strong)]
+		string CardholderName { get; }
+
+		// /// Is cardholder name input required
+		// @property (nonatomic, assign) BOOL isRequired;
+		[Export("isRequired", ArgumentSemantic.Assign)]
+		bool IsRequired { get; }
+	}
     partial interface IBTUIKExpiryInputViewDelegate {}
 
 	//[Static]
@@ -195,6 +217,11 @@ namespace BraintreeUIKit
 	[BaseType (typeof(NSObject))]
 	interface BTUIKLocalizedString
 	{
+		// + (void)setCustomTranslations:(NSArray *)locales;
+		[Static]
+		[Export ("setCustomTranslations:")]
+		void SetCustomTranslations (NSArray locales);
+
 		// +(NSString *)insertIntoLocalizedString:(NSString *)string replacement:(NSString *)replacement;
 		[Static]
 		[Export ("insertIntoLocalizedString:replacement:")]
@@ -479,6 +506,16 @@ namespace BraintreeUIKit
 		[Static]
 		[Export ("EXPIRY_PLACEHOLDER_TWO_DIGIT_YEAR")]
 		string EXPIRY_PLACEHOLDER_TWO_DIGIT_YEAR { get; }
+		
+		// + (NSString *)CARDHOLDER_NAME_LABEL;
+		[Static]
+		[Export ("CARDHOLDER_NAME_LABEL")]
+		string CARDHOLDER_NAME_LABEL { get; }
+
+		// + (NSString *)SAVE_CARD_LABEL;
+		[Static]
+		[Export ("SAVE_CARD_LABEL")]
+		string SAVE_CARD_LABEL { get; }
 
 		// +(NSString *)PAYPAL;
 		[Static]
@@ -524,6 +561,16 @@ namespace BraintreeUIKit
 		[Static]
 		[Export ("CARD_TYPE_UNION_PAY")]
 		string CARD_TYPE_UNION_PAY { get; }
+
+		// + (NSString *)CARD_TYPE_HIPER;
+		[Static]
+		[Export ("CARD_TYPE_HIPER")]
+		string CARD_TYPE_HIPER { get; }
+
+		// + (NSString *)CARD_TYPE_HIPERCARD;
+		[Static]
+		[Export ("CARD_TYPE_HIPERCARD")]
+		string CARD_TYPE_HIPERCARD { get; }
 
 		// +(NSString *)BRANDING_COINBASE;
 		[Static]
@@ -616,6 +663,10 @@ namespace BraintreeUIKit
 		// @property (readonly, nonatomic, strong) NSArray * validNumberPrefixes;
 		[Export ("validNumberPrefixes", ArgumentSemantic.Strong)]
 		NSObject[] ValidNumberPrefixes { get; }
+
+		// @property (nonatomic, strong, readonly) NSArray *relaxedPrefixes;
+		[Export ("relaxedPrefixes", ArgumentSemantic.Strong)]
+		NSObject[] RelaxedPrefixes { get; }
 
 		// @property (readonly, nonatomic, strong) NSIndexSet * validNumberLengths;
 		[Export ("validNumberLengths", ArgumentSemantic.Strong)]
@@ -765,6 +816,16 @@ namespace BraintreeUIKit
 		[Static]
 		[Export ("naturalTextAlignmentInverse")]
 		UITextAlignment NaturalTextAlignmentInverse { get; }
+		
+		// + (BOOL)isOrientationLandscape;
+		[Static]
+		[Export ("isOrientationLandscape")]
+		bool IsOrientationLandscape { get; }
+
+		// + (CGFloat)statusBarHeight;
+		[Static]
+		[Export ("statusBarHeight")]
+		nfloat StatusBarHeight { get; }
 	}
 
 	// @interface BTUIKVectorArtView : UIView
@@ -905,6 +966,14 @@ namespace BraintreeUIKit
 		[Export ("boldFontFamily", ArgumentSemantic.Strong)]
 		string BoldFontFamily { get; set; }
 
+		// @property (nonatomic, strong, readonly) UIFont *font;
+		[Export ("font", ArgumentSemantic.Strong)]
+		UIFont Font { get;}
+		
+		// @property (nonatomic, strong, readonly) UIFont *boldFont;
+		[Export ("boldFont", ArgumentSemantic.Strong)]
+		UIFont BoldFont { get; }
+
 		// @property (nonatomic, strong) UIColor * formBackgroundColor;
 		[Export ("formBackgroundColor", ArgumentSemantic.Strong)]
 		UIColor FormBackgroundColor { get; set; }
@@ -956,6 +1025,26 @@ namespace BraintreeUIKit
 		// @property (nonatomic) UIKeyboardType postalCodeFormFieldKeyboardType;
 		[Export ("postalCodeFormFieldKeyboardType", ArgumentSemantic.Assign)]
 		UIKeyboardType PostalCodeFormFieldKeyboardType { get; set; }
+
+		// @property (nonatomic, readonly, getter = highlightedTintColor) UIColor *highlightedTintColor;
+		[Export ("highlightedTintColor", ArgumentSemantic.Strong)]
+		UIColor HighlightedTintColor { get; }
+
+		// @property (nonatomic, strong) UIColor *switchOnTintColor;
+		[Export ("switchOnTintColor", ArgumentSemantic.Strong)]
+		UIColor SwitchOnTintColor { get; set; }
+		
+		// @property (nonatomic, strong) UIColor *switchThumbTintColor;
+		[Export ("switchThumbTintColor", ArgumentSemantic.Strong)]
+		UIColor SwitchThumbTintColor { get; set; }
+		
+		// @property (nonatomic) enum BTUIKColorScheme colorScheme;
+		[Export ("colorScheme", ArgumentSemantic.Assign)]
+		BTUIKColorScheme ColorScheme { get; set; }
+		
+		// @property (nonatomic) UIKeyboardAppearance keyboardAppearance;
+		[Export ("keyboardAppearance")]
+		UIKeyboardAppearance KeyboardAppearance { get; set; }
 
 		// +(void)styleLabelPrimary:(UILabel *)label;
 		[Static]

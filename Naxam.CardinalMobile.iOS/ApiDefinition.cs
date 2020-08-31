@@ -47,7 +47,7 @@ namespace CardinalMobile
         void SetLabelCustomization(LabelCustomization labelCustomization);
 
         // - (void)setTextBoxCustomization:(TextBoxCustomization *)textBoxCustomization;
-        [Export("setTextBoxCustomization")]
+        [Export("setTextBoxCustomization:")]
         void SetTextBoxCustomization(TextBoxCustomization textBoxCustomization);
 
         // - (ButtonCustomization *)getButtonCustomization:(ButtonType)buttonType;
@@ -363,7 +363,7 @@ namespace CardinalMobile
 
         // - (BOOL) addParamWithParamName: (nonnull NSString*) paramName
         //                          error: (NSError **)error __attribute__((swift_error(nonnull_error)))  NS_SWIFT_NAME(addParam(_:));
-        [Export("addParamWithParamName:withParamName:paramValue:error:")]
+        [Export("addParamWithParamName:error:")]
         bool AddParamWithParamName(string paramName, NSError error);
 
         // - (nullable NSString *) getParamValueFromGroup: (NSString*) group

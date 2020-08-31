@@ -1,6 +1,8 @@
 ﻿using System;
 using BraintreeCard;
 using BraintreeCore;
+using BraintreePaymentFlow;
+using BraintreePayPal;
 using BraintreeUIKit;
 using BraintreeUnionPay;
 using Foundation;
@@ -50,10 +52,6 @@ namespace BraintreeDropIn
 		[NullAllowed, Export ("dropInRequest", ArgumentSemantic.Strong)]
 		BTDropInRequest DropInRequest { get; set; }
 
-		// -(void)showLoadingScreen:(BOOL)show animated:(BOOL)animated __attribute__((deprecated("Use showLoadingScreen: instead.")));
-		[Export ("showLoadingScreen:animated:")]
-		void ShowLoadingScreen (bool show, bool animated);
-
 		// -(void)showLoadingScreen:(BOOL)show;
 		[Export ("showLoadingScreen:")]
 		void ShowLoadingScreen (bool show);
@@ -74,6 +72,10 @@ namespace BraintreeDropIn
 		// @property (readonly, nonatomic, strong) BTUIKCardNumberFormField * _Nonnull cardNumberField;
 		[Export ("cardNumberField", ArgumentSemantic.Strong)]
 		BTUIKCardNumberFormField CardNumberField { get; }
+
+		// @property (nonatomic, strong, readonly) BTUIKCardholderNameFormField *cardholderNameField;
+		[Export ("cardholderNameField", ArgumentSemantic.Strong)]
+		BTUIKCardholderNameFormField CardholderNameField { get; }
 
 		// @property (readonly, nonatomic, strong) BTUIKExpiryFormField * _Nonnull expirationDateField;
 		[Export ("expirationDateField", ArgumentSemantic.Strong)]
@@ -160,25 +162,9 @@ namespace BraintreeDropIn
 	[BaseType (typeof(NSObject))]
 	interface BTDropInRequest : INSCopying
 	{
-		// @property (copy, nonatomic) NSString * _Nullable amount;
-		[NullAllowed, Export ("amount")]
-		string Amount { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable currencyCode;
-		[NullAllowed, Export ("currencyCode")]
-		string CurrencyCode { get; set; }
-
-		// @property (assign, nonatomic) BOOL noShipping;
-		[Export ("noShipping")]
-		bool NoShipping { get; set; }
-
-		// @property (nonatomic, strong) BTPostalAddress * _Nullable shippingAddress;
-		[NullAllowed, Export ("shippingAddress", ArgumentSemantic.Strong)]
-		BTPostalAddress ShippingAddress { get; set; }
-
-		// @property (nonatomic, strong) NSSet<NSString *> * _Nullable additionalPayPalScopes;
-		[NullAllowed, Export ("additionalPayPalScopes", ArgumentSemantic.Strong)]
-		NSSet<NSString> AdditionalPayPalScopes { get; set; }
+		// @property (nonatomic, strong, nullable) BTPayPalRequest *payPalRequest;
+		[NullAllowed, Export ("payPalRequest", ArgumentSemantic.Strong)]
+		BTPayPalRequest PayPalRequest { get; set; }
 
 		// @property (assign, nonatomic) BOOL applePayDisabled;
 		[Export ("applePayDisabled")]
@@ -194,15 +180,41 @@ namespace BraintreeDropIn
 		[Export ("venmoDisabled")]
 		bool VenmoDisabled { get; set; }
 
-		// @property (assign, nonatomic) BOOL threeDSecureVerification;
-		[Export ("threeDSecureVerification")]
+		// @property (nonatomic, assign) BOOL cardDisabled;
+		[Export ("cardDisabled")]
+		bool CardDisabled { get; set; }
+
+		// @property (nonatomic, assign) BOOL threeDSecureVerification;
+		[Export ("threeDSecureVerification", ArgumentSemantic.Assign)]
 		bool ThreeDSecureVerification { get; set; }
 
-		// /// Optional: If true the security code will be masked.
-		// /// Defaults to false.
+		// @property (nonatomic, strong, nullable) BTThreeDSecureRequest *threeDSecureRequest;
+		[Export ("threeDSecureRequest", ArgumentSemantic.Strong)]
+		BTThreeDSecureRequest ThreeDSecureRequest { get; set; }
+		
+		// @property (nonatomic, assign) BTFormFieldSetting cardholderNameSetting;
+		[Export ("cardholderNameSetting")]
+		BTFormFieldSetting CardholderNameSetting { get; set; }
+		
 		// @property (nonatomic, assign) BOOL shouldMaskSecurityCode;
-		[Export ("shouldMaskSecurityCode")]
+		[Export ("shouldMaskSecurityCode", ArgumentSemantic.Assign)]
 		bool ShouldMaskSecurityCode { get; set; }
+
+		// @property (nonatomic, assign) BOOL vaultManager;
+		[Export ("vaultManager", ArgumentSemantic.Assign)]
+		bool VaultManager { get; set; }
+		
+		// @property (nonatomic, assign) BOOL vaultCard;
+		[Export ("vaultCard", ArgumentSemantic.Assign)]
+		bool VaultCard { get; set; }
+		
+		// @property (nonatomic, assign) BOOL allowVaultCardOverride;
+		[Export ("allowVaultCardOverride", ArgumentSemantic.Assign)]
+		bool AllowVaultCardOverride { get; set; }
+		
+		// @property (nonatomic, assign) BOOL vaultVenmo;
+		[Export ("vaultVenmo", ArgumentSemantic.Assign)]
+		bool VaultVenmo { get; set; }
 	}
 
 	// @interface BTPaymentSelectionViewController : BTDropInBaseViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
@@ -214,9 +226,9 @@ namespace BraintreeDropIn
 		NSObject[] PaymentMethodNonces { get; set; }
 
 		[Wrap ("WeakDelegate")]
-		BTPaymentSelectionViewControllerDelegate Delegate { get; set; }
+		NSObject Delegate { get; set; }
 
-		// @property (nonatomic, weak) id<BTPaymentSelectionViewControllerDelegate> delegate;
+		// @property (nonatomic, weak) id<BTPaymentSelectionViewControllerDelegate, BTDropInControllerDelegate, BTAppSwitchDelegate, BTViewControllerPresentingDelegate> delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
 
@@ -271,14 +283,24 @@ namespace BraintreeDropIn
 	interface BTDropInControllerDelegate
 	{
 		// @required -(void)reloadDropInData;
-		[Abstract]
 		[Export ("reloadDropInData")]
 		void ReloadDropInData ();
+
+		// - (void)editPaymentMethods:(id)sender;
+		[Export ("editPaymentMethods:")]
+		void EditPaymentMethods (NSObject sender);
 	}
 
-	// @interface BTVaultManagementViewController : BTDropInBaseViewController
+	// @interface BTVaultManagementViewController : BTDropInBaseViewController <UITableViewDataSource, UITableViewDelegate>
 	[BaseType (typeof(BTDropInBaseViewController))]
-	interface BTVaultManagementViewController
+	interface BTVaultManagementViewController : IUITableViewDataSource, IUITableViewDelegate
 	{
+		[Wrap ("WeakDelegate")]
+		[NullAllowed]
+		BTDropInControllerDelegate Delegate { get; set; }
+
+		// @property (nonatomic, weak) id<BTDropInControllerDelegate> delegate;
+		[Export ("delegate", ArgumentSemantic.Weak), NullAllowed]
+		NSObject WeakDelegate { get; set; }
 	}
 }

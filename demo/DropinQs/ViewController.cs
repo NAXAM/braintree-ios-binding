@@ -1,6 +1,7 @@
 ﻿using System;
 using BraintreeCore;
 using BraintreeDropIn;
+using BraintreePayPal;
 using CoreGraphics;
 using UIKit;
 
@@ -45,7 +46,7 @@ namespace DropinQs
         {
             var request = new BTDropInRequest
             {
-                Amount = "10.0",
+                PayPalRequest = new BTPayPalRequest ("100"),
                 ThreeDSecureVerification = true
             };
             var dropIn = new BTDropInController(clientTokenOrTokenizationKey, request, HandleBTDropInControllerHandler);

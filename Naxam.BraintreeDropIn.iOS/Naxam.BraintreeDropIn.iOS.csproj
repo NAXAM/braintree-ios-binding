@@ -72,6 +72,10 @@
       <Project>{C9B66E26-E65B-4EF4-8D4E-6250CEF32628}</Project>
       <Name>Naxam.BraintreeUnionPay.iOS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Naxam.BraintreePayPal.iOS\Naxam.BraintreePayPal.iOS.csproj">
+      <Project>{B663DC60-50FF-4C6D-AB99-4EAD0E476E98}</Project>
+      <Name>Naxam.BraintreePayPal.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

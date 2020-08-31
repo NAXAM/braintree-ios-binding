@@ -183,6 +183,10 @@
       <Project>{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}</Project>
       <Name>Naxam.PayPalUtils.iOS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreeVenmo.iOS\Naxam.BraintreeVenmo.iOS.csproj">
+      <Project>{717ECBF2-EBC0-43FA-A4DA-06FAD35C24FD}</Project>
+      <Name>Naxam.BraintreeVenmo.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
