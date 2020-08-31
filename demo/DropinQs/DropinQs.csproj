@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{F99071C7-28E4-406C-B200-D404FB029DE3}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DropinQs</RootNamespace>
+    <AssemblyName>DropinQs</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>false</MtouchFastDev>
+    <IOSDebuggerPort>10601</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebuggerPort>29146</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-57x57%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-57x57%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-72x72%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-72x72%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BraintreeDemoBaseViewController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\naxam.png" />
+    <BundleResource Include="Resources\naxam_copyright.png" />
+    <BundleResource Include="Resources\naxam_copyright%402x.png" />
+    <BundleResource Include="Resources\naxam_copyright%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Naxam.BraintreeDropIn.iOS\Naxam.BraintreeDropIn.iOS.csproj">
+      <Project>{2962DF37-E86D-4F41-AD9D-4D40B4F92A74}</Project>
+      <Name>Naxam.BraintreeDropIn.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreeUIKit.iOS\Naxam.BraintreeUIKit.iOS.csproj">
+      <Project>{41DE3530-D243-4AA3-BCD1-17084DEA840D}</Project>
+      <Name>Naxam.BraintreeUIKit.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreeCard.iOS\Naxam.BraintreeCard.iOS.csproj">
+      <Project>{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}</Project>
+      <Name>Naxam.BraintreeCard.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
+      <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
+      <Name>Naxam.BrainTreeCore.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreeApplePay.iOS\Naxam.BraintreeApplePay.iOS.csproj">
+      <Project>{64726ED5-269E-4802-A41B-25275366716F}</Project>
+      <Name>Naxam.BraintreeApplePay.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreePaymentFlow.iOS\Naxam.BraintreePaymentFlow.iOS.csproj">
+      <Project>{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}</Project>
+      <Name>Naxam.BraintreePaymentFlow.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreeUnionPay.iOS\Naxam.BraintreeUnionPay.iOS.csproj">
+      <Project>{C9B66E26-E65B-4EF4-8D4E-6250CEF32628}</Project>
+      <Name>Naxam.BraintreeUnionPay.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.BraintreePayPal.iOS\Naxam.BraintreePayPal.iOS.csproj">
+      <Project>{B663DC60-50FF-4C6D-AB99-4EAD0E476E98}</Project>
+      <Name>Naxam.BraintreePayPal.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.PayPalOneTouch.iOS\Naxam.PayPalOneTouch.iOS.csproj">
+      <Project>{DE5DFC91-5EDB-413B-BE59-05DC15D670F5}</Project>
+      <Name>Naxam.PayPalOneTouch.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.PayPal.Risk.iOS\Naxam.PayPal.Risk.iOS.csproj">
+      <Project>{1A95E0D6-AB90-48EC-ADB7-8386E5650A68}</Project>
+      <Name>Naxam.PayPal.Risk.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.PayPalDataCollector.iOS\Naxam.PayPalDataCollector.iOS.csproj">
+      <Project>{6985CBE0-FD24-4416-93E7-71D7D4109C9B}</Project>
+      <Name>Naxam.PayPalDataCollector.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Naxam.PayPalUtils.iOS\Naxam.PayPalUtils.iOS.csproj">
+      <Project>{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}</Project>
+      <Name>Naxam.PayPalUtils.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>
