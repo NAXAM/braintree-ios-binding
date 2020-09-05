@@ -1,7 +1,7 @@
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
 
 // Cake Addins
-#addin nuget:?package=Cake.FileHelpers&version=2.0.0
+#addin nuget:?package=Cake.FileHelpers&version=3.3.0
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -10,7 +10,9 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var VERSION = "4.34.0";
+var VERSION = "4.35.0";
+var DROP_IN_VERSION = "8.1.1";
+var CARDINALMOBILE_VERSION="2.2.3.1";
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
@@ -18,6 +20,32 @@ var VERSION = "4.34.0";
 
 var solutionPath = "./braintree-ios.sln";
 var artifacts = new [] {
+    new Artifact {
+        AssemblyInfoPath = "./Naxam.CardinalMobile.iOS/Properties/AssemblyInfo.cs",
+        NuspecPath = "./cardinalmobile.nuspec",
+        Dependencies = new string [] { 
+        },
+        Name = "CardinalMobile"
+    },
+    new Artifact {
+        AssemblyInfoPath = "./Naxam.BraintreeDropIn.iOS/Properties/AssemblyInfo.cs",
+        NuspecPath = "./braintree-dropin.nuspec",
+        Dependencies = new [] { 
+            "Naxam.BraintreeUIKit.iOS",
+            "Naxam.BraintreeUIKit.iOS",
+            "Naxam.BraintreePaymentFlow.iOS",
+            "Naxam.BraintreeUnionPay.iOS",
+            "Naxam.BraintreeApplePay.iOS",
+        },
+        Name = "DropIn"
+    },
+    new Artifact {
+        AssemblyInfoPath = "./Naxam.BraintreeUIKit.iOS/Properties/AssemblyInfo.cs",
+        NuspecPath = "./braintree-uikit.nuspec",
+        Dependencies = new string [] { 
+        },
+        Name = "UIKit"
+    },
     new Artifact {
         AssemblyInfoPath = "./Naxam.Braintree3DSecure.iOS/Properties/AssemblyInfo.cs",
         NuspecPath = "./braintree-3dsecure.nuspec",
@@ -32,7 +60,7 @@ var artifacts = new [] {
         Dependencies = new [] { 
             "Naxam.BraintreeCore.iOS"
         },
-        Name = "Core"
+        Name = "AmericanExpress"
     },
     new Artifact {
         AssemblyInfoPath = "./Naxam.BraintreeApplePay.iOS/Properties/AssemblyInfo.cs",
@@ -40,7 +68,7 @@ var artifacts = new [] {
         Dependencies = new [] { 
             "Naxam.BraintreeCore.iOS"
         },
-        Name = "ApplyPay"
+        Name = "ApplePay"
     },
     new Artifact {
         AssemblyInfoPath = "./Naxam.BraintreeCard.iOS/Properties/AssemblyInfo.cs",
@@ -54,7 +82,8 @@ var artifacts = new [] {
         AssemblyInfoPath = "./Naxam.BraintreeCore.iOS/Properties/AssemblyInfo.cs",
         NuspecPath = "./braintree-core.nuspec",
         Dependencies = new string [] { 
-        }
+        },
+        Name = "Core"
     },
     new Artifact {
         AssemblyInfoPath = "./Naxam.BraintreeDataCollector.iOS/Properties/AssemblyInfo.cs",
@@ -68,7 +97,8 @@ var artifacts = new [] {
         AssemblyInfoPath = "./Naxam.BraintreePaymentFlow.iOS/Properties/AssemblyInfo.cs",
         NuspecPath = "./braintree-paymentflow.nuspec",
         Dependencies = new [] { 
-            "Naxam.BraintreeCard.iOS"
+            "Naxam.BraintreeCard.iOS",
+            "Naxam.CardinalMobile.iOS"
         },
         Name = "PaymentFlow"
     },
@@ -118,7 +148,8 @@ var artifacts = new [] {
         Dependencies = new [] { 
             "Naxam.PayPal.Risk.iOS",
             "Naxam.PayPalUtils.iOS"
-        }
+        },
+        Name = "PayPal DataCollector"
     },
     new Artifact {
         AssemblyInfoPath = "./Naxam.PayPalOneTouch.iOS/Properties/AssemblyInfo.cs",
@@ -173,7 +204,8 @@ Task("UpdateVersion")
     .Does(() => 
 {
     foreach(var artifact in artifacts) {
-        ReplaceRegexInFiles(artifact.AssemblyInfoPath, "\\[assembly\\: AssemblyVersion([^\\]]+)\\]", string.Format("[assembly: AssemblyVersion(\"{0}\")]", VERSION));
+        var version = GetVersion(artifact.Name);
+        ReplaceRegexInFiles(artifact.AssemblyInfoPath, "\\[assembly\\: AssemblyVersion([^\\]]+)\\]", string.Format("[assembly: AssemblyVersion(\"{0}\")]", version));
     }
 });
 
@@ -183,19 +215,31 @@ Task("Pack")
     .Does(() =>
 {
     foreach(var artifact in artifacts) {
+        var version = GetVersion(artifact.Name);
         NuGetPack(artifact.NuspecPath, new NuGetPackSettings {
-            Version = VERSION,
+            Version = version,
             ReleaseNotes = new [] {
-                string.Format("Braintree iOS SDK v{0} - {1}", VERSION, artifact.Name)
+                string.Format("Braintree iOS SDK v{0} - {1}", version, artifact.Name)
             },
             Dependencies = artifact.Dependencies.Select(x =>
                 new NuSpecDependency {
                     Id = x,
-                    Version = VERSION
+                    Version = GetVersion(x)
                 }).ToArray()
         });
     }
 });
+
+string GetVersion(string name) {
+    if (name.Contains("Dropin") 
+        || name.Contains("UIKit")) {
+        return DROP_IN_VERSION;
+    } else if (name.Contains("Cardinal") ) {
+        return CARDINALMOBILE_VERSION;
+    } else {
+        return VERSION;
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>Naxam.BraintreeDropIn.iOS</id>
+        <version>6.1.0.1</version>
+        <authors>NAXAM CO.,LTD</authors>
+        <owners>NAXAM CO.,LTD</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <title>Naxam - Braintree DropIn for iOS</title>
+        <summary>Xamarin.iOS binding Library - BraintreeDropIn - UIKit</summary>
+        <description>Xamarin.iOS binding Library - Braintree DropIn</description>
+        <releaseNotes>Braintree DropIn v6.1.0/correct dependencies</releaseNotes>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/NAXAM/braintreedropin-ios-binding/Naxam.BraintreeDropIn.iOS</projectUrl>
+        <copyright>Copyright (c) 2018 NAXAM</copyright>
+        <tags>Xamarin.iOS, braintree,  braintree-dropin</tags>
+        <dependencies>
+            
+        </dependencies>
+    </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <file src="Naxam.BraintreeDropIn.iOS/bin/Release/Naxam.BraintreeDropIn.iOS.dll" target="lib/Xamarin.iOS10/Naxam.BraintreeDropIn.iOS.dll" />
+    </files>
+</package>

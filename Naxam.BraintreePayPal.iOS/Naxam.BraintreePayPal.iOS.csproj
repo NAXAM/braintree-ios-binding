@@ -31,21 +31,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Naxam.BrainTreeCore.iOS">
-      <HintPath>..\packages\Naxam.BrainTreeCore.iOS.4.10.0\lib\Xamarin.iOS10\Naxam.BrainTreeCore.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.PayPal.Risk.iOS">
-      <HintPath>..\packages\Naxam.PayPal.Risk.iOS.4.10.0\lib\Xamarin.iOS10\Naxam.PayPal.Risk.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.PayPalUtils.iOS">
-      <HintPath>..\packages\Naxam.PayPalUtils.iOS.4.10.0\lib\Xamarin.iOS10\Naxam.PayPalUtils.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.PayPalDataCollector.iOS">
-      <HintPath>..\packages\Naxam.PayPalDataCollector.iOS.4.10.0\lib\Xamarin.iOS10\Naxam.PayPalDataCollector.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.PayPalOneTouch.iOS">
-      <HintPath>..\packages\Naxam.PayPalOneTouch.iOS.4.10.0\lib\Xamarin.iOS10\Naxam.PayPalOneTouch.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
