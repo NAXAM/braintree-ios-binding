@@ -27,18 +27,18 @@ var artifacts = new [] {
     //     },
     //     Name = "CardinalMobile"
     // },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeDropIn.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-dropin.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeUIKit.iOS",
-            "Naxam.BraintreeUIKit.iOS",
-            "Naxam.BraintreePaymentFlow.iOS",
-            "Naxam.BraintreeUnionPay.iOS",
-            "Naxam.BraintreeApplePay.iOS",
-        },
-        Name = "DropIn"
-    },
+    // new Artifact {
+    //     AssemblyInfoPath = "./Naxam.BraintreeDropIn.iOS/Properties/AssemblyInfo.cs",
+    //     NuspecPath = "./braintree-dropin.nuspec",
+    //     Dependencies = new [] { 
+    //         "Naxam.BraintreeUIKit.iOS",
+    //         "Naxam.BraintreeUIKit.iOS",
+    //         "Naxam.BraintreePaymentFlow.iOS",
+    //         "Naxam.BraintreeUnionPay.iOS",
+    //         "Naxam.BraintreeApplePay.iOS",
+    //     },
+    //     Name = "DropIn"
+    // },
     // new Artifact {
     //     AssemblyInfoPath = "./Naxam.BraintreeUIKit.iOS/Properties/AssemblyInfo.cs",
     //     NuspecPath = "./braintree-uikit.nuspec",
@@ -93,15 +93,15 @@ var artifacts = new [] {
     //     },
     //     Name = "DataCollector"
     // },
-    // new Artifact {
-    //     AssemblyInfoPath = "./Naxam.BraintreePaymentFlow.iOS/Properties/AssemblyInfo.cs",
-    //     NuspecPath = "./braintree-paymentflow.nuspec",
-    //     Dependencies = new [] { 
-    //         "Naxam.BraintreeCard.iOS",
-    //         "Naxam.CardinalMobile.iOS"
-    //     },
-    //     Name = "PaymentFlow"
-    // },
+    new Artifact {
+        AssemblyInfoPath = "./Naxam.BraintreePaymentFlow.iOS/Properties/AssemblyInfo.cs",
+        NuspecPath = "./braintree-paymentflow.nuspec",
+        Dependencies = new [] { 
+            "Naxam.BraintreeCard.iOS",
+            "Naxam.CardinalMobile.iOS"
+        },
+        Name = "PaymentFlow"
+    },
     // new Artifact {
     //     AssemblyInfoPath = "./Naxam.BraintreePayPal.iOS/Properties/AssemblyInfo.cs",
     //     NuspecPath = "./braintree-paypal.nuspec",
@@ -217,7 +217,7 @@ Task("Pack")
     foreach(var artifact in artifacts) {
         var version = GetVersion(artifact.Name);
         NuGetPack(artifact.NuspecPath, new NuGetPackSettings {
-            Version = version,
+            Version = version + ".1",
             ReleaseNotes = new [] {
                 string.Format("Braintree iOS SDK v{0} - {1}", version, artifact.Name)
             },

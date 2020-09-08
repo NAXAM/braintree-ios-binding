@@ -589,7 +589,7 @@ namespace BraintreePaymentFlow
 
         //@property(nonatomic, copy) NSDecimalNumber* amount;
         [Export("amount", ArgumentSemantic.Copy)]
-        decimal Amount { get; set; }
+        NSDecimalNumber Amount { get; set; }
         
         // @property (nonatomic, nullable, copy) BTThreeDSecurePostalAddress *billingAddress;
         [Export("billingAddress", ArgumentSemantic.Copy), NullAllowed]
