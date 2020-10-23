@@ -57,6 +57,10 @@
       <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
       <Name>Naxam.BrainTreeCore.iOS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Naxam.CardinalMobile.iOS\Naxam.CardinalMobile.iOS.csproj">
+      <Project>{A3A0F2A3-DD4C-4A76-A95D-7B36AF4D74E6}</Project>
+      <Name>Naxam.CardinalMobile.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

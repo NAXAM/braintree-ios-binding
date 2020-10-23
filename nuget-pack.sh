@@ -5,6 +5,7 @@ function generate() {
 }
 
 frameworks=(
+    cardinalmobile
     braintree-3dsecure
     braintree-applepay
     braintree-amerianexpress

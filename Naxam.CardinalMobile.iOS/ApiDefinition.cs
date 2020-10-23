@@ -283,19 +283,19 @@ namespace CardinalMobile
     {
         // @property (nonatomic, strong, readonly) NSString* transactionID;
         [Export("transactionID", ArgumentSemantic.Strong)]
-        string TransactionId { get; set; }
+        string TransactionId { get; }
 
         // @property (nonatomic, strong, readonly) NSString* errorCode;
         [Export("errorCode", ArgumentSemantic.Strong)]
-        string ErrorCode { get; set; }
+        string ErrorCode { get; }
 
         // @property (nonatomic, strong, readonly) NSString* errorDescription;
         [Export("errorDescription", ArgumentSemantic.Strong)]
-        string ErrorDescription { get; set; }
+        string ErrorDescription { get; }
 
         // @property (nonatomic, strong, readonly) NSString* errorDetail;
         [Export("errorDetail", ArgumentSemantic.Strong)]
-        string ErrorDetail { get; set; }
+        string ErrorDetail { get; }
 
         // - (id) initWithTransactionID: (NSString *) transactionID
         //                    errorCode: (NSString *) errorCode

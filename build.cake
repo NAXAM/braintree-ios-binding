@@ -10,9 +10,9 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var VERSION = "4.35.0";
+var VERSION = "4.35.0.1";
 var DROP_IN_VERSION = "8.1.1";
-var CARDINALMOBILE_VERSION="2.2.3.1";
+var CARDINALMOBILE_VERSION="2.2.3.2";
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
@@ -20,13 +20,13 @@ var CARDINALMOBILE_VERSION="2.2.3.1";
 
 var solutionPath = "./braintree-ios.sln";
 var artifacts = new [] {
-    // new Artifact {
-    //     AssemblyInfoPath = "./Naxam.CardinalMobile.iOS/Properties/AssemblyInfo.cs",
-    //     NuspecPath = "./cardinalmobile.nuspec",
-    //     Dependencies = new string [] { 
-    //     },
-    //     Name = "CardinalMobile"
-    // },
+    new Artifact {
+        AssemblyInfoPath = "./Naxam.CardinalMobile.iOS/Properties/AssemblyInfo.cs",
+        NuspecPath = "./cardinalmobile.nuspec",
+        Dependencies = new string [] { 
+        },
+        Name = "CardinalMobile"
+    },
     // new Artifact {
     //     AssemblyInfoPath = "./Naxam.BraintreeDropIn.iOS/Properties/AssemblyInfo.cs",
     //     NuspecPath = "./braintree-dropin.nuspec",
@@ -46,14 +46,16 @@ var artifacts = new [] {
     //     },
     //     Name = "UIKit"
     // },
-    // new Artifact {
-    //     AssemblyInfoPath = "./Naxam.Braintree3DSecure.iOS/Properties/AssemblyInfo.cs",
-    //     NuspecPath = "./braintree-3dsecure.nuspec",
-    //     Dependencies = new [] { 
-    //         "Naxam.BraintreeCard.iOS"
-    //     },
-    //     Name = "3DSecure"
-    // },
+    new Artifact {
+        AssemblyInfoPath = "./Naxam.Braintree3DSecure.iOS/Properties/AssemblyInfo.cs",
+        NuspecPath = "./braintree-3dsecure.nuspec",
+        Dependencies = new [] { 
+            "Naxam.BraintreeCard.iOS",
+            "Naxam.BraintreeCore.iOS",
+            "Naxam.CardinalMobile.iOS"
+        },
+        Name = "3DSecure"
+    },
     // new Artifact {
     //     AssemblyInfoPath = "./Naxam.BraintreeAmericanExpress.iOS/Properties/AssemblyInfo.cs",
     //     NuspecPath = "./braintree-americanexpress.nuspec",
@@ -93,15 +95,15 @@ var artifacts = new [] {
     //     },
     //     Name = "DataCollector"
     // },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreePaymentFlow.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-paymentflow.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCard.iOS",
-            "Naxam.CardinalMobile.iOS"
-        },
-        Name = "PaymentFlow"
-    },
+    // new Artifact {
+    //     AssemblyInfoPath = "./Naxam.BraintreePaymentFlow.iOS/Properties/AssemblyInfo.cs",
+    //     NuspecPath = "./braintree-paymentflow.nuspec",
+    //     Dependencies = new [] { 
+    //         "Naxam.BraintreeCard.iOS",
+    //         "Naxam.CardinalMobile.iOS"
+    //     },
+    //     Name = "PaymentFlow"
+    // },
     // new Artifact {
     //     AssemblyInfoPath = "./Naxam.BraintreePayPal.iOS/Properties/AssemblyInfo.cs",
     //     NuspecPath = "./braintree-paypal.nuspec",
@@ -217,7 +219,7 @@ Task("Pack")
     foreach(var artifact in artifacts) {
         var version = GetVersion(artifact.Name);
         NuGetPack(artifact.NuspecPath, new NuGetPackSettings {
-            Version = version + ".1",
+            Version = version,
             ReleaseNotes = new [] {
                 string.Format("Braintree iOS SDK v{0} - {1}", version, artifact.Name)
             },
