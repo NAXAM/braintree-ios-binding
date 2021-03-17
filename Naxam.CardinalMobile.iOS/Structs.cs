@@ -41,9 +41,9 @@ namespace CardinalMobile
 
 	[Native]
 	public enum CardinalSessionUIType : long {
-		Both,
 		Native,
-		HTML
+		HTML,
+		Both,
 	};
 
 	[Native]

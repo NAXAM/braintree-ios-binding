@@ -159,6 +159,10 @@ namespace BraintreeCard
         [Export("expirationYear", ArgumentSemantic.Copy)]
         string ExpirationYear { get; }
 
+        // @property (nonatomic, nullable, readonly, copy) NSString *cardholderName;
+        [Export("cardholderName", ArgumentSemantic.Copy)]
+        string CardholderName { get; }
+
         // @property (readonly, copy, nonatomic) NSString * _Nullable lastTwo;
         [NullAllowed, Export("lastTwo", ArgumentSemantic.Copy)]
         string LastTwo { get; }
@@ -185,32 +189,6 @@ namespace BraintreeCard
         // @property (nonatomic, nullable, readonly, strong) BTAuthenticationInsight *authenticationInsight;
         [NullAllowed, Export("authenticationInsight", ArgumentSemantic.Strong)]
         BTAuthenticationInsight AuthenticationInsight { get; }
-// - (instancetype)initWithNonce:(nonnull NSString *)nonce
-//                   description:(nullable NSString *)description
-//                   cardNetwork:(BTCardNetwork)cardNetwork
-//               expirationMonth:(nullable NSString *)expirationMonth
-//                expirationYear:(nullable NSString *)expirationYear
-//                       lastTwo:(nullable NSString *)lastTwo
-//                      lastFour:(nullable NSString *)lastFour
-//                     isDefault:(BOOL)isDefault
-//                      cardJSON:(BTJSON *)cardJSON
-//               authInsightJSON:(nullable BTJSON *)authInsightJSON;
-        [Export("initWithNonce:description:cardNetwork:expirationMonth:expirationYear:lastTwo:lastFour:isDefault:cardJSON:authInsightJSON:")]
-        IntPtr Constructor(
-            string nonce, [NullAllowed] string description, BTCardNetwork cardNetwork, 
-            [NullAllowed] string expirationMonth, [NullAllowed] string expirationYear, 
-            [NullAllowed] string lastTwo, [NullAllowed] string lastFour, bool isDefault,
-            BTJSON cardJSON, [NullAllowed] BTJSON authInsightJSON);
-
-        // + (instancetype)cardNonceWithJSON:(BTJSON *)cardJSON;
-        [Static]
-        [Export("cardNonceWithJSON:")]
-        BTCardNonce CardNonceWithJSON(BTJSON cardJSON);
-
-        // + (instancetype)cardNonceWithGraphQLJSON:(BTJSON *)json;
-        [Static]
-        [Export("cardNonceWithGraphQLJSON:")]
-        BTCardNonce cardNonceWithGraphQLJSON(BTJSON cardJSON);
     }
 
     [Static]

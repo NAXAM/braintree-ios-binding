@@ -348,6 +348,10 @@ namespace BraintreePaymentFlow
         // @property (nonatomic, nullable, copy) NSString *paymentType;
         [Export("paymentType", ArgumentSemantic.Copy), NullAllowed]
         string PaymentType {get;set;}
+
+        // @property (nonatomic, nullable, copy) NSString *paymentTypeCountryCode;
+        [Export("paymentTypeCountryCode", ArgumentSemantic.Copy), NullAllowed]
+        string PaymentTypeCountryCode {get;set;}
         
         // @property (nonatomic, nullable, copy) NSString *merchantAccountId;
         [Export("merchantAccountId", ArgumentSemantic.Copy), NullAllowed]

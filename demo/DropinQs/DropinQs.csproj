@@ -43,6 +43,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -85,6 +86,45 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Naxam.BrainTreeCore.iOS">
+      <HintPath>..\..\packages\Naxam.BrainTreeCore.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.BrainTreeCore.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreeApplePay.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreeApplePay.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.BraintreeApplePay.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreeCard.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreeCard.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.BraintreeCard.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreeUIKit.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreeUIKit.iOS.8.1.2\lib\Xamarin.iOS10\Naxam.BraintreeUIKit.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreeUnionPay.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreeUnionPay.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.BraintreeUnionPay.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.CardinalMobile.iOS">
+      <HintPath>..\..\packages\Naxam.CardinalMobile.iOS.2.2.4.1\lib\Xamarin.iOS10\Naxam.CardinalMobile.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreePaymentFlow.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreePaymentFlow.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.BraintreePaymentFlow.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreeDropIn.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreeDropIn.iOS.8.1.2\lib\Xamarin.iOS10\Naxam.BraintreeDropIn.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.PayPal.Risk.iOS">
+      <HintPath>..\..\packages\Naxam.PayPal.Risk.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.PayPal.Risk.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.PayPalUtils.iOS">
+      <HintPath>..\..\packages\Naxam.PayPalUtils.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.PayPalUtils.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.PayPalDataCollector.iOS">
+      <HintPath>..\..\packages\Naxam.PayPalDataCollector.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.PayPalDataCollector.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.PayPalOneTouch.iOS">
+      <HintPath>..\..\packages\Naxam.PayPalOneTouch.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.PayPalOneTouch.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BraintreePayPal.iOS">
+      <HintPath>..\..\packages\Naxam.BraintreePayPal.iOS.4.37.0\lib\Xamarin.iOS10\Naxam.BraintreePayPal.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -122,6 +162,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -137,60 +178,6 @@
     <BundleResource Include="Resources\naxam_copyright.png" />
     <BundleResource Include="Resources\naxam_copyright%402x.png" />
     <BundleResource Include="Resources\naxam_copyright%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Naxam.BraintreeDropIn.iOS\Naxam.BraintreeDropIn.iOS.csproj">
-      <Project>{2962DF37-E86D-4F41-AD9D-4D40B4F92A74}</Project>
-      <Name>Naxam.BraintreeDropIn.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreeUIKit.iOS\Naxam.BraintreeUIKit.iOS.csproj">
-      <Project>{41DE3530-D243-4AA3-BCD1-17084DEA840D}</Project>
-      <Name>Naxam.BraintreeUIKit.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreeCard.iOS\Naxam.BraintreeCard.iOS.csproj">
-      <Project>{FFC173C8-BAFF-4641-9750-AC5CD8FDB51A}</Project>
-      <Name>Naxam.BraintreeCard.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BrainTreeCore.iOS\Naxam.BrainTreeCore.iOS.csproj">
-      <Project>{CD32710E-D053-4BBF-8A9B-359E65A2671C}</Project>
-      <Name>Naxam.BrainTreeCore.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreeApplePay.iOS\Naxam.BraintreeApplePay.iOS.csproj">
-      <Project>{64726ED5-269E-4802-A41B-25275366716F}</Project>
-      <Name>Naxam.BraintreeApplePay.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreePaymentFlow.iOS\Naxam.BraintreePaymentFlow.iOS.csproj">
-      <Project>{BB41FD5A-CFB1-4A84-AF46-4BF360E2B75B}</Project>
-      <Name>Naxam.BraintreePaymentFlow.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreeUnionPay.iOS\Naxam.BraintreeUnionPay.iOS.csproj">
-      <Project>{C9B66E26-E65B-4EF4-8D4E-6250CEF32628}</Project>
-      <Name>Naxam.BraintreeUnionPay.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreePayPal.iOS\Naxam.BraintreePayPal.iOS.csproj">
-      <Project>{B663DC60-50FF-4C6D-AB99-4EAD0E476E98}</Project>
-      <Name>Naxam.BraintreePayPal.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.PayPalOneTouch.iOS\Naxam.PayPalOneTouch.iOS.csproj">
-      <Project>{DE5DFC91-5EDB-413B-BE59-05DC15D670F5}</Project>
-      <Name>Naxam.PayPalOneTouch.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.PayPal.Risk.iOS\Naxam.PayPal.Risk.iOS.csproj">
-      <Project>{1A95E0D6-AB90-48EC-ADB7-8386E5650A68}</Project>
-      <Name>Naxam.PayPal.Risk.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.PayPalDataCollector.iOS\Naxam.PayPalDataCollector.iOS.csproj">
-      <Project>{6985CBE0-FD24-4416-93E7-71D7D4109C9B}</Project>
-      <Name>Naxam.PayPalDataCollector.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.PayPalUtils.iOS\Naxam.PayPalUtils.iOS.csproj">
-      <Project>{DA407D69-DC1B-4ADB-8BDB-62BC3E8BB11C}</Project>
-      <Name>Naxam.PayPalUtils.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Naxam.BraintreeVenmo.iOS\Naxam.BraintreeVenmo.iOS.csproj">
-      <Project>{717ECBF2-EBC0-43FA-A4DA-06FAD35C24FD}</Project>
-      <Name>Naxam.BraintreeVenmo.iOS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

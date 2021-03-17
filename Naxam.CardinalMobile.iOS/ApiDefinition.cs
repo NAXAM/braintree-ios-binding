@@ -521,11 +521,6 @@ namespace CardinalMobile
         [Export("deploymentEnvironment", ArgumentSemantic.Assign)]
         CardinalSessionEnvironment DeploymentEnvironment { get; set; }
 
-        // @property (nonatomic, assign) NSUInteger timeout DEPRECATED_ATTRIBUTE;
-        [Export("timeout", ArgumentSemantic.Assign)]
-        [Deprecated(PlatformName.iOS, PlatformArchitecture.All, "")]
-        uint Timeout { get; set; }
-
         // @property (nonatomic, assign) NSUInteger requestTimeout;
         [Export("requestTimeout", ArgumentSemantic.Assign)]
         uint RequestTimeout { get; set; }
@@ -567,6 +562,10 @@ namespace CardinalMobile
         [Export("threeDSRequestorAppURL", ArgumentSemantic.Copy), NullAllowed]
         [return: NullAllowed]
         string ThreeDSRequestorAppURL { get; set; }
+
+        // @property (nonatomic) BOOL collectLogs;
+        [Export("collectLogs", ArgumentSemantic.Assign)]
+        bool CollectLogs { get; set; }
     }
 
     [Static]
@@ -613,10 +612,6 @@ namespace CardinalMobile
         [Field("CardinalSessionTimeoutDEFAULT", "__Internal")]
         nuint DEFAULT { get; }
     }
-
-    // interface CardinalSessionConfig : CardinalSessionConfiguration
-    [BaseType(typeof(CardinalSessionConfiguration))]
-    interface CardinalSessionConfig { }
 
     // typedef void (^CardinalSessionSetupDidCompleteHandler)(NSString *consumerSessionId);
     delegate void CardinalSessionSetupDidCompleteHandler(string consumerSessionId);
@@ -668,21 +663,6 @@ namespace CardinalMobile
         //        didComplete:(nullable CardinalSessionProcessBinDidCompleteHandler)didCompleteHandler NS_SWIFT_NAME(processBin(_:completed:));
         [Export("processBin:didComplete:")]
         void ProcessBin(string accountNumber, CardinalSessionProcessBinDidCompleteHandler didCompleteHandler);
-
-        // - (void)continueWithTransactionId:(nonnull NSString *)transactionId
-        //                           payload:(nonnull NSString *)payload
-        //                            acsUrl:(nonnull NSString *)acsUrl
-        //                 directoryServerID:(CCADirectoryServerID) directoryServerID
-        //               didValidateDelegate:(nonnull id<CardinalValidationDelegate>)validationDelegate NS_SWIFT_NAME(continueWith(transactionId:payload:acsUrl:directoryServerID:validationDelegate:)) __deprecated;
-        [Export("continueWithTransactionId:payload:acsUrl:directoryServerID:didValidateDelegate:")]
-        void ContinueWithTransactionId(string transactionId, string payload, string acsUrl, CCADirectoryServerID directoryServerID, ICardinalValidationDelegate validationDelegate);
-
-        // - (void)continueWithTransactionId:(nonnull NSString *)transactionId
-        //                           payload:(nonnull NSString *)payload
-        //                 directoryServerID:(CCADirectoryServerID) directoryServerID
-        //               didValidateDelegate:(nonnull id<CardinalValidationDelegate>)validationDelegate NS_SWIFT_NAME(continueWith(transactionId:payload:directoryServerID:validationDelegate:)) __deprecated;
-        [Export("continueWithTransactionId:payload:directoryServerID:didValidateDelegate:")]
-        void ContinueWithTransactionId(string transactionId, string payload, CCADirectoryServerID directoryServerID, ICardinalValidationDelegate validationDelegate);
 
         // - (void)continueWithTransactionId:(nonnull NSString *)transactionId
         //                           payload:(nonnull NSString *)payload
