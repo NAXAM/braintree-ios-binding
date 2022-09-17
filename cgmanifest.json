@@ -1,0 +1,14 @@
+{
+	"Registrations": [
+		{
+			"Component": {
+				"Type": "Pod",
+				"Pod": {
+					"Name": "BraintreeDropIn",
+					"Version": "9.7.0"
+				}
+			}
+		}
+	],
+	"version": 1
+}

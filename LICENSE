@@ -1,6 +1,8 @@
-tuyen-vuduc is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may require or install dependencies which are governed by additional licenses.
+**tuyen-vuduc is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may require or install dependencies which are governed by additional licenses.**
 
-This component depends on Braintree Payments SDK for iOS, which is subject to the terms of Braintree Payments Software Development Kit License Agreement
+Note: This component depends on Braintree Payments SDK for iOS, which is subject to the terms of Braintree Payments Software Development Kit License Agreement
+
+**The MIT License (MIT)**
 
 Xamarin.iOS binding library for Braintree Payments iOS SDK
 
