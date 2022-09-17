@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Card", "source\Braintree\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplePay", "source\Braintree\ApplePay\ApplePay.csproj", "{BC5944CF-1847-4CBE-A64B-6712A0E6E09B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paypal", "source\Braintree\Paypal\Paypal.csproj", "{8DE486FC-FDF3-4E1E-97BC-4C853E50FCE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayPal", "source\Braintree\PayPal\PayPal.csproj", "{8DE486FC-FDF3-4E1E-97BC-4C853E50FCE7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreeDSecure", "source\Braintree\ThreeDSecure\ThreeDSecure.csproj", "{4E626DA6-7E3C-4B8D-AEA4-23D437C4D30C}"
 EndProject

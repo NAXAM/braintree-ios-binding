@@ -24,14 +24,14 @@ public Dictionary<string, GoogleBase> CreateComponents ()
 {
 	var googleComponents = new Dictionary<string, GoogleBase> ();
 	
-	googleComponents ["Firebase.ABTesting"] = GetComponent<Firebase.ABTesting> ();
-	googleComponents ["Firebase.AdMob"] = GetComponent<Firebase.AdMob> ();
-	googleComponents ["Firebase.Analytics"] = GetComponent<Firebase.Analytics> ();
-	googleComponents ["Firebase.Auth"] = GetComponent<Firebase.Auth> ();
-	googleComponents ["Firebase.CloudFirestore"] = GetComponent<Firebase.CloudFirestore> ();
-	googleComponents ["Firebase.CloudMessaging"] = GetComponent<Firebase.CloudMessaging> ();
-	googleComponents ["Firebase.Core"] = GetComponent<Firebase.Core> ();
-	googleComponents ["Firebase.Crashlytics"] = GetComponent<Firebase.Crashlytics> ();
+	googleComponents ["Braintree.DropIn"] = GetComponent<Braintree.ABTesting> ();
+	googleComponents ["Braintree.ApplePay"] = GetComponent<Braintree.ApplePay> ();
+	googleComponents ["Braintree.Card"] = GetComponent<Braintree.Card> ();
+	googleComponents ["Braintree.Core"] = GetComponent<Braintree.Core> ();
+	googleComponents ["Braintree.PayPal"] = GetComponent<Braintree.PayPal> ();
+	googleComponents ["Braintree.UnionPay"] = GetComponent<Braintree.UnionPay> ();
+	googleComponents ["Braintree.ThreeDSecure"] = GetComponent<ThreeDSecure.Core> ();
+	googleComponents ["Braintree.Venmo"] = GetComponent<Braintree.Venmo> ();
 
 	googleComponents ["Xamarin.Build.Download"] = GetComponent<Xamarin.Build.Download> ();
 
@@ -49,7 +49,7 @@ public T GetComponent<T> () where T : GoogleBase, new ()
 	// the XBD version from one of the Firebase/Google .nuspec files.
 	// Get the version with XPath.
 	if (component is Xamarin.Build.Download) {
-		nuspecPath = GetFiles ($"./Firebase.Core/nuget/*.nuspec").ToList () [0];
+		nuspecPath = GetFiles ($"./Braintree.Core/nuget/*.nuspec").ToList () [0];
 		component.CurrentVersion = XmlPeek (nuspecPath, "/package/metadata/dependencies/group[@targetFramework='Xamarin.iOS10']/dependency[@id='Xamarin.Build.Download']/@version");
 	} else {
 		nuspecPath = GetFiles ($"./{component.Name}/nuget/*.nuspec").ToList () [0];

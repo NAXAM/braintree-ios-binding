@@ -6,5 +6,5 @@ using System;
 using NativeHandle = System.IntPtr;
 #endif
 
-namespace Braintree.Paypal {
+namespace Braintree.PayPal {
 }

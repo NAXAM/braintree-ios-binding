@@ -1,11 +1,11 @@
 ﻿// using System;
 
-// namespace Braintree.DropIn {
+// namespace Braintree.ThreeDSecure {
 // 	public class Loader
 // 	{
 // 		static Loader ()
 // 		{
-// 			Firebase.Core.Loader.ForceLoad ();
+// 			Braintree.ThreeDSecure.Loader.ForceLoad ();
 // 		}
 
 // 		public static void ForceLoad () { }
@@ -18,7 +18,7 @@
 // 	{
 // 		static Messaging ()
 // 		{
-// 			Firebase.ABTesting.Loader.ForceLoad ();
+// 			Braintree.ThreeDSecure.Loader.ForceLoad ();
 // 		}
 // 	}
 // }

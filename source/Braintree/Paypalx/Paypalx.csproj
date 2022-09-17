@@ -6,19 +6,19 @@
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
     <NoBindingEmbedding>true</NoBindingEmbedding>
-    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
-    <RootNamespace>Braintree.Paypal.iOS</RootNamespace>
-    <AssemblyName>Braintree.Paypal.iOS</AssemblyName>
+    <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
+    <RootNamespace>Braintree.PayPal.iOS</RootNamespace>
+    <AssemblyName>Braintree.PayPal.iOS</AssemblyName>
     <AssemblyVersion>5.12.0</AssemblyVersion>
     <FileVersion>5.12.0</FileVersion>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <PackageId>Braintree.Paypal.iOS</PackageId>
-    <Title>Braintree iOS SDK - Paypal</Title>
-    <Summary>C# bindings for Braintree Paypal iOS Library</Summary>
-    <Description>C# bindings for Braintree Paypal iOS Library</Description>
+    <PackageId>Braintree.PayPal.iOS</PackageId>
+    <Title>Braintree iOS SDK - PayPal</Title>
+    <Summary>C# bindings for Braintree PayPal iOS Library</Summary>
+    <Description>C# bindings for Braintree PayPal iOS Library</Description>
     <Authors>tuyen</Authors>
     <Owners>tuyen</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
@@ -35,8 +35,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Paypal.targets" Pack="True" PackagePath="build/Braintree.Paypal.iOS.targets" />
-    <None Include="Paypal.targets" Pack="True" PackagePath="buildTransitive/Braintree.Paypal.iOS.targets" />
+    <None Include="PayPal.targets" Pack="True" PackagePath="build/Braintree.PayPal.iOS.targets" />
+    <None Include="PayPal.targets" Pack="True" PackagePath="buildTransitive/Braintree.PayPal.iOS.targets" />
     <None Include="External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
     <None Include="License.md" Pack="True" PackagePath="License.md" />
   </ItemGroup>
@@ -47,10 +47,10 @@
        project so sidecar can work properly. -->
   <!-- This workaround was designed like this to have the same
        NativeReference tag for the iOS binding and for the .targets file -->
-  <Import Project="Paypal.targets" />
+  <Import Project="PayPal.targets" />
   <ItemGroup>
-    <_NativeReference Include="..\..\..\externals\BraintreePaypal.xcframework">
-      <_Id>$(_BraintreePaypalId)</_Id>
+    <_NativeReference Include="..\..\..\externals\BraintreePayPal.xcframework">
+      <_Id>$(_BraintreePayPalId)</_Id>
     </_NativeReference>
   </ItemGroup>
   <!-- End of workaround -->

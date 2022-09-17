@@ -29,21 +29,22 @@ void UpdateVersionInCsproj (Artifact artifact)
 	var componentGroup = artifact.ComponentGroup.ToString ();
 	var csprojPath = $"./source/{componentGroup}/{artifact.CsprojName}/{artifact.CsprojName}.csproj";
 	XmlPoke(csprojPath, "/Project/PropertyGroup/FileVersion", artifact.NugetVersion);
+	XmlPoke(csprojPath, "/Project/PropertyGroup/AssemblyVersion", artifact.NugetVersion);
 	XmlPoke(csprojPath, "/Project/PropertyGroup/PackageVersion", artifact.NugetVersion);
 }
 
 void CreateAndInstallPodfile (Artifact artifact)
 {
-	if (artifact.PodSpecs?.Length == 0)
+	if (artifact.PodSpecs == null || artifact.PodSpecs.Length == 0)
 		return;
-	
+
 	var podfile = new List<string> ();
 	var podfileBegin = new List<string> (PODFILE_BEGIN);
 	
 	var minimunSupportedVersion = GetMinimunSupportedVersion (artifact);
 	podfileBegin [0] = string.Format (podfileBegin [0], minimunSupportedVersion);
 	podfile.AddRange (podfileBegin);
-
+	
 	if (artifact.ExtraPodfileLines != null)
 		podfile.AddRange (artifact.ExtraPodfileLines);
 
@@ -84,6 +85,9 @@ List<string> GetPodfileLines (Artifact artifact)
 {
 	var podfileLines = new List<string> ();
 
+	if (artifact.PodSpecs == null || artifact.PodSpecs.Length == 0)
+		return podfileLines;
+			
 	foreach (var podSpec in artifact.PodSpecs) {
 		if (podSpec.FrameworkSource != FrameworkSource.Pods)
 			continue;

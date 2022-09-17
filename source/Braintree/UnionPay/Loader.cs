@@ -5,7 +5,7 @@
 // 	{
 // 		static Loader ()
 // 		{
-// 			Firebase.Core.Loader.ForceLoad ();
+// 			Braintree.UnionPay.Loader.ForceLoad ();
 // 		}
 
 // 		public static void ForceLoad () { }
@@ -18,7 +18,7 @@
 // 	{
 // 		static Messaging ()
 // 		{
-// 			Firebase.ABTesting.Loader.ForceLoad ();
+// 			Braintree.UnionPay.Loader.ForceLoad ();
 // 		}
 // 	}
 // }

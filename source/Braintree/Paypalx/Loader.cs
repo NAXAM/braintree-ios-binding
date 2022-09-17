@@ -1,11 +1,11 @@
 ﻿// using System;
 
-// namespace Braintree.Paypal {
+// namespace Braintree.PayPal {
 // 	public class Loader
 // 	{
 // 		static Loader ()
 // 		{
-// 			Braintree.Paypal.Loader.ForceLoad ();
+// 			Braintree.PayPal.Loader.ForceLoad ();
 // 		}
 
 // 		public static void ForceLoad () { }
@@ -18,7 +18,7 @@
 // 	{
 // 		static Messaging ()
 // 		{
-// 			Braintree.Paypal.Loader.ForceLoad ();
+// 			Braintree.PayPal.Loader.ForceLoad ();
 // 		}
 // 	}
 // }

@@ -1,8 +1,6 @@
 enum ComponentGroup
 {
-	Firebase,
-	Google,
-	MLKit
+	Braintree
 }
 
 enum FrameworkSource
