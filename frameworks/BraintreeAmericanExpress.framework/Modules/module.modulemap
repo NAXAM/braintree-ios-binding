@@ -1,6 +1,0 @@
-framework module BraintreeAmericanExpress {
-  umbrella header "BraintreeAmericanExpress.h"
-
-  export *
-  module * { export * }
-}
