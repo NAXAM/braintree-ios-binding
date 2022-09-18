@@ -1,4 +1,4 @@
 ﻿using System;
 
-namespace Braintree.DropIn {
+namespace Braintree.ThreeDSecure {
 }

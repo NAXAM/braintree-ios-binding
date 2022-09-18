@@ -24,7 +24,7 @@ public Dictionary<string, GoogleBase> CreateComponents ()
 {
 	var googleComponents = new Dictionary<string, GoogleBase> ();
 	
-	googleComponents ["Braintree.DropIn"] = GetComponent<Braintree.ABTesting> ();
+	googleComponents ["Braintree.DropIn"] = GetComponent<Braintree.DropIn> ();
 	googleComponents ["Braintree.ApplePay"] = GetComponent<Braintree.ApplePay> ();
 	googleComponents ["Braintree.Card"] = GetComponent<Braintree.Card> ();
 	googleComponents ["Braintree.Core"] = GetComponent<Braintree.Core> ();

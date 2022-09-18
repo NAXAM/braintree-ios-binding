@@ -138,9 +138,7 @@ Task ("externals")
 	foreach (var artifact in ARTIFACTS_TO_BUILD) {
 		UpdateVersionInCsproj (artifact);
 		CreateAndInstallPodfile (artifact);
-		Information ("// CreateAndInstallPodfile             //");
 		BuildSdkOnPodfileV2 (artifact);
-		Information ("// BuildSdkOnPodfileV2             //");
 	}
 });
 

@@ -144,7 +144,7 @@ void BuildSdkOnPodfile (Artifact artifact)
 
 void BuildSdkOnPodfileV2 (Artifact artifact)
 {
-	if (artifact.PodSpecs?.Length == 0)
+	if (artifact.PodSpecs?.Length <= 0)
 		return;
 
 	var platforms = new [] { 

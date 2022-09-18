@@ -1,11 +1,13 @@
-Artifact BRAINTREE_DROP_IN_ARTIFACT				= new Artifact ("Braintree.DropIn.iOS",			 "9.7.0", "12.0", ComponentGroup.Braintree, csprojName: "DropIn");
-Artifact BRAINTREE_APPLE_PAY_ARTIFACT            = new Artifact ("Braintree.ApplePay.iOS",		"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "ApplePay");
-Artifact BRAINTREE_CARD_ARTIFACT               	= new Artifact ("Braintree.Card.iOS",			"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "Card");
-Artifact BRAINTREE_CORE_ARTIFACT                 = new Artifact ("Braintree.Core.iOS",			"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "Core");
-Artifact BRAINTREE_UNION_PAY_ARTIFACT         	= new Artifact ("Braintree.UnionPay.iOS",		"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "UnionPay");
-Artifact BRAINTREE_PAYPAL_ARTIFACT         		= new Artifact ("Braintree.PayPal.iOS",			"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "PayPal");
-Artifact BRAINTREE_THREE_D_SECURE_ARTIFACT       = new Artifact ("Braintree.ThreeDSecure.iOS",	"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "ThreeDSecure");
-Artifact BRAINTREE_VENMO_ARTIFACT                = new Artifact ("Braintree.Venmo.iOS",			"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "Venmo");
+Artifact BRAINTREE_DROP_IN_ARTIFACT					= new Artifact ("Braintree.DropIn.iOS",					 "9.7.0", "12.0", ComponentGroup.Braintree, csprojName: "DropIn");
+Artifact BRAINTREE_APPLE_PAY_ARTIFACT            	= new Artifact ("Braintree.ApplePay.iOS",				"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "ApplePay");
+Artifact BRAINTREE_CARD_ARTIFACT               		= new Artifact ("Braintree.Card.iOS",					"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "Card");
+Artifact BRAINTREE_CORE_ARTIFACT                 	= new Artifact ("Braintree.Core.iOS",					"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "Core");
+Artifact BRAINTREE_UNION_PAY_ARTIFACT         		= new Artifact ("Braintree.UnionPay.iOS",				"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "UnionPay");
+Artifact BRAINTREE_PAYPAL_ARTIFACT         			= new Artifact ("Braintree.PayPal.iOS",					"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "PayPal");
+Artifact BRAINTREE_THREE_D_SECURE_ARTIFACT       	= new Artifact ("Braintree.ThreeDSecure.iOS",			"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "ThreeDSecure");
+Artifact BRAINTREE_VENMO_ARTIFACT                	= new Artifact ("Braintree.Venmo.iOS",					"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "Venmo");
+Artifact BRAINTREE_PAYMENT_FLOW_ARTIFACT             = new Artifact ("Braintree.PaymentFlow.iOS",			"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "PaymentFlow");
+Artifact BRAINTREE_PAYPAL_DATA_COLLECTOR_ARTIFACT     = new Artifact ("Braintree.PayPalDataCollector.iOS",	"5.12.0", "12.0", ComponentGroup.Braintree, csprojName: "PayPalDataCollector");
 
 var ARTIFACTS = new Dictionary<string, Artifact> {
 	{ "Braintree.DropIn.iOS",				BRAINTREE_DROP_IN_ARTIFACT },
@@ -16,18 +18,22 @@ var ARTIFACTS = new Dictionary<string, Artifact> {
 	{ "Braintree.PayPal.iOS",				BRAINTREE_PAYPAL_ARTIFACT },
 	{ "Braintree.ThreeDSecure.iOS",         BRAINTREE_THREE_D_SECURE_ARTIFACT },
 	{ "Braintree.Venmo.iOS",				BRAINTREE_VENMO_ARTIFACT },
+	{ "Braintree.PaymentFlow.iOS",         	BRAINTREE_PAYMENT_FLOW_ARTIFACT },
+	{ "Braintree.PayPalDataCollector.iOS",	BRAINTREE_PAYPAL_DATA_COLLECTOR_ARTIFACT },
 };
 
 void SetArtifactsDependencies ()
 {
-	BRAINTREE_DROP_IN_ARTIFACT.Dependencies			= new [] { BRAINTREE_APPLE_PAY_ARTIFACT, BRAINTREE_CARD_ARTIFACT, BRAINTREE_CORE_ARTIFACT, BRAINTREE_UNION_PAY_ARTIFACT, BRAINTREE_PAYPAL_ARTIFACT, BRAINTREE_THREE_D_SECURE_ARTIFACT, BRAINTREE_VENMO_ARTIFACT };
-	BRAINTREE_APPLE_PAY_ARTIFACT.Dependencies		= new Artifact [] { };
-	BRAINTREE_CARD_ARTIFACT.Dependencies			= new Artifact [] { };
-	BRAINTREE_CORE_ARTIFACT.Dependencies			= new Artifact [] { };
-	BRAINTREE_UNION_PAY_ARTIFACT.Dependencies		= new Artifact [] { };
-	BRAINTREE_PAYPAL_ARTIFACT.Dependencies			= new Artifact [] { };
-	BRAINTREE_THREE_D_SECURE_ARTIFACT.Dependencies	= new Artifact [] { };
-	BRAINTREE_VENMO_ARTIFACT.Dependencies			= new Artifact [] { };
+	BRAINTREE_DROP_IN_ARTIFACT.Dependencies							= new [] { BRAINTREE_APPLE_PAY_ARTIFACT, BRAINTREE_CARD_ARTIFACT, BRAINTREE_CORE_ARTIFACT, BRAINTREE_UNION_PAY_ARTIFACT, BRAINTREE_PAYPAL_ARTIFACT, BRAINTREE_THREE_D_SECURE_ARTIFACT, BRAINTREE_VENMO_ARTIFACT };
+	BRAINTREE_APPLE_PAY_ARTIFACT.Dependencies						= new Artifact [] { BRAINTREE_CORE_ARTIFACT };
+	BRAINTREE_CARD_ARTIFACT.Dependencies							= new Artifact [] { BRAINTREE_CORE_ARTIFACT };
+	BRAINTREE_CORE_ARTIFACT.Dependencies							= new Artifact [] { };
+	BRAINTREE_UNION_PAY_ARTIFACT.Dependencies						= new Artifact [] { BRAINTREE_CORE_ARTIFACT };
+	BRAINTREE_PAYPAL_ARTIFACT.Dependencies							= new Artifact [] { BRAINTREE_CORE_ARTIFACT, BRAINTREE_PAYPAL_DATA_COLLECTOR_ARTIFACT, };
+	BRAINTREE_THREE_D_SECURE_ARTIFACT.Dependencies					= new Artifact [] { BRAINTREE_CORE_ARTIFACT, BRAINTREE_PAYMENT_FLOW_ARTIFACT, };
+	BRAINTREE_VENMO_ARTIFACT.Dependencies							= new Artifact [] { BRAINTREE_CORE_ARTIFACT };
+	BRAINTREE_PAYMENT_FLOW_ARTIFACT.Dependencies					= new Artifact [] { BRAINTREE_CORE_ARTIFACT, BRAINTREE_PAYPAL_DATA_COLLECTOR_ARTIFACT, };
+	BRAINTREE_PAYPAL_DATA_COLLECTOR_ARTIFACT.Dependencies			= new Artifact [] { };
 }
 
 void SetArtifactsPodSpecs ()
@@ -36,25 +42,31 @@ void SetArtifactsPodSpecs ()
 		PodSpec.Create ("BraintreeDropIn",        	 "9.7.0",       frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeDropIn", targetName: "BraintreeDropIn"),
 	};
 	BRAINTREE_APPLE_PAY_ARTIFACT.PodSpecs		= new PodSpec [] {
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay" }),
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", }),
 	};
-	BRAINTREE_CARD_ARTIFACT.PodSpecs			= new PodSpec [] { 
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeCard", subSpecs: new [] { "Card" }),
+	BRAINTREE_CARD_ARTIFACT.PodSpecs							= new PodSpec [] {
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
 	};
-	BRAINTREE_CORE_ARTIFACT.PodSpecs			= new PodSpec [] { 
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeCore", subSpecs: new [] { "Core" }),
+	BRAINTREE_CORE_ARTIFACT.PodSpecs							= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
 	};
-	BRAINTREE_UNION_PAY_ARTIFACT.PodSpecs		= new PodSpec [] { 
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeUnionPay", subSpecs: new [] { "UnionPay" }),
+	BRAINTREE_UNION_PAY_ARTIFACT.PodSpecs						= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
 	};
-	BRAINTREE_PAYPAL_ARTIFACT.PodSpecs			= new PodSpec [] { 
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreePayPal", subSpecs: new [] { "PayPal" }),
+	BRAINTREE_PAYPAL_ARTIFACT.PodSpecs							= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
 	};
-	BRAINTREE_THREE_D_SECURE_ARTIFACT.PodSpecs	= new PodSpec [] { 
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeThreeDSecure", subSpecs: new [] { "ThreeDSecure" }),
+	BRAINTREE_THREE_D_SECURE_ARTIFACT.PodSpecs					= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
 	};
-	BRAINTREE_VENMO_ARTIFACT.PodSpecs			= new PodSpec [] { 
-		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeVenmo", subSpecs: new [] { "Venmo" }),
+	BRAINTREE_VENMO_ARTIFACT.PodSpecs							= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
+	};
+	BRAINTREE_PAYMENT_FLOW_ARTIFACT.PodSpecs					= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
+	};
+	BRAINTREE_PAYPAL_DATA_COLLECTOR_ARTIFACT.PodSpecs			= new PodSpec [] { 
+		PodSpec.Create ("Braintree",          		"5.12.0", 		frameworkSource: FrameworkSource.Pods, frameworkName: "BraintreeApplePay", subSpecs: new [] { "ApplePay", "Card", "Core", "UnionPay", "PayPal", "ThreeDSecure", "Venmo", "PaymentFlow", "PayPalDataCollector" }),
 	};
 }
 
