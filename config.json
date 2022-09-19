@@ -1,5 +1,5 @@
 {
-    "slnFile": "./braintree-ios.sln",
+    "slnFile": "generated/braintree-ios.sln",
     "platformVersion": "12.0",
     "additionalProjects": [],
     "templates": [

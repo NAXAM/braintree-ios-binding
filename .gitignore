@@ -8,6 +8,7 @@ tmp-nugets
 *.DS_Store
 Pods/
 build
+generated/
 .vs/
 *.framework
 _._
