@@ -1,8 +1,4 @@
-﻿using System.Threading.Tasks;
-using Cake.Frosting;
-using CocoaPods.Binderator;
-
-[TaskName("binderate")]
+﻿[TaskName("binderate")]
 public sealed class BinderateTask : AsyncFrostingTask<BuildContext>
 {
     public override async Task RunAsync(BuildContext context)

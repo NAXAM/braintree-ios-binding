@@ -86,11 +86,11 @@
         {
             if (dep.IsProjectReference)
             {
-                <ProjectReference Include="..\..\generated\@(dep.PodConfig.NormalizedName)\@(dep.PodConfig.NormalizedName).csproj" PrivateAssets="none" />
+        <ProjectReference Include="@(dep.PodConfig.NormalizedName)\@(dep.PodConfig.NormalizedName).csproj" PrivateAssets="none" />
             }
             else
             {
-                <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
+        <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
             }
         }
     </ItemGroup>

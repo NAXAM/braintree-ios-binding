@@ -1,6 +1,4 @@
-﻿using Cake.Frosting;
-
-[TaskName("Default")]
+﻿[TaskName("Default")]
 [IsDependentOn(typeof(BinderateTask))]
 public class DefaultTask : FrostingTask
 {

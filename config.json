@@ -24,94 +24,10 @@
         "dependencyOnly": false
       },
       {
-        "name": "Braintree/Core",
+        "name": "Braintree",
         "version": "5.12.0",
         "nugetVersion": "5.12.0",
         "nugetId": "Braintree.Core.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/Card",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.Card.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/ApplePay",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.ApplePay.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/PaymentFlow",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.PaymentFlow.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/PayPalDataCollector",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.PayPalDataCollector.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/PayPal",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.PayPal.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/ThreeDSecure",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.ThreeDSecure.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/UnionPay",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.UnionPay.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/Venmo",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.Venmo.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/AmericanExpress",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.AmericanExpress.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/DataCollector",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.DataCollector.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/SEPADirectDebit",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.SEPADirectDebit.iOS",
-        "dependencyOnly": false
-      },
-      {
-        "name": "Braintree/PayPalNativeCheckout",
-        "version": "5.12.0",
-        "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.PayPalNativeCheckout.iOS",
         "dependencyOnly": false
       },
       {

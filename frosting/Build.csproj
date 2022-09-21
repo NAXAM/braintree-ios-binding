@@ -4,12 +4,17 @@
     <TargetFramework>net6.0</TargetFramework>
     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
     <PreserveCompilationContext>true</PreserveCompilationContext>
+    <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Frosting" Version="2.2.0" />
-    <PackageReference Include="CocoaPods.Net.Binderator" Version="0.1.0" />
+    <PackageReference Include="CocoaPods.Net.Generator" Version="0.1.0" />
+    <PackageReference Include="Cake.FileHelpers" Version="5.0.0" />
+    <PackageReference Include="Cake.XCode" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Cake.FileHelpers" />
+    <None Remove="Cake.XCode" />
     <None Remove="Tasks\" />
   </ItemGroup>
   <ItemGroup>
