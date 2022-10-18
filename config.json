@@ -15,27 +15,163 @@
     "debug": {
       "dumpModels": true
     },
-    "pods": [
+    "packages": [
       {
         "name": "BraintreeDropIn",
         "version": "9.7.0",
         "nugetVersion": "9.7.0",
-        "nugetId": "Braintree.DropIn.iOS",
-        "dependencyOnly": false
+        "libraryType": "static",
+        "packageType": "pod",
+        "dependencyOnly": false,
+        "targets": [
+          {
+            "nugetId": "BraintreeDropIn.iOS",
+            "name": "BraintreeDropIn",
+            "deps": [
+              "BraintreeApplePay",
+              "BraintreeCard",
+              "BraintreeCore",
+              "BraintreePaymentFlow",
+              "BraintreePayPal",
+              "BraintreeThreeDSecure",
+              "BraintreeUnionPay",
+              "BraintreeVenmo",
+              "PayPalDataCollector"
+            ]
+          }
+        ],
+        "git": "https://github.com/braintree/braintree-ios-drop-in"
       },
       {
         "name": "Braintree",
         "version": "5.12.0",
         "nugetVersion": "5.12.0",
-        "nugetId": "Braintree.Core.iOS",
-        "dependencyOnly": false
+        "libraryType": "dynamic",
+        "packageType": "spm",
+        "dependencyOnly": false,
+        "targets": [
+          {
+            "nugetId": "BraintreeAmericanExpress.iOS",
+            "name": "BraintreeAmericanExpress",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "BraintreeApplePay.iOS",
+            "name": "BraintreeApplePay",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "BraintreeCard.iOS",
+            "name": "BraintreeCard",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "BraintreeCore.iOS",
+            "name": "BraintreeCore",
+            "deps": []
+          },
+          {
+            "nugetId": "BraintreeDataCollector.iOS",
+            "name": "BraintreeDataCollector",
+            "deps": [
+              "BraintreeCore",
+              "KountDataCollector"
+            ]
+          },
+          {
+            "nugetId": "BraintreePaymentFlow.iOS",
+            "name": "BraintreePaymentFlow",
+            "deps": [
+              "BraintreeCore",
+              "PPRiskMagnes"
+            ]
+          },
+          {
+            "nugetId": "BraintreePayPal.iOS",
+            "name": "BraintreePayPal",
+            "deps": [
+              "BraintreeCore",
+              "PPRiskMagnes"
+            ]
+          },
+          {
+            "nugetId": "BraintreePayPalNativeCheckout.iOS",
+            "name": "BraintreePayPalNativeCheckout",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "BraintreeSEPADirectDebit.iOS",
+            "name": "BraintreeSEPADirectDebit",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "BraintreeThreeDSecure.iOS",
+            "name": "BraintreeThreeDSecure",
+            "deps": [
+              "BraintreeCore", "CardinalMobile", "PPRiskMagnes"
+            ]
+          },
+          {
+            "nugetId": "BraintreeUnionPay.iOS",
+            "name": "BraintreeUnionPay",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "BraintreeVenmo.iOS",
+            "name": "BraintreeVenmo",
+            "deps": [
+              "BraintreeCore"
+            ]
+          },
+          {
+            "nugetId": "PayPalDataCollector.iOS",
+            "name": "PayPalDataCollector",
+            "deps": [
+              "BraintreeCore", "PPRiskMagnes"
+            ]
+          }
+        ],
+        "git": "https://github.com/braintree/braintree_ios"
       },
       {
         "name": "PayPalCheckout",
         "version": "0.100.0",
         "nugetVersion": "0.100.0",
         "nugetId": "PayPalCheckout.iOS",
-        "dependencyOnly": false
+        "dependencyOnly": true
+      },
+      {
+        "name": "CardinalMobile",
+        "version": "2.2.5.3",
+        "nugetVersion": "2.2.5.3",
+        "nugetId": "CardinalMobile.iOS",
+        "dependencyOnly": true
+      },
+      {
+        "name": "KountDataCollector",
+        "version": "4.1.5",
+        "nugetVersion": "4.1.5",
+        "nugetId": "KountDataCollector.iOS",
+        "dependencyOnly": true
+      },
+      {
+        "name": "PPRiskMagnes",
+        "version": "5.4.0",
+        "nugetVersion": "5.4.0",
+        "nugetId": "PPRiskMagnes.iOS",
+        "dependencyOnly": true
       }
     ]
   }

@@ -19,15 +19,15 @@
         <IsBindingProject>true</IsBindingProject>
         <NoBindingEmbedding>true</NoBindingEmbedding>
         <SupportedOSPlatformVersion>@(platformVersion)</SupportedOSPlatformVersion>
-        <RootNamespace>@(Model.NuGetPackageId.Replace(".iOS", string.Empty))</RootNamespace>
-        <AssemblyName>@(Model.NuGetPackageId)</AssemblyName>
+        <RootNamespace>@(Model.PackageConfig.NuGetPackageId.Replace(".iOS", string.Empty))</RootNamespace>
+        <AssemblyName>@(Model.PackageConfig.NuGetPackageId)</AssemblyName>
         <AssemblyVersion>@(Model.NuGetVersion)</AssemblyVersion>
         <FileVersion>@(Model.NuGetVersion)</FileVersion>
         <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <PropertyGroup>
-        <PackageId>@(Model.NuGetPackageId)</PackageId>
+        <PackageId>@(Model.PackageConfig.NuGetPackageId)</PackageId>
         <Title>Braintree iOS SDK - @(name)</Title>
         <Summary>C# bindings for Braintree iOS SDK - @(name)</Summary>
         <Description>C# bindings for Braintree iOS SDK - @(name)</Description>
@@ -47,10 +47,10 @@
         <Folder Include="Resources\" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="build/@(Model.NuGetPackageId).targets" />
-        <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="buildTransitive/@(Model.NuGetPackageId).targets" />
+        <None Include="@(Model.PackageConfig.NuGetPackageId).targets" Pack="True" PackagePath="build/@(Model.PackageConfig.NuGetPackageId).targets" />
+        <None Include="@(Model.PackageConfig.NuGetPackageId).targets" Pack="True" PackagePath="buildTransitive/@(Model.PackageConfig.NuGetPackageId).targets" />
         <None Include="@(sourceFolderDir)External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
-        <None Include="@(sourceFolderDir)License.md" Pack="True" PackagePath="LICENSE" />
+        <None Include="@(sourceFolderDir)License.md" Pack="True" PackagePath="License.md" />
     </ItemGroup>
     <!-- An iOS app project cannot find Xcframeworks within a NuGet if a TFM
          previous than net6.0-ios is used.
@@ -59,10 +59,10 @@
          project so sidecar can work properly. -->
     <!-- This workaround was designed like this to have the same
          NativeReference tag for the iOS binding and for the .targets file -->
-    <Import Project="@(Model.NuGetPackageId).targets" />
+    <Import Project="@(Model.PackageConfig.NuGetPackageId).targets" />
     <ItemGroup>
-        <_NativeReference Include="..\..\externals\@(Model.NormalizedName).xcframework">
-            <_Id>$(_@(Model.NormalizedName)Id)</_Id>
+        <_NativeReference Include="..\..\frameworks\@(Model.PackageConfig.NormalizedName).xcframework">
+            <_Id>$(_@(Model.PackageConfig.NormalizedName)Id)</_Id>
         </_NativeReference>
     </ItemGroup>
     <!-- End of workaround -->
@@ -90,7 +90,7 @@
             }
             else
             {
-        <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
+        <PackageReference Include="@(dep.PackageConfig.NuGetPackageId)" Version="@(dep.PackageConfig.NuGetVersion)" />
             }
         }
     </ItemGroup>

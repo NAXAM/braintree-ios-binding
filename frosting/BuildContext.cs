@@ -3,7 +3,7 @@
 public class BuildContext : FrostingContext
 {
     public bool IsLocalBuild { get; set; }
-    public List<BindingProjectModel> ProjectModels { get; set; }
+    public List<BindingProjectModel> Projects { get; set; }
 
     public string ConfigPath => Path.Combine(BasePath ?? string.Empty, "config.json");
 	public string BasePath { get; set; }

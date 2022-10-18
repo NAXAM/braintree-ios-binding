@@ -6,6 +6,12 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Frosting" Version="2.2.0" />
     <PackageReference Include="CocoaPods.Net.Generator" Version="0.1.0" />
@@ -16,9 +22,13 @@
     <None Remove="Cake.FileHelpers" />
     <None Remove="Cake.XCode" />
     <None Remove="Tasks\" />
+    <None Remove="build.sh" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tasks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="build.sh" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
