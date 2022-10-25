@@ -13,9 +13,9 @@ namespace BraintreeDropIn
 	[BaseType (typeof(UIViewController))]
 	interface BTDropInController : IUIToolbarDelegate, IUIViewControllerTransitioningDelegate
 	{
-		// -(instancetype _Nullable)initWithAuthorization:(NSString * _Nonnull)authorization request:(id)request handler:(BTDropInControllerHandler _Nullable)handler;
+		// -(instancetype _Nullable)initWithAuthorization:(NSString * _Nonnull)authorization request:(BTDropInRequest *)request handler:(BTDropInControllerHandler _Nullable)handler;
 		[Export ("initWithAuthorization:request:handler:")]
-		IntPtr Constructor (string authorization, NSObject request, [NullAllowed] BTDropInControllerHandler handler);
+		IntPtr Constructor (string authorization, BTDropInRequest request, [NullAllowed] BTDropInControllerHandler handler);
 
 		// @property (readonly, nonatomic, strong) BTAPIClient * _Nonnull apiClient;
 		[Export ("apiClient", ArgumentSemantic.Strong)]

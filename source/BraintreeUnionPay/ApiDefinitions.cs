@@ -36,9 +36,9 @@ namespace BraintreeUnionPay
 		[Export ("fetchCapabilities:completion:")]
 		void FetchCapabilities (string cardNumber, Action<BTCardCapabilities, NSError> completion);
 
-		// -(void)enrollCard:(id)request completion:(void (^ _Nonnull)(NSString * _Nullable, BOOL, NSError * _Nullable))completion;
+		// -(void)enrollCard:(BTCardRequest *)request completion:(void (^ _Nonnull)(NSString * _Nullable, BOOL, NSError * _Nullable))completion;
 		[Export ("enrollCard:completion:")]
-		void EnrollCard (NSObject request, Action<NSString, bool, NSError> completion);
+		void EnrollCard (BTCardRequest request, Action<NSString, bool, NSError> completion);
 	}
 
 	// @interface BTConfiguration (UnionPay)

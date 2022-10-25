@@ -23,9 +23,9 @@ namespace BraintreeCore
 		[Export ("initWithAuthorization:")]
 		IntPtr Constructor (string authorization);
 
-		// -(instancetype _Nonnull)copyWithSource:(id)source integration:(id)integration;
+		// -(instancetype _Nonnull)copyWithSource:(BTClientMetadataSourceType)source integration:(BTClientMetadataIntegrationType)integration;
 		[Export ("copyWithSource:integration:")]
-		BTAPIClient CopyWithSource (NSObject source, NSObject integration);
+		BTAPIClient CopyWithSource (BTClientMetadataSourceType source, BTClientMetadataIntegrationType integration);
 
 		// -(void)fetchOrReturnRemoteConfiguration:(void (^ _Nonnull)(BTConfiguration * _Nullable, NSError * _Nullable))completionBlock;
 		[Export ("fetchOrReturnRemoteConfiguration:")]
@@ -70,22 +70,22 @@ namespace BraintreeCore
   protocol, then [Model] is redundant and will generate code that will never
   be used.
 */
-	//partial interface IBTAppContextSwitchDriver { }
+	partial interface IBTAppContextSwitchDriver { }
 
-	//[Protocol, Model]
-	//[BaseType(typeof(NSObject))]
-	//interface BTAppContextSwitchDriver
-	//{
-	//	// @required +(BOOL)canHandleReturnURL:(NSUrl * _Nonnull)url __attribute__((swift_name("canHandleReturnURL(_:)")));
-	//	[Static, Abstract]
-	//	[Export ("canHandleReturnURL:")]
-	//	bool CanHandleReturnURL (NSUrl url);
+	[Protocol, Model]
+	[BaseType(typeof(NSObject))]
+	interface BTAppContextSwitchDriver
+	{
+		// @required +(BOOL)canHandleReturnURL:(NSUrl * _Nonnull)url __attribute__((swift_name("canHandleReturnURL(_:)")));
+		[Abstract]
+		[Export("canHandleReturnURL:")]
+		bool CanHandleReturnURL(NSUrl url);
 
-	//	// @required +(void)handleReturnURL:(NSUrl * _Nonnull)url __attribute__((swift_name("handleReturnURL(_:)")));
-	//	[Static, Abstract]
-	//	[Export ("handleReturnURL:")]
-	//	void HandleReturnURL (NSUrl url);
-	//}
+		// @required +(void)handleReturnURL:(NSUrl * _Nonnull)url __attribute__((swift_name("handleReturnURL(_:)")));
+		[Abstract]
+		[Export("handleReturnURL:")]
+		void HandleReturnURL(NSUrl url);
+	}
 
 	// @interface BTAppContextSwitcher : NSObject
 	[BaseType (typeof(NSObject))]

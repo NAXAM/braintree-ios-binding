@@ -88,14 +88,14 @@ namespace BraintreePaymentFlow
 	[BaseType(typeof(NSObject))]
 	interface BTLocalPaymentRequestDelegate
 	{
-		// @required -(void)localPaymentStarted:(BTLocalPaymentRequest *)request paymentID:(id)paymentID start:(void (^)(void))start;
+		// @required -(void)localPaymentStarted:(BTLocalPaymentRequest *)request paymentID:(NSString *)paymentID start:(void (^)(void))start;
 		[Abstract]
 		[Export ("localPaymentStarted:paymentID:start:")]
-		void PaymentID (BTLocalPaymentRequest request, NSObject paymentID, Action start);
+		void PaymentID (BTLocalPaymentRequest request, string paymentID, Action start);
 	}
 
-	// @interface BTLocalPaymentResult
-	[BaseType(typeof(NSObject))]
+	// @interface BTLocalPaymentResult : BTPaymentFlowResult
+	[BaseType(typeof(BTPaymentFlowResult))]
 	interface BTLocalPaymentResult
 	{
 		// @property (readonly, nonatomic, strong) BTPostalAddress * _Nullable billingAddress;
@@ -138,10 +138,12 @@ namespace BraintreePaymentFlow
 		[Export ("type", ArgumentSemantic.Copy)]
 		unsafe string Type { get; }
 
-		// -(instancetype)initWithNonce:(id)nonce type:(id)type email:(id)email firstName:(id)firstName lastName:(id)lastName phone:(id)phone billingAddress:(BTPostalAddress *)billingAddress shippingAddress:(BTPostalAddress *)shippingAddress clientMetadataID:(id)clientMetadataID payerID:(id)payerID;
+		// -(instancetype)initWithNonce:(NSString *)nonce type:(NSString *)type email:(NSString *)email firstName:(NSString *)firstName lastName:(NSString *)lastName phone:(NSString *)phone billingAddress:(BTPostalAddress *)billingAddress shippingAddress:(BTPostalAddress *)shippingAddress clientMetadataID:(NSString *)clientMetadataID payerID:(NSString *)payerID;
 		[Export ("initWithNonce:type:email:firstName:lastName:phone:billingAddress:shippingAddress:clientMetadataID:payerID:")]
-		IntPtr Constructor (NSObject nonce, NSObject type, NSObject email, NSObject firstName, NSObject lastName, NSObject phone, BTPostalAddress billingAddress, BTPostalAddress shippingAddress, NSObject clientMetadataID, NSObject payerID);
+		IntPtr Constructor (string nonce, string type, string email, string firstName, string lastName, string phone, BTPostalAddress billingAddress, BTPostalAddress shippingAddress, string clientMetadataID, string payerID);
 	}
+
+	partial interface IBTPaymentFlowDriverDelegate { }
 
 	// @protocol BTPaymentFlowDriverDelegate
 	[Protocol, Model]
@@ -168,10 +170,10 @@ namespace BraintreePaymentFlow
 		[Export ("returnURLScheme")]
 		string ReturnURLScheme { get; }
 
-		// @required -(id)apiClient;
+		// @required -(BTAPIClient *)apiClient;
 		[Abstract]
 		[Export ("apiClient")]
-		NSObject ApiClient { get; }
+		BTAPIClient ApiClient { get; }
 	}
 
 	// @protocol BTPaymentFlowRequestDelegate
@@ -179,10 +181,10 @@ namespace BraintreePaymentFlow
 	[BaseType(typeof(NSObject))]
 	interface BTPaymentFlowRequestDelegate
 	{
-		// @required -(void)handleRequest:(BTPaymentFlowRequest * _Nonnull)request client:(id)apiClient paymentDriverDelegate:(id<BTPaymentFlowDriverDelegate> _Nonnull)delegate;
+		// @required -(void)handleRequest:(BTPaymentFlowRequest * _Nonnull)request client:(BTAPIClient *)apiClient paymentDriverDelegate:(id<BTPaymentFlowDriverDelegate> _Nonnull)delegate;
 		[Abstract]
 		[Export ("handleRequest:client:paymentDriverDelegate:")]
-		void HandleRequest (BTPaymentFlowRequest request, NSObject apiClient, BTPaymentFlowDriverDelegate @delegate);
+		void HandleRequest (BTPaymentFlowRequest request, BTAPIClient apiClient, IBTPaymentFlowDriverDelegate @delegate);
 
 		// @required -(BOOL)canHandleAppSwitchReturnURL:(NSUrl * _Nonnull)url;
 		[Abstract]
@@ -200,15 +202,15 @@ namespace BraintreePaymentFlow
 		string PaymentFlowName { get; }
 	}
 
-	// @interface BTPaymentFlowDriver : NSObject
+	// @interface BTPaymentFlowDriver : NSObject <BTAppContextSwitchDriver, BTPaymentFlowDriverDelegate>
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface BTPaymentFlowDriver
+	interface BTPaymentFlowDriver : BTPaymentFlowDriverDelegate, IBTAppContextSwitchDriver
 	{
-		// -(instancetype _Nonnull)initWithAPIClient:(id)apiClient __attribute__((objc_designated_initializer));
+		// -(instancetype _Nonnull)initWithAPIClient:(BTAPIClient *)apiClient __attribute__((objc_designated_initializer));
 		[Export ("initWithAPIClient:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (NSObject apiClient);
+		IntPtr Constructor (BTAPIClient apiClient);
 
 		// -(void)startPaymentFlow:(BTPaymentFlowRequest<BTPaymentFlowRequestDelegate> * _Nonnull)request completion:(void (^ _Nonnull)(BTPaymentFlowResult * _Nullable, NSError * _Nullable))completionBlock;
 		[Export ("startPaymentFlow:completion:")]
@@ -216,7 +218,7 @@ namespace BraintreePaymentFlow
 
 		[Wrap ("WeakViewControllerPresentingDelegate")]
 		[NullAllowed]
-		NSObject ViewControllerPresentingDelegate { get; set; }
+		BTViewControllerPresentingDelegate ViewControllerPresentingDelegate { get; set; }
 
 		// @property (nonatomic, weak) id _Nullable viewControllerPresentingDelegate;
 		[NullAllowed, Export ("viewControllerPresentingDelegate", ArgumentSemantic.Weak)]

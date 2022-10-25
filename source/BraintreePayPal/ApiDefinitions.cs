@@ -63,14 +63,14 @@ namespace BraintreePayPal
 		BTPayPalCreditFinancing CreditFinancing { get; }
 	}
 
-	// @interface BTPayPalCheckoutRequest
+	// @interface BTPayPalCheckoutRequest : BTPayPalRequest
 	[DisableDefaultCtor]
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(BTPayPalRequest))]
 	interface BTPayPalCheckoutRequest
 	{
-		// -(instancetype)initWithAmount:(id)amount;
+		// -(instancetype)initWithAmount:(NSString *)amount;
 		[Export ("initWithAmount:")]
-		IntPtr Constructor (NSObject amount);
+		IntPtr Constructor (string amount);
 
 		// @property (readonly, nonatomic, strong) NSString * amount;
 		[Export ("amount", ArgumentSemantic.Strong)]
@@ -152,17 +152,17 @@ namespace BraintreePayPal
 	[DisableDefaultCtor]
 	interface BTPayPalDriver
 	{
-		// -(instancetype _Nonnull)initWithAPIClient:(id)apiClient;
+		// -(instancetype _Nonnull)initWithAPIClient:(BTAPIClient *)apiClient;
 		[Export ("initWithAPIClient:")]
-		IntPtr Constructor (NSObject apiClient);
+		IntPtr Constructor (BTAPIClient apiClient);
 
 		// -(void)requestOneTimePayment:(BTPayPalCheckoutRequest * _Nonnull)request completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock __attribute__((deprecated("Use tokenizePayPalAccount instead.")));
 		[Export ("requestOneTimePayment:completion:")]
 		void RequestOneTimePayment (BTPayPalCheckoutRequest request, Action<BTPayPalAccountNonce, NSError> completionBlock);
 
-		// -(void)requestBillingAgreement:(id)request completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock __attribute__((deprecated("Use tokenizePayPalAccount instead.")));
+		// -(void)requestBillingAgreement:(BTPayPalVaultRequest *)request completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock __attribute__((deprecated("Use tokenizePayPalAccount instead.")));
 		[Export ("requestBillingAgreement:completion:")]
-		void RequestBillingAgreement (NSObject request, Action<BTPayPalAccountNonce, NSError> completionBlock);
+		void RequestBillingAgreement (BTPayPalVaultRequest request, Action<BTPayPalAccountNonce, NSError> completionBlock);
 
 		// -(void)tokenizePayPalAccountWithPayPalRequest:(BTPayPalRequest * _Nonnull)request completion:(void (^ _Nonnull)(BTPayPalAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
 		[Export ("tokenizePayPalAccountWithPayPalRequest:completion:")]

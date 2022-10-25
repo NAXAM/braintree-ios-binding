@@ -15,9 +15,9 @@ namespace BraintreeApplePay
 		[Export ("binData", ArgumentSemantic.Strong)]
 		unsafe BTBinData BinData { get; }
 
-		// -(instancetype _Nullable)initWithJSON:(id)json;
+		// -(instancetype _Nullable)initWithJSON:(BTJSON *)json;
 		[Export ("initWithJSON:")]
-		IntPtr Constructor (NSObject json);
+		IntPtr Constructor (BTJSON json);
 	}
 
 	[Static]

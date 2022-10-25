@@ -62,13 +62,13 @@ namespace BraintreeVenmo
 	[BaseType(typeof(NSObject))]
 	interface BTVenmoDriver
 	{
-		// -(instancetype)initWithAPIClient:(id)apiClient;
+		// -(instancetype)initWithAPIClient:(BTAPIClient *)apiClient;
 		[Export ("initWithAPIClient:")]
-		IntPtr Constructor (NSObject apiClient);
+		IntPtr Constructor (BTAPIClient apiClient);
 
-		// -(void)tokenizeVenmoAccountWithVenmoRequest:(id)venmoRequest completion:(void (^)(BTVenmoAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
+		// -(void)tokenizeVenmoAccountWithVenmoRequest:(BTVenmoRequest *)venmoRequest completion:(void (^)(BTVenmoAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
 		[Export ("tokenizeVenmoAccountWithVenmoRequest:completion:")]
-		unsafe void TokenizeVenmoAccountWithVenmoRequest (NSObject venmoRequest, Action<BTVenmoAccountNonce, NSError> completionBlock);
+		unsafe void TokenizeVenmoAccountWithVenmoRequest (BTVenmoRequest venmoRequest, Action<BTVenmoAccountNonce, NSError> completionBlock);
 
 		// -(id)isiOSAppAvailableForAppSwitch;
 		[Export ("isiOSAppAvailableForAppSwitch")]
