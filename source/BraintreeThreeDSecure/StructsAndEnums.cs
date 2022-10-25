@@ -3,14 +3,6 @@ using ObjCRuntime;
 
 namespace BraintreeThreeDSecure
 {
-	static class CFunctions
-	{
-		// extern int NS_ENUM (int NSInteger, int BTThreeDSecureFlowErrorType);
-		[DllImport ("__Internal")]
-		[Verify (PlatformInvoke)]
-		static extern int NS_ENUM (int NSInteger, int BTThreeDSecureFlowErrorType);
-	}
-
 	[Native]
 	public enum BTThreeDSecureVersion : long
 	{

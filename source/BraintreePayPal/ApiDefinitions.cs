@@ -7,53 +7,54 @@ using BraintreeCore;
 
 namespace BraintreePayPal
 {
-	// @interface PayPal
-	[BaseType(typeof(NSObject))]
-	interface PayPal
+	// @interface BTConfiguration (PayPal)
+	[Category]
+	[BaseType(typeof(BTConfiguration))]
+	interface BTConfiguration_PayPal
 	{
 		// @property (readonly, assign, nonatomic) int isPayPalEnabled;
-		[Export ("isPayPalEnabled")]
-		int IsPayPalEnabled { get;  }
+		[Export("isPayPalEnabled")]
+		int IsPayPalEnabled();
 
 		// @property (readonly, assign, nonatomic) int isBillingAgreementsEnabled;
 		[Export ("isBillingAgreementsEnabled")]
-		int IsBillingAgreementsEnabled { get; }
+		int IsBillingAgreementsEnabled();
 	}
 
-	// @interface BTPayPalAccountNonce
-	[BaseType(typeof(NSObject))]
-	interface BTPayPalAccountNonce
+	// @interface BTPayPalAccountNonce : BTPaymentMethodNonce
+	[BaseType(typeof(BTPaymentMethodNonce))]
+	interface BTPayPalAccountNonce 
 	{
-		// @property (readonly, copy, nonatomic) int * _Nullable email;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable email;
 		[NullAllowed, Export ("email", ArgumentSemantic.Copy)]
 		unsafe string Email { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable firstName;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable firstName;
 		[NullAllowed, Export ("firstName", ArgumentSemantic.Copy)]
-		// @property (readonly, copy, nonatomic) int * _Nullable email;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable email;
 		unsafe string FirstName { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable lastName;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable lastName;
 		[NullAllowed, Export ("lastName", ArgumentSemantic.Copy)]
 		unsafe string LastName { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable phone;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable phone;
 		[NullAllowed, Export ("phone", ArgumentSemantic.Copy)]
 		unsafe string Phone { get; }
 
-		// @property (readonly, nonatomic, strong) int * _Nullable billingAddress;
+		// @property (readonly, nonatomic, strong) BTPostalAddress * _Nullable billingAddress;
 		[NullAllowed, Export ("billingAddress", ArgumentSemantic.Strong)]
-		unsafe string BillingAddress { get; }
+		unsafe BTPostalAddress BillingAddress { get; }
 
-		// @property (readonly, nonatomic, strong) int * _Nullable shippingAddress;
+		// @property (readonly, nonatomic, strong) BTPostalAddress * _Nullable shippingAddress;
 		[NullAllowed, Export ("shippingAddress", ArgumentSemantic.Strong)]
-		unsafe string ShippingAddress { get; }
+		unsafe BTPostalAddress ShippingAddress { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable clientMetadataID;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable clientMetadataID;
 		[NullAllowed, Export ("clientMetadataID", ArgumentSemantic.Copy)]
 		unsafe string ClientMetadataID { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable payerID;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable payerID;
 		[NullAllowed, Export ("payerID", ArgumentSemantic.Copy)]
 		unsafe string PayerID { get; }
 
@@ -71,11 +72,11 @@ namespace BraintreePayPal
 		[Export ("initWithAmount:")]
 		IntPtr Constructor (NSObject amount);
 
-		// @property (readonly, nonatomic, strong) int * amount;
+		// @property (readonly, nonatomic, strong) NSString * amount;
 		[Export ("amount", ArgumentSemantic.Strong)]
 		unsafe string Amount { get; }
 
-		// @property (copy, nonatomic) int * _Nullable currencyCode;
+		// @property (copy, nonatomic) NSString * _Nullable currencyCode;
 		[NullAllowed, Export ("currencyCode", ArgumentSemantic.Copy)]
 		unsafe string CurrencyCode { get; set; }
 

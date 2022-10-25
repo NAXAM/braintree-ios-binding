@@ -6,28 +6,31 @@ using BraintreeCore;
 
 namespace BraintreePaymentFlow
 {
-	// @interface LocalPayment
-	[BaseType(typeof(NSObject))]
+	// @interface BTConfiguration (LocalPayment)
+	[Category]
+	[BaseType(typeof(BTConfiguration))]
 	interface LocalPayment
 	{
 		// @property (readonly, assign, nonatomic) int isLocalPaymentEnabled;
-		[Export ("isLocalPaymentEnabled")]
-		int IsLocalPaymentEnabled { get; }
+		[Export("isLocalPaymentEnabled")]
+		int IsLocalPaymentEnabled();
 	}
 
-	// @interface BTLocalPaymentRequest
-	[BaseType(typeof(NSObject))]
-	interface BTLocalPaymentRequest
+	partial interface IBTPaymentFlowRequestDelegate { }
+
+	// @interface BTLocalPaymentRequest : BTPaymentFlowRequest <BTPaymentFlowRequestDelegate>
+	[BaseType(typeof(BTPaymentFlowRequest))]
+	interface BTLocalPaymentRequest : IBTPaymentFlowRequestDelegate
 	{
-		// @property (copy, nonatomic) int * _Nullable paymentType;
+		// @property (copy, nonatomic) NSString * _Nullable paymentType;
 		[NullAllowed, Export ("paymentType", ArgumentSemantic.Copy)]
 		unsafe string PaymentType { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable paymentTypeCountryCode;
+		// @property (copy, nonatomic) NSString * _Nullable paymentTypeCountryCode;
 		[NullAllowed, Export ("paymentTypeCountryCode", ArgumentSemantic.Copy)]
 		unsafe string PaymentTypeCountryCode { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable merchantAccountID;
+		// @property (copy, nonatomic) NSString * _Nullable merchantAccountID;
 		[NullAllowed, Export ("merchantAccountID", ArgumentSemantic.Copy)]
 		unsafe string MerchantAccountID { get; set; }
 
@@ -35,31 +38,31 @@ namespace BraintreePaymentFlow
 		[NullAllowed, Export ("address", ArgumentSemantic.Copy)]
 		BTPostalAddress Address { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable amount;
+		// @property (copy, nonatomic) NSString * _Nullable amount;
 		[NullAllowed, Export ("amount", ArgumentSemantic.Copy)]
 		unsafe string Amount { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable currencyCode;
+		// @property (copy, nonatomic) NSString * _Nullable currencyCode;
 		[NullAllowed, Export ("currencyCode", ArgumentSemantic.Copy)]
 		unsafe string CurrencyCode { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable displayName;
+		// @property (copy, nonatomic) NSString * _Nullable displayName;
 		[NullAllowed, Export ("displayName", ArgumentSemantic.Copy)]
 		unsafe string DisplayName { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable email;
+		// @property (copy, nonatomic) NSString * _Nullable email;
 		[NullAllowed, Export ("email", ArgumentSemantic.Copy)]
 		unsafe string Email { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable givenName;
+		// @property (copy, nonatomic) NSString * _Nullable givenName;
 		[NullAllowed, Export ("givenName", ArgumentSemantic.Copy)]
 		unsafe string GivenName { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable surname;
+		// @property (copy, nonatomic) NSString * _Nullable surname;
 		[NullAllowed, Export ("surname", ArgumentSemantic.Copy)]
 		unsafe string Surname { get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable phone;
+		// @property (copy, nonatomic) NSString * _Nullable phone;
 		[NullAllowed, Export ("phone", ArgumentSemantic.Copy)]
 		unsafe string Phone { get; set; }
 
@@ -67,7 +70,7 @@ namespace BraintreePaymentFlow
 		[Export ("shippingAddressRequired")]
 		int ShippingAddressRequired { [Bind ("isShippingAddressRequired")] get; set; }
 
-		// @property (copy, nonatomic) int * _Nullable bic;
+		// @property (copy, nonatomic) NSString * _Nullable bic;
 		[NullAllowed, Export ("bic", ArgumentSemantic.Copy)]
 		unsafe string Bic { get; set; }
 
@@ -99,31 +102,31 @@ namespace BraintreePaymentFlow
 		[NullAllowed, Export ("billingAddress", ArgumentSemantic.Strong)]
 		BTPostalAddress BillingAddress { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable clientMetadataID;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable clientMetadataID;
 		[NullAllowed, Export ("clientMetadataID", ArgumentSemantic.Copy)]
 		unsafe string ClientMetadataID { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable email;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable email;
 		[NullAllowed, Export ("email", ArgumentSemantic.Copy)]
 		unsafe string Email { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable firstName;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable firstName;
 		[NullAllowed, Export ("firstName", ArgumentSemantic.Copy)]
 		unsafe string FirstName { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable lastName;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable lastName;
 		[NullAllowed, Export ("lastName", ArgumentSemantic.Copy)]
 		unsafe string LastName { get; }
 
-		// @property (readonly, copy, nonatomic) int * nonce;
+		// @property (readonly, copy, nonatomic) NSString * nonce;
 		[Export ("nonce", ArgumentSemantic.Copy)]
 		unsafe string Nonce { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable payerID;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable payerID;
 		[NullAllowed, Export ("payerID", ArgumentSemantic.Copy)]
 		unsafe string PayerID { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable phone;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable phone;
 		[NullAllowed, Export ("phone", ArgumentSemantic.Copy)]
 		unsafe string Phone { get; }
 
@@ -131,7 +134,7 @@ namespace BraintreePaymentFlow
 		[NullAllowed, Export ("shippingAddress", ArgumentSemantic.Strong)]
 		BTPostalAddress ShippingAddress { get; }
 
-		// @property (readonly, copy, nonatomic) int * type;
+		// @property (readonly, copy, nonatomic) NSString * type;
 		[Export ("type", ArgumentSemantic.Copy)]
 		unsafe string Type { get; }
 

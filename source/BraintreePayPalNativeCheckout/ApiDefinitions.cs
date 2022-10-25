@@ -1,6 +1,8 @@
 using System;
 using BraintreePayPalNativeCheckout;
 using Foundation;
+using BraintreeCore;
+using BraintreePayPal;
 
 namespace BraintreePayPalNativeCheckout
 {
@@ -21,9 +23,9 @@ namespace BraintreePayPalNativeCheckout
 		[DesignatedInitializer]
 		IntPtr Constructor (BTAPIClient apiClient);
 
-		// -(void)tokenizePayPalAccountWithPayPalRequest:(BTPayPalRequest * _Nonnull)nativeRequest completion:(void (^ _Nonnull)(BTPayPalNativeCheckoutAccountNonce * _Nullable, int * _Nullable))completion;
+		// -(void)tokenizePayPalAccountWithPayPalRequest:(BTPayPalRequest * _Nonnull)nativeRequest completion:(void (^ _Nonnull)(BTPayPalNativeCheckoutAccountNonce * _Nullable, NSError * _Nullable))completion;
 		[Export ("tokenizePayPalAccountWithPayPalRequest:completion:")]
-		unsafe void TokenizePayPalAccountWithPayPalRequest (BTPayPalRequest nativeRequest, Action<BTPayPalNativeCheckoutAccountNonce, int*> completion);
+		unsafe void TokenizePayPalAccountWithPayPalRequest (BTPayPalRequest nativeRequest, Action<BTPayPalNativeCheckoutAccountNonce, NSError> completion);
 	}
 
 	// @interface BTPayPalNativeCheckoutRequest

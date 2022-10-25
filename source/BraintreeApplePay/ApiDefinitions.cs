@@ -7,13 +7,13 @@ using BraintreeCore;
 
 namespace BraintreeApplePay
 {
-	// @interface BTApplePayCardNonce
-	[BaseType(typeof(NSObject))]	
+	// @interface BTApplePayCardNonce : BTPaymentMethodNonce
+	[BaseType(typeof(BTPaymentMethodNonce))]	
 	interface BTApplePayCardNonce
 	{
-		// @property (readonly, nonatomic, strong) int * binData;
+		// @property (readonly, nonatomic, strong) BTBinData * binData;
 		[Export ("binData", ArgumentSemantic.Strong)]
-		unsafe NSArray BinData { get; }
+		unsafe BTBinData BinData { get; }
 
 		// -(instancetype _Nullable)initWithJSON:(id)json;
 		[Export ("initWithJSON:")]

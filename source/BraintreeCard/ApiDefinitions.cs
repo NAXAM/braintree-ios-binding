@@ -100,14 +100,6 @@ namespace BraintreeCard
 		string MerchantAccountID { get; set; }
 	}
 
-	[Static]
-	partial interface BTCardClientConstants
-	{
-		// extern NSString *const _Nonnull BTCardClientErrorDomain;
-		[Field ("BTCardClientErrorDomain", "__Internal")]
-		NSString ErrorDomain { get; }
-	}
-
 	// @interface BTCardClient : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -127,13 +119,13 @@ namespace BraintreeCard
 		void TokenizeCard (BTCardRequest request, [NullAllowed] NSDictionary options, Action<BTCardNonce, NSError> completion);
 	}
 
-	// @interface BTCardNonce
-	[BaseType(typeof(NSObject))]
+	// @interface BTCardNonce: BTPaymentMethodNonce
+	[BaseType(typeof(BTPaymentMethodNonce))]
 	interface BTCardNonce
 	{
-		// @property (readonly, assign, nonatomic) int cardNetwork;
+		// @property (readonly, assign, nonatomic) BTCardNetwork cardNetwork;
 		[Export ("cardNetwork")]
-		int CardNetwork { get; }
+		BTCardNetwork CardNetwork { get; }
 
 		// @property (readonly, copy, nonatomic) NSString * _Nullable expirationMonth;
 		[NullAllowed, Export ("expirationMonth")]
@@ -159,9 +151,9 @@ namespace BraintreeCard
 		[NullAllowed, Export ("bin")]
 		string Bin { get; }
 
-		// @property (readonly, nonatomic, strong) int * _Nonnull binData;
+		// @property (readonly, nonatomic, strong) BTBinData * _Nonnull binData;
 		[Export ("binData", ArgumentSemantic.Strong)]
-		unsafe NSArray BinData { get; }
+		unsafe BTBinData BinData { get; }
 
 		// @property (readonly, nonatomic, strong) BTThreeDSecureInfo * _Nonnull threeDSecureInfo;
 		[Export ("threeDSecureInfo", ArgumentSemantic.Strong)]

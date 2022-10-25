@@ -6,17 +6,18 @@ using BraintreeCore;
 
 namespace BraintreeDataCollector
 {
-	// @interface DataCollector
-	[BaseType(typeof(NSObject))]
+	// @interface BTConfiguration (DataCollector)
+	[Category]
+	[BaseType(typeof(BTConfiguration))]
 	interface DataCollector
 	{
 		// @property (readonly, assign, nonatomic) int isKountEnabled;
-		[Export ("isKountEnabled")]
-		int IsKountEnabled { get; }
+		[Export("isKountEnabled")]
+		int IsKountEnabled();
 
-		// @property (readonly, assign, nonatomic) int * kountMerchantID;
-		[Export ("kountMerchantID", ArgumentSemantic.Assign)]
-		unsafe NSArray KountMerchantID { get; }
+		// @property (readonly, assign, nonatomic) NSString * kountMerchantID;
+		[Export("kountMerchantID", ArgumentSemantic.Assign)]
+		unsafe string KountMerchantID();
 	}
 
 	// @interface BTDataCollector : NSObject

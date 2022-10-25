@@ -19,7 +19,6 @@ namespace PayPalDataCollector
 		// +(NSString * _Nonnull)collectPayPalDeviceData __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("collectPayPalDeviceData")]
-		[Verify (MethodToProperty)]
 		string CollectPayPalDeviceData { get; }
 
 		// +(NSString * _Nonnull)collectPayPalDeviceDataWithIsSandbox:(BOOL)isSandbox __attribute__((warn_unused_result("")));

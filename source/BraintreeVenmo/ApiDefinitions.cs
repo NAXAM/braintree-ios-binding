@@ -2,81 +2,76 @@ using System;
 using BraintreeVenmo;
 using Foundation;
 using ObjCRuntime;
+using BraintreeCore;
 
 namespace BraintreeVenmo
 {
-	// @interface Venmo
-	interface Venmo
+	// @interface BTConfiguration (Venmo)
+	[Category]
+	[BaseType(typeof(BTConfiguration))]
+	interface BTConfiguration_Venmo
 	{
 		// @property (readonly, assign, nonatomic) int isVenmoEnabled;
-		[Export ("isVenmoEnabled")]
-		int IsVenmoEnabled { }
+		[Export("isVenmoEnabled")]
+		int IsVenmoEnabled();
 
-		// @property (readonly, nonatomic, strong) int * venmoAccessToken;
+		// @property (readonly, nonatomic, strong) NSString * venmoAccessToken;
 		[Export ("venmoAccessToken", ArgumentSemantic.Strong)]
-		unsafe int* VenmoAccessToken { }
+		unsafe string VenmoAccessToken();
 
-		// @property (readonly, nonatomic, strong) int * venmoMerchantID;
-		[Export ("venmoMerchantID", ArgumentSemantic.Strong)]
-		unsafe int* VenmoMerchantID { }
+		// @property (readonly, nonatomic, strong) NSString * venmoMerchantID;
+		[Export("venmoMerchantID", ArgumentSemantic.Strong)]
+		unsafe string VenmoMerchantID();
 
-		// @property (readonly, nonatomic, strong) int * venmoEnvironment;
-		[Export ("venmoEnvironment", ArgumentSemantic.Strong)]
-		unsafe int* VenmoEnvironment { }
+		// @property (readonly, nonatomic, strong) NSString * venmoEnvironment;
+		[Export("venmoEnvironment", ArgumentSemantic.Strong)]
+		unsafe string VenmoEnvironment();
 	}
 
-	// @interface BTVenmoAccountNonce
+	// @interface BTVenmoAccountNonce : BTPaymentMethodNonce
+	[BaseType(typeof(BTPaymentMethodNonce))]
 	interface BTVenmoAccountNonce
 	{
-		// @property (readonly, copy, nonatomic) int * _Nullable email;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable email;
 		[NullAllowed, Export ("email", ArgumentSemantic.Copy)]
-		unsafe int* Email { get; }
+		unsafe string Email { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable externalId;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable externalId;
 		[NullAllowed, Export ("externalId", ArgumentSemantic.Copy)]
-		unsafe int* ExternalId { get; }
+		unsafe string ExternalId { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable firstName;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable firstName;
 		[NullAllowed, Export ("firstName", ArgumentSemantic.Copy)]
-		unsafe int* FirstName { get; }
+		unsafe string FirstName { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable lastName;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable lastName;
 		[NullAllowed, Export ("lastName", ArgumentSemantic.Copy)]
-		unsafe int* LastName { get; }
+		unsafe string LastName { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable phoneNumber;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable phoneNumber;
 		[NullAllowed, Export ("phoneNumber", ArgumentSemantic.Copy)]
-		unsafe int* PhoneNumber { get; }
+		unsafe string PhoneNumber { get; }
 
-		// @property (readonly, copy, nonatomic) int * _Nullable username;
+		// @property (readonly, copy, nonatomic) NSString * _Nullable username;
 		[NullAllowed, Export ("username", ArgumentSemantic.Copy)]
-		unsafe int* Username { get; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern int NSString;
-		[Field ("NSString", "__Internal")]
-		int NSString { get; }
+		unsafe string Username { get; }
 	}
 
 	// @interface BTVenmoDriver
 	[DisableDefaultCtor]
+	[BaseType(typeof(NSObject))]
 	interface BTVenmoDriver
 	{
 		// -(instancetype)initWithAPIClient:(id)apiClient;
 		[Export ("initWithAPIClient:")]
 		IntPtr Constructor (NSObject apiClient);
 
-		// -(void)tokenizeVenmoAccountWithVenmoRequest:(id)venmoRequest completion:(void (^)(BTVenmoAccountNonce * _Nullable, int * _Nullable))completionBlock;
+		// -(void)tokenizeVenmoAccountWithVenmoRequest:(id)venmoRequest completion:(void (^)(BTVenmoAccountNonce * _Nullable, NSError * _Nullable))completionBlock;
 		[Export ("tokenizeVenmoAccountWithVenmoRequest:completion:")]
-		unsafe void TokenizeVenmoAccountWithVenmoRequest (NSObject venmoRequest, Action<BTVenmoAccountNonce, int*> completionBlock);
+		unsafe void TokenizeVenmoAccountWithVenmoRequest (NSObject venmoRequest, Action<BTVenmoAccountNonce, NSError> completionBlock);
 
 		// -(id)isiOSAppAvailableForAppSwitch;
 		[Export ("isiOSAppAvailableForAppSwitch")]
-		[Verify (MethodToProperty)]
 		NSObject IsiOSAppAvailableForAppSwitch { get; }
 
 		// -(void)openVenmoAppPageInAppStore;
@@ -103,18 +98,5 @@ namespace BraintreeVenmo
 		// @property (copy, nonatomic) NSString * _Nullable displayName;
 		[NullAllowed, Export ("displayName")]
 		string DisplayName { get; set; }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern double BraintreeVenmoVersionNumber;
-		[Field ("BraintreeVenmoVersionNumber", "__Internal")]
-		double BraintreeVenmoVersionNumber { get; }
-
-		// extern const unsigned char [] BraintreeVenmoVersionString;
-		[Field ("BraintreeVenmoVersionString", "__Internal")]
-		byte[] BraintreeVenmoVersionString { get; }
 	}
 }

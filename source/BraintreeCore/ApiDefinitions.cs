@@ -497,9 +497,9 @@ namespace BraintreeCore
 		[DesignatedInitializer]
 		IntPtr Constructor (BTAPIClient apiClient);
 
-		// -(void)fetchPreferredPaymentMethods:(void (^ _Nonnull)(int * _Nonnull))completion;
+		// -(void)fetchPreferredPaymentMethods:(void (^ _Nonnull)(BTPreferredPaymentMethodsResult * _Nonnull))completion;
 		[Export ("fetchPreferredPaymentMethods:")]
-		unsafe void FetchPreferredPaymentMethods (Action<int> completion);
+		unsafe void FetchPreferredPaymentMethods (Action<BTPreferredPaymentMethodsResult> completion);
 	}
 
 	// @interface BTPreferredPaymentMethodsResult : NSObject

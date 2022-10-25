@@ -2,6 +2,8 @@ using System;
 using BraintreeSEPADirectDebit;
 using Foundation;
 using ObjCRuntime;
+using BraintreeCore;
+using AuthenticationServices;
 
 namespace BraintreeSEPADirectDebit
 {
@@ -15,14 +17,14 @@ namespace BraintreeSEPADirectDebit
 		[DesignatedInitializer]
 		IntPtr Constructor (BTAPIClient apiClient);
 
-		// -(void)tokenizeWithRequest:(BTSEPADirectDebitRequest * _Nonnull)request context:(id<ASWebAuthenticationPresentationContextProviding> _Nonnull)context completion:(void (^ _Nonnull)(BTSEPADirectDebitNonce * _Nullable, int * _Nullable))completion __attribute__((availability(ios, introduced=13.0)));
-		[iOS (13,0)]
+		// -(void)tokenizeWithRequest:(BTSEPADirectDebitRequest * _Nonnull)request context:(id<ASWebAuthenticationPresentationContextProviding> _Nonnull)context completion:(void (^ _Nonnull)(BTSEPADirectDebitNonce * _Nullable, NSError * _Nullable))completion __attribute__((availability(ios, introduced=13.0)));
+		//[iOS (13,0)]
 		[Export ("tokenizeWithRequest:context:completion:")]
-		unsafe void TokenizeWithRequest (BTSEPADirectDebitRequest request, ASWebAuthenticationPresentationContextProviding context, Action<BTSEPADirectDebitNonce, int*> completion);
+		unsafe void TokenizeWithRequest (BTSEPADirectDebitRequest request, IASWebAuthenticationPresentationContextProviding context, Action<BTSEPADirectDebitNonce, NSError> completion);
 
-		// -(void)tokenizeWithRequest:(BTSEPADirectDebitRequest * _Nonnull)request completion:(void (^ _Nonnull)(BTSEPADirectDebitNonce * _Nullable, int * _Nullable))completion;
+		// -(void)tokenizeWithRequest:(BTSEPADirectDebitRequest * _Nonnull)request completion:(void (^ _Nonnull)(BTSEPADirectDebitNonce * _Nullable, NSError * _Nullable))completion;
 		[Export ("tokenizeWithRequest:completion:")]
-		unsafe void TokenizeWithRequest (BTSEPADirectDebitRequest request, Action<BTSEPADirectDebitNonce, int*> completion);
+		unsafe void TokenizeWithRequest (BTSEPADirectDebitRequest request, Action<BTSEPADirectDebitNonce, NSError> completion);
 	}
 
 	// @interface BTSEPADirectDebitNonce : NSObject

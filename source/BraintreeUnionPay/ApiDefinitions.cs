@@ -1,6 +1,8 @@
 using System;
 using BraintreeUnionPay;
 using Foundation;
+using BraintreeCore;
+using BraintreeCard;
 
 namespace BraintreeUnionPay
 {
@@ -25,8 +27,10 @@ namespace BraintreeUnionPay
 		bool IsSupported { get; set; }
 	}
 
-	// @interface UnionPay
-	interface UnionPay
+	// @interface BTCardClient (UnionPay)
+	[Category]
+	[BaseType(typeof(BTCardClient))]
+	interface BTCardClient_UnionPay
 	{
 		// -(void)fetchCapabilities:(NSString * _Nonnull)cardNumber completion:(void (^ _Nonnull)(BTCardCapabilities * _Nullable, NSError * _Nullable))completion;
 		[Export ("fetchCapabilities:completion:")]
@@ -37,24 +41,13 @@ namespace BraintreeUnionPay
 		void EnrollCard (NSObject request, Action<NSString, bool, NSError> completion);
 	}
 
-	// @interface UnionPay
-	interface UnionPay
+	// @interface BTConfiguration (UnionPay)
+	[Category]
+	[BaseType(typeof(BTConfiguration))]
+	interface BTConfiguration_UnionPay
 	{
 		// @property (readonly, assign, nonatomic) BOOL isUnionPayEnabled;
-		[Export ("isUnionPayEnabled")]
-		bool IsUnionPayEnabled { }
-	}
-
-	[Static]
-	[Verify (ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern double BraintreeUnionPayVersionNumber;
-		[Field ("BraintreeUnionPayVersionNumber", "__Internal")]
-		double BraintreeUnionPayVersionNumber { get; }
-
-		// extern const unsigned char [] BraintreeUnionPayVersionString;
-		[Field ("BraintreeUnionPayVersionString", "__Internal")]
-		byte[] BraintreeUnionPayVersionString { get; }
+		[Export("isUnionPayEnabled")]
+		bool IsUnionPayEnabled();
 	}
 }
