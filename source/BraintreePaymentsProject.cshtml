@@ -5,7 +5,7 @@
 @{
     var targetFrameworkMoniker = "xamarin.ios10";
     var dotnetFrameworkMoniker = "net6.0-ios";
-    var platformVersion = Model.PlatformVersion ?? Model.Config.PlatformVersion ?? "12.0";
+    var platformVersion = Model.PlatformVersion ?? "12.0";
     var name = Model.Name.Contains("/") ? Model.Name.Split('/')[1] : Model.Name;
     var sourceFolderDir = @"..\..\source\";
     var sourceFolder = sourceFolderDir + Model.Name.Replace("/", "\\");
@@ -19,15 +19,15 @@
         <IsBindingProject>true</IsBindingProject>
         <NoBindingEmbedding>true</NoBindingEmbedding>
         <SupportedOSPlatformVersion>@(platformVersion)</SupportedOSPlatformVersion>
-        <RootNamespace>@(Model.PackageConfig.NuGetPackageId.Replace(".iOS", string.Empty))</RootNamespace>
-        <AssemblyName>@(Model.PackageConfig.NuGetPackageId)</AssemblyName>
+        <RootNamespace>@(Model.NormalizedName)</RootNamespace>
+        <AssemblyName>@(Model.NuGetPackageId)</AssemblyName>
         <AssemblyVersion>@(Model.NuGetVersion)</AssemblyVersion>
         <FileVersion>@(Model.NuGetVersion)</FileVersion>
         <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <PropertyGroup>
-        <PackageId>@(Model.PackageConfig.NuGetPackageId)</PackageId>
+        <PackageId>@(Model.NuGetPackageId)</PackageId>
         <Title>Braintree iOS SDK - @(name)</Title>
         <Summary>C# bindings for Braintree iOS SDK - @(name)</Summary>
         <Description>C# bindings for Braintree iOS SDK - @(name)</Description>
@@ -47,8 +47,8 @@
         <Folder Include="Resources\" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="@(Model.PackageConfig.NuGetPackageId).targets" Pack="True" PackagePath="build/@(Model.PackageConfig.NuGetPackageId).targets" />
-        <None Include="@(Model.PackageConfig.NuGetPackageId).targets" Pack="True" PackagePath="buildTransitive/@(Model.PackageConfig.NuGetPackageId).targets" />
+        <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="build/@(Model.NuGetPackageId).targets" />
+        <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="buildTransitive/@(Model.NuGetPackageId).targets" />
         <None Include="@(sourceFolderDir)External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
         <None Include="@(sourceFolderDir)License.md" Pack="True" PackagePath="License.md" />
     </ItemGroup>
@@ -59,24 +59,22 @@
          project so sidecar can work properly. -->
     <!-- This workaround was designed like this to have the same
          NativeReference tag for the iOS binding and for the .targets file -->
-    <Import Project="@(Model.PackageConfig.NuGetPackageId).targets" />
+    <Import Project="@(Model.NuGetPackageId).targets" />
     <ItemGroup>
-        <_NativeReference Include="..\..\frameworks\@(Model.PackageConfig.NormalizedName).xcframework">
-            <_Id>$(_@(Model.PackageConfig.NormalizedName)Id)</_Id>
+        <_NativeReference Include="..\..\frameworks\@(Model.NormalizedName).xcframework">
+            <_Id>$(_@(Model.NormalizedName)Id)</_Id>
         </_NativeReference>
     </ItemGroup>
     <!-- End of workaround -->
     <ItemGroup Condition="'$(TargetFramework)' == '@(targetFrameworkMoniker)'">
-        <Compile Remove="@(sourceFolder)\ApiDefinition.cs" />
-        <Compile Remove="@(sourceFolder)\Enums.cs" />
-        <Compile Remove="@(sourceFolder)\Loader.cs" />
+        <Compile Remove="@(sourceFolder)\ApiDefinitions.cs" />
+        <Compile Remove="@(sourceFolder)\StructsAndEnums.cs" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="@(sourceFolder)\Loader.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
-        <ObjcBindingCoreSource Include="@(sourceFolder)\Enums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+        <ObjcBindingCoreSource Include="@(sourceFolder)\StructsAndEnums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
     </ItemGroup>
     <ItemGroup>
-        <ObjcBindingApiDefinition Include="@(sourceFolder)\ApiDefinition.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+        <ObjcBindingApiDefinition Include="@(sourceFolder)\ApiDefinitions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Xamarin.Build.Download" Version="0.11.3" PrivateAssets="None" />
@@ -86,11 +84,11 @@
         {
             if (dep.IsProjectReference)
             {
-        <ProjectReference Include="@(dep.PodConfig.NormalizedName)\@(dep.PodConfig.NormalizedName).csproj" PrivateAssets="none" />
+         <ProjectReference Include="..\@(dep.NormalizedName)\@(dep.NuGetPackageId).csproj" PrivateAssets="none" />
             }
             else
             {
-        <PackageReference Include="@(dep.PackageConfig.NuGetPackageId)" Version="@(dep.PackageConfig.NuGetVersion)" />
+         <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
             }
         }
     </ItemGroup>

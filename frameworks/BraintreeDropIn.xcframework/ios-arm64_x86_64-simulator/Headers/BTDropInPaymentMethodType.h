@@ -1,1 +1,21 @@
-../../../BraintreeDropIn/Sources/BraintreeDropIn/Public/BraintreeDropIn/BTDropInPaymentMethodType.h
+/// Credit card types
+typedef NS_ENUM(NSInteger, BTDropInPaymentMethodType) {
+    BTDropInPaymentMethodTypeUnknown = 0,
+    BTDropInPaymentMethodTypeAMEX,
+    BTDropInPaymentMethodTypeDinersClub,
+    BTDropInPaymentMethodTypeDiscover,
+    BTDropInPaymentMethodTypeMasterCard,
+    BTDropInPaymentMethodTypeVisa,
+    BTDropInPaymentMethodTypeJCB,
+    BTDropInPaymentMethodTypeLaser,
+    BTDropInPaymentMethodTypeMaestro,
+    BTDropInPaymentMethodTypeUnionPay,
+    BTDropInPaymentMethodTypeHiper,
+    BTDropInPaymentMethodTypeHipercard,
+    BTDropInPaymentMethodTypeSolo,
+    BTDropInPaymentMethodTypeSwitch,
+    BTDropInPaymentMethodTypeUKMaestro,
+    BTDropInPaymentMethodTypePayPal,
+    BTDropInPaymentMethodTypeVenmo,
+    BTDropInPaymentMethodTypeApplePay,
+};

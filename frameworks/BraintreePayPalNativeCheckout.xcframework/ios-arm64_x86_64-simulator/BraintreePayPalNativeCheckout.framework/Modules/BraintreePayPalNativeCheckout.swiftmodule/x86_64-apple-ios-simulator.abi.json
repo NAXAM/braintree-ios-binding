@@ -1,0 +1,1287 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "BraintreeCore",
+        "printedName": "BraintreeCore",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "PayPalCheckout",
+        "printedName": "PayPalCheckout",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BTPayPalNativeCheckoutClient",
+        "printedName": "BTPayPalNativeCheckoutClient",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(apiClient:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BTPayPalNativeCheckoutClient",
+                "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutClient",
+                "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutClient"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BTAPIClient",
+                "printedName": "BraintreeCore.BTAPIClient",
+                "usr": "c:objc(cs)BTAPIClient"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutClient(im)initWithAPIClient:",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE6ClientC03apiG0ACSo11BTAPIClientC_tcfc",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "objc_name": "initWithAPIClient:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "tokenizePayPalAccount",
+            "printedName": "tokenizePayPalAccount(with:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BTPayPalRequest",
+                "printedName": "BraintreePayPal.BTPayPalRequest",
+                "usr": "c:objc(cs)BTPayPalRequest"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce?, Swift.Error?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce?, Swift.Error?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "BTPayPalNativeCheckoutAccountNonce",
+                            "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce",
+                            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutAccountNonce"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutClient(im)tokenizePayPalAccountWithPayPalRequest:completion:",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE6ClientC08tokenizebC7Account4with10completionySo0fC7RequestC_yAA0fcdeI5NonceCSg_s5Error_pSgtctF",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "objc_name": "tokenizePayPalAccountWithPayPalRequest:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BTPayPalNativeCheckoutClient",
+                "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutClient",
+                "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutClient"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutClient(im)init",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE6ClientCACycfc",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutClient",
+        "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE6ClientC",
+        "moduleName": "BraintreePayPalNativeCheckout",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BTPayPalNativeCheckoutRequest",
+        "printedName": "BTPayPalNativeCheckoutRequest",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(amount:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BTPayPalNativeCheckoutRequest",
+                "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutRequest",
+                "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutRequest"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutRequest(im)initWithAmount:",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE7RequestC6amountACSS_tcfc",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithAmount:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutRequest",
+        "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE7RequestC",
+        "moduleName": "BraintreePayPalNativeCheckout",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)BTPayPalCheckoutRequest",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "BraintreePayPal.BTPayPalCheckoutRequest",
+          "BraintreePayPal.BTPayPalRequest",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreeCore",
+        "printedName": "BraintreeCore",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "PayPalCheckout",
+        "printedName": "PayPalCheckout",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreeCore",
+        "printedName": "BraintreeCore",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreeCore",
+        "printedName": "BraintreeCore",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "PayPalCheckout",
+        "printedName": "PayPalCheckout",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BTPayPalNativeCheckoutAccountNonce",
+        "printedName": "BTPayPalNativeCheckoutAccountNonce",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC4typeSSvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC4typeSSvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC4typeSSvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC4typeSSvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "nonce",
+            "printedName": "nonce",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5nonceSSvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5nonceSSvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5nonceSSvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5nonceSSvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isDefault",
+            "printedName": "isDefault",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9isDefaultSbvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9isDefaultSbvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9isDefaultSbvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9isDefaultSbvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "email",
+            "printedName": "email",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5emailSSSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5emailSSSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5emailSSSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5emailSSSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "firstName",
+            "printedName": "firstName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9firstNameSSSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9firstNameSSSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9firstNameSSSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC9firstNameSSSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "lastName",
+            "printedName": "lastName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC8lastNameSSSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC8lastNameSSSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC8lastNameSSSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC8lastNameSSSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "phone",
+            "printedName": "phone",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5phoneSSSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5phoneSSSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5phoneSSSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC5phoneSSSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "billingAddress",
+            "printedName": "billingAddress",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BraintreeCore.BTPostalAddress?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BTPostalAddress",
+                    "printedName": "BraintreeCore.BTPostalAddress",
+                    "usr": "c:objc(cs)BTPostalAddress"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC14billingAddressSo08BTPostalJ0CSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC14billingAddressSo08BTPostalJ0CSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BraintreeCore.BTPostalAddress?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BTPostalAddress",
+                        "printedName": "BraintreeCore.BTPostalAddress",
+                        "usr": "c:objc(cs)BTPostalAddress"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC14billingAddressSo08BTPostalJ0CSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC14billingAddressSo08BTPostalJ0CSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shippingAddress",
+            "printedName": "shippingAddress",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BraintreeCore.BTPostalAddress?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BTPostalAddress",
+                    "printedName": "BraintreeCore.BTPostalAddress",
+                    "usr": "c:objc(cs)BTPostalAddress"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC15shippingAddressSo08BTPostalJ0CSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC15shippingAddressSo08BTPostalJ0CSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "BraintreeCore.BTPostalAddress?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BTPostalAddress",
+                        "printedName": "BraintreeCore.BTPostalAddress",
+                        "usr": "c:objc(cs)BTPostalAddress"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC15shippingAddressSo08BTPostalJ0CSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC15shippingAddressSo08BTPostalJ0CSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "clientMetadataID",
+            "printedName": "clientMetadataID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC16clientMetadataIDSSSgvp",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC16clientMetadataIDSSSgvp",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC16clientMetadataIDSSSgvg",
+                "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC16clientMetadataIDSSSgvg",
+                "moduleName": "BraintreePayPalNativeCheckout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BTPayPalNativeCheckoutAccountNonce",
+                "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce",
+                "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutAccountNonce"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutAccountNonce(im)init",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceCACycfc",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeCheckoutAccountNonce",
+        "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycdE12AccountNonceC",
+        "moduleName": "BraintreePayPalNativeCheckout",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreeCore",
+        "printedName": "BraintreeCore",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "PayPalCheckout",
+        "printedName": "PayPalCheckout",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreePayPal",
+        "printedName": "BraintreePayPal",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BTPayPalNativeVaultRequest",
+        "printedName": "BTPayPalNativeVaultRequest",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BTPayPalNativeVaultRequest",
+                "printedName": "BraintreePayPalNativeCheckout.BTPayPalNativeVaultRequest",
+                "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeVaultRequest"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeVaultRequest(im)init",
+            "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycD12VaultRequestCACycfc",
+            "moduleName": "BraintreePayPalNativeCheckout",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BraintreePayPalNativeCheckout@objc(cs)BTPayPalNativeVaultRequest",
+        "mangledName": "$s29BraintreePayPalNativeCheckout05BTPaycD12VaultRequestC",
+        "moduleName": "BraintreePayPalNativeCheckout",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)BTPayPalVaultRequest",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "BraintreePayPal.BTPayPalVaultRequest",
+          "BraintreePayPal.BTPayPalRequest",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "BraintreeCore",
+        "printedName": "BraintreeCore",
+        "declKind": "Import",
+        "moduleName": "BraintreePayPalNativeCheckout"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Volumes\/ws\/bindings\/braintree-ios-binding\/externals\/.build\/checkouts\/braintree_ios\/Sources\/BraintreePayPalNativeCheckout\/BTPayPalNativeCheckoutClient.swift",
+      "kind": "StringLiteral",
+      "offset": 310,
+      "length": 28,
+      "value": "\"BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutClient\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/bindings\/braintree-ios-binding\/externals\/.build\/checkouts\/braintree_ios\/Sources\/BraintreePayPalNativeCheckout\/BTPayPalNativeCheckoutRequest.swift",
+      "kind": "StringLiteral",
+      "offset": 319,
+      "length": 42,
+      "value": "\"v1\/paypal_hermes\/create_payment_resource\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/bindings\/braintree-ios-binding\/externals\/.build\/checkouts\/braintree_ios\/Sources\/BraintreePayPalNativeCheckout\/BTPayPalNativeCheckoutAccountNonce.swift",
+      "kind": "StringLiteral",
+      "offset": 215,
+      "length": 8,
+      "value": "\"PayPal\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/bindings\/braintree-ios-binding\/externals\/.build\/checkouts\/braintree_ios\/Sources\/BraintreePayPalNativeCheckout\/BTPayPalNativeCheckoutAccountNonce.swift",
+      "kind": "StringLiteral",
+      "offset": 137,
+      "length": 34,
+      "value": "\"BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/bindings\/braintree-ios-binding\/externals\/.build\/checkouts\/braintree_ios\/Sources\/BraintreePayPalNativeCheckout\/BTPayPalNativeVaultRequest.swift",
+      "kind": "StringLiteral",
+      "offset": 224,
+      "length": 42,
+      "value": "\"v1\/paypal_hermes\/setup_billing_agreement\""
+    }
+  ]
+}

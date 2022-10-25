@@ -54,22 +54,22 @@ let package = Package(
 
 	private void CreatePackageSwiftFile (BuildContext context, string outputPath)
 	{
-		var packages = new List<string>();
+		//var packages = new List<string>();
 
-		foreach (var project in context.Projects)
-		{
-			var packageSource = project.Spec.Source;
+		//foreach (var project in context.Projects)
+		//{
+		//	var packageSource = project.Spec.Source;
 
-			if (packageSource.Git == null)
-			{
-				continue;
-			}
+		//	if (packageSource.Git == null)
+		//	{
+		//		continue;
+		//	}
 
-			packages.Add(@$".package(url: ""{packageSource.Git}"", exact: ""{project.Spec.Version}"")");
-		}
+		//	packages.Add(@$".package(url: ""{packageSource.Git}"", exact: ""{project.Spec.Version}"")");
+		//}
 
-		var packageSwiftFileContent = string.Format(packageSwiftTemplate, string.Join(",\n        ", packages));
+		//var packageSwiftFileContent = string.Format(packageSwiftTemplate, string.Join(",\n        ", packages));
 
-		File.WriteAllText(outputPath, packageSwiftFileContent);
+		//File.WriteAllText(outputPath, packageSwiftFileContent);
 	}
 }

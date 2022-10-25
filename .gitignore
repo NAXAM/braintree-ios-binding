@@ -10,7 +10,7 @@ Pods/
 build
 generated/
 .vs/
-*.framework
+
 _._
 externals
 artifacts

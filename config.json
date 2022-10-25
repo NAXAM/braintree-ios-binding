@@ -118,7 +118,7 @@
             "nugetId": "BraintreeThreeDSecure.iOS",
             "name": "BraintreeThreeDSecure",
             "deps": [
-              "BraintreeCore", "CardinalMobile", "PPRiskMagnes"
+              "BraintreeCore", "BraintreeCard", "BraintreePaymentFlow", "CardinalMobile", "PPRiskMagnes"
             ]
           },
           {
