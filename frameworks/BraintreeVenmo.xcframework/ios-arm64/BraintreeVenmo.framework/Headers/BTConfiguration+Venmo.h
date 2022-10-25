@@ -7,7 +7,7 @@
 /**
  BTConfiguration category for Venmo
  */
-@interface BTConfiguration (Venmo)
+    @interface BTConfiguration (Venmo)
 
 /**
  Indicates whether Venmo is enabled for the merchant account.
