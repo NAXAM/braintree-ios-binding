@@ -17,7 +17,11 @@
           Condition="('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '') OR '$(IsBindingProject)' == 'true'">
     <ItemGroup>
       <_NativeReference Update="@@(_NativeReference)" Condition="'%(_NativeReference._Id)' == '$(_@(Model.NormalizedName)Id)'">
+        @if (Model.NormalizedName == "BraintreeDropIn") {
+        <Kind>Static</Kind>
+        } else {
         <Kind>Framework</Kind>
+        }
         <SmartLink>True</SmartLink>
         <ForceLoad>True</ForceLoad>
         <LinkerFlags>-ObjC -lz</LinkerFlags>

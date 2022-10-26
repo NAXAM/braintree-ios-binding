@@ -5,9 +5,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <ApplicationTitle>DropInQs</ApplicationTitle>
+    <ApplicationId>tech.tuyen-vuduc.dropinqs</ApplicationId>
+    <ApplicationDisplayVersion>9.7.0</ApplicationDisplayVersion>
+    <ApplicationVersion>9.7.0</ApplicationVersion>
+    <AppBundleDir>$(DeviceSpecificOutputPath)$(_AppBundleName).app</AppBundleDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
+    <WarningLevel>4</WarningLevel>
+    <MtouchExtraArgs>-v -v -v -v --registrar:static</MtouchExtraArgs>
+    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
@@ -24,6 +33,12 @@
     <ProjectReference Include="..\..\..\generated\BraintreeUnionPay\BraintreeUnionPay.iOS.csproj" />
     <ProjectReference Include="..\..\..\generated\BraintreeVenmo\BraintreeVenmo.iOS.csproj" />
     <ProjectReference Include="..\..\..\generated\PayPalDataCollector\PayPalDataCollector.iOS.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Xamarin.Swift" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Swift" Version="1.0.11" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Update="Assets.xcassets\AppIcon.appiconset\Icon167.png">

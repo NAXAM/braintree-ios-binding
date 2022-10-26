@@ -36,7 +36,8 @@
               "BraintreeThreeDSecure",
               "BraintreeUnionPay",
               "BraintreeVenmo",
-              "PayPalDataCollector"
+              "PayPalDataCollector",
+              "Xamarin.Swift"
             ]
           }
         ],
@@ -104,7 +105,7 @@
             "nugetId": "BraintreePayPalNativeCheckout.iOS",
             "name": "BraintreePayPalNativeCheckout",
             "deps": [
-              "BraintreeCore", "BraintreePayPal"
+              "BraintreeCore", "BraintreePayPal", "Xamarin.Swift"
             ]
           },
           {
@@ -139,7 +140,7 @@
             "nugetId": "PayPalDataCollector.iOS",
             "name": "PayPalDataCollector",
             "deps": [
-              "BraintreeCore", "PPRiskMagnes"
+              "BraintreeCore", "PPRiskMagnes", "Xamarin.Swift"
             ]
           }
         ],
@@ -171,6 +172,13 @@
         "version": "5.4.0",
         "nugetVersion": "5.4.0",
         "nugetId": "PPRiskMagnes.iOS",
+        "dependencyOnly": true
+      },
+      {
+        "name": "Xamarin.Swift",
+        "version": "1.0.11",
+        "nugetVersion": "1.0.11",
+        "nugetId": "Xamarin.Swift",
         "dependencyOnly": true
       }
     ]
