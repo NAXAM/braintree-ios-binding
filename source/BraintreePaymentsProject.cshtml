@@ -77,6 +77,13 @@
         <ObjcBindingApiDefinition Include="@(sourceFolder)\ApiDefinitions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
     </ItemGroup>
     <ItemGroup>
+        @foreach (var dep in Model.NuGetDependencies)
+        {
+            if (!dep.IsProjectReference)
+            {
+        <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
+            }
+        }
         <PackageReference Include="Xamarin.Build.Download" Version="0.11.3" PrivateAssets="None" />
     </ItemGroup>
     <ItemGroup>
@@ -84,11 +91,7 @@
         {
             if (dep.IsProjectReference)
             {
-         <ProjectReference Include="..\@(dep.NormalizedName)\@(dep.NuGetPackageId).csproj" PrivateAssets="none" />
-            }
-            else
-            {
-         <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" />
+        <ProjectReference Include="..\@(dep.NormalizedName)\@(dep.NuGetPackageId).csproj" PrivateAssets="none" />
             }
         }
     </ItemGroup>
