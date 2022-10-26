@@ -1,13 +1,13 @@
 # BrainTree for Xamarin.iOS
 
-A Xamarin.Android binding library for [BrainTree DropIn iOS](https://cocoapods.org/pods/BraintreeDropIn) library.
+A Xamarin.Android binding library for [Braintree DropIn iOS](https://cocoapods.org/pods/BraintreeDropIn) library.
 
 > The library used to be under the name of `Naxam.BraintreeDropIn.iOS`. Naxam is no longer in business for years hence I remove the trademark from the name and hope it more neutral for the community to contribute.
 
 ## Installation
 
 ```
-Install-Package BraintreePayments.API.DropIn.iOS
+Install-Package BraintreeDropIn.iOS
 ```
 
 ## Usage
@@ -46,9 +46,19 @@ dropInClient.SetListener(this);
 dropInClient.LaunchDropIn(dropInRequest);
 ```
 
-
 Plz follow official guide from Braintree [here](https://developer.paypal.com/braintree/docs/start/hello-client/ios/v5) for further details.
 
+## Run on your machine
+
+1) Generate project files
+```
+sh build.sh --target=binderate
+```
+2) Open solution file
+```
+open generated/braintree-ios.sln
+```
+3) Build with Visual Studio for Mac
 
 ## Maintainer
 This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>
