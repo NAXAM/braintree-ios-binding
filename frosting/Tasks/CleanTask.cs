@@ -1,7 +1,6 @@
 ﻿using Path = System.IO.Path;
 
 [TaskName ("clean")]
-[IsDependentOn(typeof(BinderateTask))]
 public sealed class CleanTask : FrostingTask<BuildContext>
 {
 	public override void Run(BuildContext context)

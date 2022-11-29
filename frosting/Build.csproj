@@ -8,12 +8,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <LangVersion>latestmajor</LangVersion>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Frosting" Version="2.2.0" />
+    <PackageReference Include="Cake.Frosting" Version="3.0.0" />
     <PackageReference Include="CocoaPods.Net.Generator" Version="0.1.0" />
     <PackageReference Include="Cake.FileHelpers" Version="5.0.0" />
     <PackageReference Include="Cake.XCode" Version="5.0.0" />

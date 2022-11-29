@@ -20,7 +20,7 @@ namespace BraintreePaymentFlow
 
 	// @interface BTLocalPaymentRequest : BTPaymentFlowRequest <BTPaymentFlowRequestDelegate>
 	[BaseType(typeof(BTPaymentFlowRequest))]
-	interface BTLocalPaymentRequest : IBTPaymentFlowRequestDelegate
+	interface BTLocalPaymentRequest : BTPaymentFlowRequestDelegate
 	{
 		// @property (copy, nonatomic) NSString * _Nullable paymentType;
 		[NullAllowed, Export ("paymentType", ArgumentSemantic.Copy)]

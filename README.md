@@ -50,15 +50,14 @@ Plz follow official guide from Braintree [here](https://developer.paypal.com/bra
 
 ## Run on your machine
 
-1) Generate project files
+- Generate project files
 ```
 sh build.sh --target=binderate
 ```
-2) Open solution file
+- Pack nuget packages
 ```
-open generated/braintree-ios.sln
+sh build.sh --target=nuget --base-path=$PWD
 ```
-3) Build with Visual Studio for Mac
 
 ## Maintainer
 This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>

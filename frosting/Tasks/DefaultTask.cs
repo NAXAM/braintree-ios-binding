@@ -1,5 +1,5 @@
 ﻿[TaskName("Default")]
-[IsDependentOn(typeof(BinderateTask))]
+[IsDependentOn(typeof(NugetTask))]
 public class DefaultTask : FrostingTask
 {
 }

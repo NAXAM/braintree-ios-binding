@@ -151,28 +151,55 @@
         "version": "0.100.0",
         "nugetVersion": "0.100.0",
         "nugetId": "PayPalCheckout.iOS",
-        "dependencyOnly": true
+        "dependencyOnly": false,
+        "targets": [
+          {
+            "nugetId": "PayPalCheckout.iOS",
+            "name": "PayPalCheckout",
+            "deps": [
+              "Xamarin.Swift"
+            ]
+          }
+        ]
       },
       {
         "name": "CardinalMobile",
         "version": "2.2.5.3",
         "nugetVersion": "2.2.5.3",
         "nugetId": "CardinalMobile.iOS",
-        "dependencyOnly": true
+        "dependencyOnly": false,
+        "targets": [
+          {
+            "nugetId": "CardinalMobile.iOS",
+            "name": "CardinalMobile"
+          }
+        ]
       },
       {
         "name": "KountDataCollector",
         "version": "4.1.5",
         "nugetVersion": "4.1.5",
         "nugetId": "KountDataCollector.iOS",
-        "dependencyOnly": true
+        "dependencyOnly": false,
+        "targets": [
+          {
+            "nugetId": "KountDataCollector.iOS",
+            "name": "KountDataCollector"
+          }
+        ]
       },
       {
         "name": "PPRiskMagnes",
         "version": "5.4.0",
         "nugetVersion": "5.4.0",
         "nugetId": "PPRiskMagnes.iOS",
-        "dependencyOnly": true
+        "dependencyOnly": false,
+        "targets": [
+          {
+            "nugetId": "PPRiskMagnes.iOS",
+            "name": "PPRiskMagnes"
+          }
+        ]
       },
       {
         "name": "Xamarin.Swift",

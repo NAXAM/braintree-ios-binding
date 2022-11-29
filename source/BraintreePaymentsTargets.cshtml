@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+@using System
 @using System.Linq
 @using System.IO
 @using System.Xml.Linq
+@{
+    var downloadLinks = new System.Collections.Generic.Dictionary<string, string> {
+        { "BraintreeCore", "https://drive.google.com/uc?id=1sT4ayliXsCER_kI7QG6isvCaT2szZPFp&export=download"},
+        { "BraintreePayPalNativeCheckout", "https://drive.google.com/uc?id=17KoUFqHGfR4mO9f97nHUHYHpcb3LjL5d&export=download"},
+        { "BraintreeSEPADirectDebit", "https://drive.google.com/uc?id=1KWhJl3AGg5j32pJJaj0d9wjz2ClVdv5Q&export=download"},
+        { "BraintreeAmericanExpress", "https://drive.google.com/uc?id=1XYeNzl_QlrmVSnrcXPcRpit1jZ1oq3Dw&export=download"},
+        { "BraintreeDataCollector", "https://drive.google.com/uc?id=1x0iciXz7UylngeqS4LV1_5S-JZQGZoGK&export=download"},
+        { "BraintreePaymentFlow", "https://drive.google.com/uc?id=1TZnv01TzihuDXdxzdxsnd_0ewBiqnNDI&export=download"},
+        { "BraintreeThreeDSecure", "https://drive.google.com/uc?id=1UGVmdhKbjDq-kWYbELd6hWaWhcKCjpzY&export=download"},
+        { "BraintreeApplePay", "https://drive.google.com/uc?id=1Tmdxn4u-6SGQk9iavqXlR8iOCAzubdih&export=download"},
+        { "BraintreeDropIn", "https://drive.google.com/uc?id=1UC4pi_LindPdIMQOfANIeic8-cYWnTcH&export=download"},
+        { "BraintreeUnionPay", "https://drive.google.com/uc?id=121HBunK6MuO-xBTvt_77yhV9lc6yWsYj&export=download"},
+        { "PayPalDataCollector", "https://drive.google.com/uc?id=1Mv1I2RLk4PuuPSjceIdMvXSlC0DRr9Z0&export=download"},
+        { "BraintreeCard", "https://drive.google.com/uc?id=1Sprf5YhWf6rQU9QUNlSa-TocOFucAnu-&export=download"},
+        { "BraintreePayPal", "https://drive.google.com/uc?id=1dio54XPe82zrrEMr7_V_P4SR-pC-8HrW&export=download"},
+        { "BraintreeVenmo", "https://drive.google.com/uc?id=1lDeuWKWMOZYYFN781oM6YWmYpsRzWUsc&export=download"},
+        { "CardinalMobile", "https://drive.google.com/uc?id=15AEgq3h5cIVwfHq1dFtQy4GjTKnh0Tyl&export=download"},
+        { "KountDataCollector", "https://drive.google.com/uc?id=1eDySEMBnUUMuwL1qjMKxap2m3Q5JPZYU&export=download"},
+        { "PPRiskMagnes", "https://drive.google.com/uc?id=1i1Jyqm_yufyMoyi_MZqraaCzmEV9ZYum&export=download"},
+        { "PayPalCheckout", "https://drive.google.com/uc?id=164OK19YoO-_lTHLSiwPLifTvEMwTSq5M&export=download"},
+    };
 
+    var staticFrameworks = new string[] {
+      "CardinalMobile"
+    };
+    var staticLibs = new string[] {
+      "KountDataCollector"
+    };
+    var kind = staticFrameworks.Any(x => x == Model.NormalizedName) ? "Static" : "Framework";
+}
 <Project>
-  <PropertyGroup>
-      <_@(Model.NormalizedName)Id>@(Model.NormalizedName)</_@(Model.NormalizedName)Id>
-  </PropertyGroup>
-  <ItemGroup Condition="('$(OutputType)' != 'Library' OR '$(IsAppExtension)' == 'True') AND ('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '')">
-    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\@(Model.NuGetPackageId).resources\@(Model.NormalizedName).xcframework">
-        <_Id>$(_@(Model.NormalizedName)Id)</_Id>
-    </_NativeReference>
+	<PropertyGroup>
+		@Raw("<_" + Model.NormalizedName)AssemblyName>@(Model.NormalizedName).iOS, Version=@(Model.NuGetVersion), Culture=neutral, PublicKeyToken=null @Raw("</_" + Model.NormalizedName + "AssemblyName>")
+		@Raw("<_" + Model.NormalizedName)ItemsFolder>@(Model.NormalizedName)-@(Model.NuGetVersion)@Raw("</_" + Model.NormalizedName + "ItemsFolder>")
+		@Raw("<_" + Model.NormalizedName)SDKBaseFolder>$(XamarinBuildDownloadDir)$(_@(Model.NormalizedName)ItemsFolder)\@Raw("</_" + Model.NormalizedName + "SDKBaseFolder>")
+	</PropertyGroup>
+  <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
+		<XamarinBuildDownload Include="$(_@(Model.NormalizedName)ItemsFolder)">      
+			<Url>@(downloadLinks[Model.NormalizedName])</Url>
+			<Kind>Zip</Kind>
+		</XamarinBuildDownload>
+    @if(staticLibs.Any(x => x == Model.NormalizedName)) {
+    <NativeReference Condition=" $(Platform) == 'iPhoneSimulator' " Include="$(_@(Model.NormalizedName)SDKBaseFolder)@(Model.NormalizedName).xcframework/ios-arm64_x86_64-simulator/lib@(Model.NormalizedName).a">
+			<Kind>Static</Kind>
+			<SmartLink>True</SmartLink>
+			<ForceLoad>True</ForceLoad>
+		</NativeReference>
+		<NativeReference Condition=" $(Platform) == 'iPhone' " Include="$(_@(Model.NormalizedName)SDKBaseFolder)@(Model.NormalizedName).xcframework/ios-arm64_armv7/lib@(Model.NormalizedName).a">
+			<Kind>Static</Kind>
+			<SmartLink>True</SmartLink>
+			<ForceLoad>True</ForceLoad>
+		</NativeReference>
+    } else {
+    <NativeReference Include="$(_@(Model.NormalizedName)SDKBaseFolder)@(Model.NormalizedName).xcframework">
+      <Kind>@kind</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    }
   </ItemGroup>
-  <Target Name="_ResolveNativeReferencesFor@(Model.NormalizedName)" 
-          BeforeTargets="ResolveNativeReferences"
-          Condition="('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '') OR '$(IsBindingProject)' == 'true'">
-    <ItemGroup>
-      <_NativeReference Update="@@(_NativeReference)" Condition="'%(_NativeReference._Id)' == '$(_@(Model.NormalizedName)Id)'">
-        @if (Model.NormalizedName == "BraintreeDropIn") {
-        <Kind>Static</Kind>
-        } else {
-        <Kind>Framework</Kind>
-        }
-        <SmartLink>True</SmartLink>
-        <ForceLoad>True</ForceLoad>
-        <LinkerFlags>-ObjC -lz</LinkerFlags>
-        <Frameworks>Security SystemConfiguration</Frameworks>
-      </_NativeReference>
-      <NativeReference Include="@@(_NativeReference)" />
-    </ItemGroup>
-  </Target>
 </Project>

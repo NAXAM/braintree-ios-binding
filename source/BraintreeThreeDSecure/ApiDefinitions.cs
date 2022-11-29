@@ -280,8 +280,8 @@ namespace BraintreeThreeDSecure
 	}
 
 	// @interface BTThreeDSecureRequest
-	[BaseType(typeof(NSObject))]
-	interface BTThreeDSecureRequest
+	[BaseType(typeof(BTPaymentFlowRequest))]
+	interface BTThreeDSecureRequest : IBTPaymentFlowRequestDelegate
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull nonce;
 		[Export ("nonce")]

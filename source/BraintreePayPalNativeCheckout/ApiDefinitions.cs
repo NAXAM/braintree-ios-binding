@@ -29,7 +29,8 @@ namespace BraintreePayPalNativeCheckout
 	}
 
 	// @interface BTPayPalNativeCheckoutRequest
-	interface BTPayPalNativeCheckoutRequest
+	[BaseType(typeof(BTPayPalCheckoutRequest))]
+	interface BTPayPalNativeCheckoutRequest //: IBTPayPalNativeRequest
 	{
 		// -(instancetype _Nonnull)initWithAmount:(NSString * _Nonnull)amount __attribute__((objc_designated_initializer));
 		[Export ("initWithAmount:")]
@@ -38,7 +39,8 @@ namespace BraintreePayPalNativeCheckout
 	}
 
 	// @interface BTPayPalNativeVaultRequest
-	interface BTPayPalNativeVaultRequest
+	[BaseType(typeof(BTPayPalVaultRequest))]
+	interface BTPayPalNativeVaultRequest //: IBTPayPalNativeRequest
 	{
 	}
 }
