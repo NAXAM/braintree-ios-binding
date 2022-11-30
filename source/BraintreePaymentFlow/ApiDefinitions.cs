@@ -214,7 +214,7 @@ namespace BraintreePaymentFlow
 
 		// -(void)startPaymentFlow:(BTPaymentFlowRequest<BTPaymentFlowRequestDelegate> * _Nonnull)request completion:(void (^ _Nonnull)(BTPaymentFlowResult * _Nullable, NSError * _Nullable))completionBlock;
 		[Export ("startPaymentFlow:completion:")]
-		void StartPaymentFlow (BTPaymentFlowRequestDelegate request, Action<BTPaymentFlowResult, NSError> completionBlock);
+		void StartPaymentFlow (BTPaymentFlowRequest request, Action<BTPaymentFlowResult, NSError> completionBlock);
 
 		[Wrap ("WeakViewControllerPresentingDelegate")]
 		[NullAllowed]
