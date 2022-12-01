@@ -364,7 +364,7 @@ namespace BraintreeThreeDSecure
 	}
 
 	// @interface BTThreeDSecureResult
-	[BaseType(typeof(NSObject))]
+	[BaseType(typeof(BTPaymentFlowResult))]
 	interface BTThreeDSecureResult
 	{
 		// @property (readonly, nonatomic, strong) BTCardNonce * _Nullable tokenizedCard;
