@@ -6,7 +6,7 @@ on:
   # pull_request:
   #   branches: [ main, master ]
 jobs:
-  build:
+  build-then-publish:
     environment: production
     runs-on: macos-latest
     steps:
@@ -30,18 +30,10 @@ jobs:
       run: |
         sh build.sh --target=nuget --base-path=$PWD
   
-  publish:
-    runs-on: macos-latest
-    env:
-      NUGET_PUSH_API_KEY: ${{ secrets.NUGET_PUSH_API_KEY }}
-    steps:
-    - name: Setup .NET Core SDK 6.0.403
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '6.0.403'
     - name: Publish with Dotnet CLI
+      shell: bash
       run: |
-        dotnet nuget push nugets/*.nupkg --api-key $NUGET_PUSH_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push nugets/*.nupkg --api-key "$NUGET_PUSH_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
 
   # publish:
   #   runs-on: macos-latest
