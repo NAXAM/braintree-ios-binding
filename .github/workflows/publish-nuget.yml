@@ -31,9 +31,11 @@ jobs:
         sh build.sh --target=nuget --base-path=$PWD
   
     - name: Publish with Dotnet CLI
+      env:
+        NUGET_PUSH_API_KEY: ${{ secrets.NUGET_PUSH_API_KEY }}
       shell: bash
       run: |
-        dotnet nuget push nugets/*.nupkg --api-key "$NUGET_PUSH_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push ./nugets/*.nupkg --api-key "$NUGET_PUSH_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
 
   # publish:
   #   runs-on: macos-latest
