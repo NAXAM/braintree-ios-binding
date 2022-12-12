@@ -15,35 +15,16 @@ Install-Package BraintreeDropIn.iOS
 This project is to provide C# libraries for corresponding libraries in Swift/Objective, however, the APIs are very similar.
 
 Here are snippets which could be found in [ViewController](./samples/DropInQs/ViewController.cs) in the demo project.
-### Set up
+### Action
 ```c#
-dropInRequest = new DropInRequest();
-dropInRequest.PayPalRequest = new PayPalVaultRequest();
-
-var googlePayRequest = new GooglePayRequest();
-googlePayRequest.TransactionInfo = TransactionInfo.NewBuilder()
-    .SetTotalPrice("10.0")
-    .SetTotalPriceStatus(WalletConstants.TotalPriceStatusFinal)
-    .SetCurrencyCode("USD")
-    .Build();
-googlePayRequest.BillingAddressRequired = true;
-dropInRequest.GooglePayRequest = googlePayRequest;
-
-dropInRequest.VenmoRequest = new VenmoRequest(VenmoPaymentMethodUsage.MultiUse);
-
-dropInRequest.ThreeDSecureRequest = new ThreeDSecureRequest
+private void ShowDropIn(string clientTokenOrTokenizationKey)
 {
-    Amount = "10.0"
-};
+    var request = new BTDropInRequest();
 
-dropInClient = new DropInClient(this, "sandbox_tmxhyf7d_dcpspy2brwdjr3qn");
-dropInClient.SetListener(this);
-```
+    var dropIn = new BTDropInController(authorization: clientTokenOrTokenizationKey, request: request, handler: HandleDropInResult);
 
-### Open it up
-
-```c#
-dropInClient.LaunchDropIn(dropInRequest);
+    PresentViewController(dropIn!, animated: true, completionHandler: null);
+}
 ```
 
 Plz follow official guide from Braintree [here](https://developer.paypal.com/braintree/docs/start/hello-client/ios/v5) for further details.
@@ -62,7 +43,7 @@ sh build.sh --target=nuget --base-path=$PWD
 ## Maintainer
 This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>
 
-If you find this project is useful, please become a sponsor of the project and/or buy him a coffee.
+If you find this project is useful, please give it a star, become a sponsor of the project and/or buy him a coffee.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tuyen.vuduc)
 
