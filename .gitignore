@@ -1,44 +1,18 @@
-# Autosave files
-*~
-
-# build
-[Oo]bj/
-[Bb]in/
-packages/
-TestResults/
-tools/
+packages
+bin
+obj
+output
+tools
+tmp-nugets
+*.userprefs
+*.DS_Store
+Pods/
+build
+generated/
 .vs/
 
-# globs
-Makefile.in
-*.DS_Store
-*.sln.cache
-*.suo
-*.cache
-*.pidb
-*.userprefs
-*.usertasks
-config.log
-config.make
-config.status
-aclocal.m4
-install-sh
-autom4te.cache/
+_._
+externals
+artifacts
 *.user
-*.tar.gz
-tarballs/
-test-results/
-Thumbs.db
-
-# Mac bundle stuff
-*.dmg
-*.app
-
-# resharper
-*_Resharper.*
-*.Resharper
-
-# dotCover
-*.dotCover
-
-Carthage/
+GoogleService-Info.plist

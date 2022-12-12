@@ -1,0 +1,4 @@
+framework module BraintreeSEPADirectDebit {
+  header "BraintreeSEPADirectDebit-Swift.h"
+  requires objc
+}

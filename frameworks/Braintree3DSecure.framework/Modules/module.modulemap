@@ -1,6 +1,0 @@
-framework module Braintree3DSecure {
-  umbrella header "Braintree3DSecure.h"
-
-  export *
-  module * { export * }
-}

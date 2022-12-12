@@ -1,0 +1,49 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BraintreeSEPADirectDebit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AuthenticationServices
+import BraintreeCore
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+@objc @_hasMissingDesignatedInitializers @objcMembers public class BTSEPADirectDebitNonce : ObjectiveC.NSObject {
+  @objc final public let nonce: Swift.String
+  @objc final public let ibanLastFour: Swift.String?
+  @objc final public let customerID: Swift.String?
+  final public let mandateType: BraintreeSEPADirectDebit.BTSEPADirectDebitMandateType?
+  @objc deinit
+}
+@objc public enum BTSEPADirectDebitMandateType : Swift.Int, Swift.CustomStringConvertible {
+  case oneOff
+  case recurrent
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers public class BTSEPADirectDebitRequest : ObjectiveC.NSObject {
+  @objc public var accountHolderName: Swift.String?
+  @objc public var iban: Swift.String?
+  @objc public var customerID: Swift.String?
+  public var mandateType: BraintreeSEPADirectDebit.BTSEPADirectDebitMandateType?
+  @objc public var billingAddress: BraintreeCore.BTPostalAddress?
+  @objc public var merchantAccountID: Swift.String?
+  public init(accountHolderName: Swift.String? = nil, iban: Swift.String? = nil, customerID: Swift.String? = nil, mandateType: BraintreeSEPADirectDebit.BTSEPADirectDebitMandateType? = .oneOff, billingAddress: BraintreeCore.BTPostalAddress? = nil, merchantAccountID: Swift.String? = nil)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class BTSEPADirectDebitClient : ObjectiveC.NSObject {
+  @objc(initWithAPIClient:) public init(apiClient: BraintreeCore.BTAPIClient)
+  @objc @available(iOS 13.0, *)
+  public func tokenize(request: BraintreeSEPADirectDebit.BTSEPADirectDebitRequest, context: AuthenticationServices.ASWebAuthenticationPresentationContextProviding, completion: @escaping (BraintreeSEPADirectDebit.BTSEPADirectDebitNonce?, Swift.Error?) -> Swift.Void)
+  @objc public func tokenize(request: BraintreeSEPADirectDebit.BTSEPADirectDebitRequest, completion: @escaping (BraintreeSEPADirectDebit.BTSEPADirectDebitNonce?, Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+extension BraintreeSEPADirectDebit.BTSEPADirectDebitMandateType : Swift.Equatable {}
+extension BraintreeSEPADirectDebit.BTSEPADirectDebitMandateType : Swift.Hashable {}
+extension BraintreeSEPADirectDebit.BTSEPADirectDebitMandateType : Swift.RawRepresentable {}

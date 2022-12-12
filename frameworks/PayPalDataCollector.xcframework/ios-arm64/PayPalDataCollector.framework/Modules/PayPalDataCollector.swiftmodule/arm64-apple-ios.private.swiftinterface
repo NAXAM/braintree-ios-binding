@@ -1,0 +1,17 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PayPalDataCollector
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import PPRiskMagnes
+import Security
+import Swift
+import _Concurrency
+import _StringProcessing
+@_inheritsConvenienceInitializers @objc public class PPDataCollector : ObjectiveC.NSObject {
+  @objc public class func clientMetadataID(_ pairingID: Swift.String?) -> Swift.String
+  @objc public class func clientMetadataID(_ pairingID: Swift.String?, isSandbox: Swift.Bool) -> Swift.String
+  @objc public class func collectPayPalDeviceData() -> Swift.String
+  @objc public class func collectPayPalDeviceData(isSandbox: Swift.Bool) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}

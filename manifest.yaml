@@ -1,0 +1,32 @@
+- Name: Braintree.iOS.ABTesting
+  BuildScript: ./Braintree.ABTesting/build.cake
+  TriggerPaths: [ Braintree.ABTesting ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.AdMob
+  BuildScript: ./Braintree.AdMob/build.cake
+  TriggerPaths: [ Braintree.AdMob ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.Analytics
+  BuildScript: ./Braintree.Analytics/build.cake
+  TriggerPaths: [ Braintree.Analytics ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.Auth
+  BuildScript: ./Braintree.Auth/build.cake
+  TriggerPaths: [ Braintree.Auth ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.CloudFirestore
+  BuildScript: ./Braintree.CloudFirestore/build.cake
+  TriggerPaths: [ Braintree.CloudFirestore ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.CloudMessaging
+  BuildScript: ./Braintree.CloudMessaging/build.cake
+  TriggerPaths: [ Braintree.CloudMessaging ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.Core
+  BuildScript: ./Braintree.Core/build.cake
+  TriggerPaths: [ Braintree.Core ]
+  MacBuildTargets: [ samples, component ]
+- Name: Braintree.iOS.Crashlytics
+  BuildScript: ./Braintree.Crashlytics/build.cake
+  TriggerPaths: [ Braintree.Crashlytics ]
+  MacBuildTargets: [ samples, component ]

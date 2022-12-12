@@ -1,267 +1,244 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
+#addin nuget:?package=Cake.XCode&version=5.0.0
+#addin nuget:?package=Cake.Xamarin.Build&version=4.1.2
+#addin nuget:?package=Cake.FileHelpers&version=5.0.0
 
-// Cake Addins
-#addin nuget:?package=Cake.FileHelpers&version=3.3.0
+#load "poco.cake"
+#load "components.cake"
+#load "common.cake"
 
-//////////////////////////////////////////////////////////////////////
-// ARGUMENTS
-//////////////////////////////////////////////////////////////////////
+var TARGET = Argument ("t", Argument ("target", "ci"));
+var NAMES = Argument ("names", "");
 
-var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Release");
+var BUILD_COMMIT = EnvironmentVariable("BUILD_COMMIT") ?? "DEV";
+var BUILD_NUMBER = EnvironmentVariable("BUILD_NUMBER") ?? "DEBUG";
+var BUILD_TIMESTAMP = DateTime.UtcNow.ToString();
 
-var VERSION = "4.37.0";
-var DROP_IN_VERSION = "8.1.2";
-var CARDINALMOBILE_VERSION="2.2.4.1";
+var IS_LOCAL_BUILD = true;
+var BACKSLASH = string.Empty;
 
-//////////////////////////////////////////////////////////////////////
-// PREPARATION
-//////////////////////////////////////////////////////////////////////
+var SOLUTION_PATH = "./braintree-ios.sln";
+var EXTERNALS_PATH = new DirectoryPath ("./externals");
 
-var solutionPath = "./braintree-ios.sln";
-var artifacts = new [] {
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.CardinalMobile.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./cardinalmobile.nuspec",
-        Dependencies = new string [] { 
-        },
-        Name = "CardinalMobile"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeDropIn.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-dropin.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeUIKit.iOS",
-            "Naxam.BraintreeUIKit.iOS",
-            "Naxam.BraintreePaymentFlow.iOS",
-            "Naxam.BraintreeUnionPay.iOS",
-            "Naxam.BraintreeApplePay.iOS",
-        },
-        Name = "DropIn"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeUIKit.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-uikit.nuspec",
-        Dependencies = new string [] { 
-        },
-        Name = "UIKit"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.Braintree3DSecure.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-3dsecure.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCard.iOS",
-            "Naxam.BraintreeCore.iOS",
-            "Naxam.CardinalMobile.iOS"
-        },
-        Name = "3DSecure"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeAmericanExpress.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-americanexpress.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCore.iOS"
-        },
-        Name = "AmericanExpress"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeApplePay.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-applepay.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCore.iOS"
-        },
-        Name = "ApplePay"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeCard.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-card.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCore.iOS"
-        },
-        Name = "Card"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeCore.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-core.nuspec",
-        Dependencies = new string [] { 
-        },
-        Name = "Core"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeDataCollector.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-datacollector.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCore.iOS"
-        },
-        Name = "DataCollector"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreePaymentFlow.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-paymentflow.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCard.iOS",
-            "Naxam.CardinalMobile.iOS"
-        },
-        Name = "PaymentFlow"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreePayPal.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-paypal.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCore.iOS",
-            "Naxam.PayPalOneTouch.iOS"
-        },
-        Name = "PayPal"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeUI.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-ui.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCore.iOS"
-        },
-        Name = "UI"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeUnionPay.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-unionpay.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCard.iOS"
-        },
-        Name = "UnionPay"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.BraintreeVenmo.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree-venmo.nuspec",
-        Dependencies = new [] { 
-            "Naxam.BraintreeCard.iOS"
-        },
-        Name = "Venmo"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.PayPal.Risk.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./paypal-risk.nuspec",
-        Dependencies = new string[] { 
-        },
-        Name = "PayPal Risk"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.PayPalDataCollector.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./paypal-datacollector.nuspec",
-        Dependencies = new [] { 
-            "Naxam.PayPal.Risk.iOS",
-            "Naxam.PayPalUtils.iOS"
-        },
-        Name = "PayPal DataCollector"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.PayPalOneTouch.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./paypal-onetouch.nuspec",
-        Dependencies = new string[] { 
-            "Naxam.BraintreeCore.iOS",
-            "Naxam.PayPalDataCollector.iOS"
-        },
-        Name = "PayPal OneTouch"
-    },
-    new Artifact {
-        AssemblyInfoPath = "./Naxam.PayPalUtils.iOS/Properties/AssemblyInfo.cs",
-        NuspecPath = "./paypal-utils.nuspec",
-        Dependencies = new string[] {
-        },
-        Name = "PayPal Utils"
-    },
-};
+// Artifacts that need to be built from pods or be copied from pods
+var ARTIFACTS_TO_BUILD = new List<Artifact> ();
 
-//////////////////////////////////////////////////////////////////////
-// TASKS
-//////////////////////////////////////////////////////////////////////
+var SOURCES_TARGETS = new List<string> ();
+var SAMPLES_TARGETS = new List<string> ();
 
-Task("Clean")
-    .Does(() =>
+FilePath GetCakeToolPath ()
 {
-    CleanDirectory("./packages");
-
-    var nugetPackages = GetFiles("./*.nupkg");
-
-    foreach (var package in nugetPackages)
-    {
-        DeleteFile(package);
-    }
-});
-
-Task("Restore-NuGet-Packages")
-    .IsDependentOn("Clean")
-    .Does(() =>
-{
-    NuGetRestore(solutionPath);
-});
-
-Task("Build")
-    .IsDependentOn("Restore-NuGet-Packages")
-    .Does(() =>
-{
-    MSBuild(solutionPath, settings => settings.SetConfiguration(configuration));
-});
-
-Task("UpdateVersion")
-    .Does(() => 
-{
-    foreach(var artifact in artifacts) {
-        var version = GetVersion(artifact.Name);
-        ReplaceRegexInFiles(artifact.AssemblyInfoPath, "\\[assembly\\: AssemblyVersion([^\\]]+)\\]", string.Format("[assembly: AssemblyVersion(\"{0}\")]", version));
-    }
-});
-
-Task("Pack")
-    .IsDependentOn("UpdateVersion")
-    .IsDependentOn("Build")
-    .Does(() =>
-{
-    foreach(var artifact in artifacts) {
-        var version = GetVersion(artifact.Name);
-        NuGetPack(artifact.NuspecPath, new NuGetPackSettings {
-            Version = version,
-            ReleaseNotes = new [] {
-                string.Format("Braintree iOS SDK v{0} - {1}", version, artifact.Name)
-            },
-            Dependencies = artifact.Dependencies.Select(x =>
-                new NuSpecDependency {
-                    Id = x,
-                    Version = GetVersion(x)
-                }).ToArray()
-        });
-    }
-});
-
-string GetVersion(string name) {
-    if (name.Contains("DropIn") 
-        || name.Contains("UIKit")) {
-        return DROP_IN_VERSION;
-    } else if (name.Contains("Cardinal") ) {
-        return CARDINALMOBILE_VERSION;
-    } else {
-        return VERSION;
-    }
+	var possibleExe = GetFiles ("./**/tools/Cake/Cake.exe").FirstOrDefault ();
+	if (possibleExe != null)
+		return possibleExe;
+		
+	var p = System.Diagnostics.Process.GetCurrentProcess ();	
+	return new FilePath (p.Modules[0].FileName);
 }
 
-//////////////////////////////////////////////////////////////////////
-// TASK TARGETS
-//////////////////////////////////////////////////////////////////////
+void BuildCake (string target)
+{
+	var cakeSettings = new CakeSettings { 
+		ToolPath = GetCakeToolPath (),
+		Arguments = new Dictionary<string, string> { { "target", target }, { "names", NAMES } },
+		Verbosity = Verbosity.Diagnostic
+	};
 
-Task("Default")
-    .IsDependentOn("Pack");
-
-//////////////////////////////////////////////////////////////////////
-// EXECUTION
-//////////////////////////////////////////////////////////////////////
-
-RunTarget(target);
-
-class Artifact {
-    public string AssemblyInfoPath { get; set; }
-
-    public string NuspecPath { get; set; }
-
-    public string[] Dependencies { get; set; }
-
-    public string Name { get; set; }
+	// Run the script from the subfolder
+	CakeExecuteScript ("./build.cake", cakeSettings);
 }
+
+// From Cake.Xamarin.Build, dumps out versions of things
+// LogSystemInfo ();
+
+Setup (context =>
+{
+	IS_LOCAL_BUILD = string.IsNullOrWhiteSpace (EnvironmentVariable ("AGENT_ID"));
+	Information ($"Is a local build? {IS_LOCAL_BUILD}");
+	BACKSLASH = IS_LOCAL_BUILD ? @"\" : @"\";
+});
+
+Task("build")
+	.Does(() =>
+{
+	BuildCake ("nuget");
+	BuildCake ("samples");
+});
+
+// Prepares the artifacts to be built.
+// From CI will always build everything but, locally you can customize what
+// you build, just to save some time when testing locally.
+Task("prepare-artifacts")
+	.IsDependeeOf("externals")
+	.Does(() =>
+{
+	SetArtifactsDependencies ();
+	SetArtifactsPodSpecs ();
+	SetArtifactsExtraPodfileLines ();
+	SetArtifactsSamples ();
+
+	var orderedArtifactsForBuild = new List<Artifact> ();
+	var orderedArtifactsForSamples = new List<Artifact> ();
+
+	if (string.IsNullOrWhiteSpace (NAMES)) {
+		var artifacts = ARTIFACTS.Values.Where (a => !a.Ignore);
+		orderedArtifactsForBuild.AddRange (artifacts);
+		orderedArtifactsForSamples.AddRange (artifacts);
+	} else {
+		var names = NAMES.Split (',');
+		foreach (var name in names) {
+			if (!(ARTIFACTS.ContainsKey (name) && ARTIFACTS [name] is Artifact artifact))
+				throw new Exception($"The {name} component does not exist.");
+			
+			if (artifact.Ignore)
+				continue;
+
+			orderedArtifactsForBuild.Add (artifact);
+			AddArtifactDependencies (orderedArtifactsForBuild, artifact.Dependencies);
+			orderedArtifactsForSamples.Add (artifact);
+		}
+
+		orderedArtifactsForBuild = orderedArtifactsForBuild.Distinct ().ToList ();
+		orderedArtifactsForSamples = orderedArtifactsForSamples.Distinct ().ToList ();
+	}
+
+	orderedArtifactsForBuild.Sort ((f, s) => s.BuildOrder.CompareTo (f.BuildOrder));
+	orderedArtifactsForSamples.Sort ((f, s) => s.BuildOrder.CompareTo (f.BuildOrder));
+	ARTIFACTS_TO_BUILD.AddRange (orderedArtifactsForBuild);
+
+	Information ("Build order:");
+
+	foreach (var artifact in ARTIFACTS_TO_BUILD) {
+		SOURCES_TARGETS.Add($@"{artifact.ComponentGroup}{BACKSLASH}{artifact.CsprojName.Replace ('.', '_')}");
+		Information (artifact.Id);
+	}
+
+	foreach (var artifact in orderedArtifactsForSamples)
+		if (artifact.Samples != null)
+			foreach (var sample in artifact.Samples)
+				SAMPLES_TARGETS.Add($@"{artifact.ComponentGroup}{BACKSLASH}{sample.Replace ('.', '_')}");
+});
+
+Task ("externals")
+	.WithCriteria (!DirectoryExists (EXTERNALS_PATH) || !string.IsNullOrWhiteSpace (NAMES))
+	.Does (() => 
+{
+	EnsureDirectoryExists (EXTERNALS_PATH);
+
+	Information ("////////////////////////////////////////");
+	Information ("// Pods Repo Update Started           //");
+	Information ("////////////////////////////////////////");
+	
+	Information ("\nUpdating Cocoapods repo...");
+	CocoaPodRepoUpdate ();
+
+	Information ("////////////////////////////////////////");
+	Information ("// Pods Repo Update Ended             //");
+	Information ("////////////////////////////////////////");
+
+	foreach (var artifact in ARTIFACTS_TO_BUILD) {
+		UpdateVersionInCsproj (artifact);
+		CreateAndInstallPodfile (artifact);
+		BuildSdkOnPodfileV2 (artifact);
+	}
+});
+
+Task ("ci-setup")
+	.WithCriteria (!BuildSystem.IsLocalBuild)
+	.Does (() => 
+{
+	var glob = "./source/**/AssemblyInfo.cs";
+
+	ReplaceTextInFiles(glob, "{BUILD_COMMIT}", BUILD_COMMIT);
+	ReplaceTextInFiles(glob, "{BUILD_NUMBER}", BUILD_NUMBER);
+	ReplaceTextInFiles(glob, "{BUILD_TIMESTAMP}", BUILD_TIMESTAMP);
+});
+
+Task ("libs")
+	.IsDependentOn("externals")
+	.IsDependentOn("ci-setup")
+	.Does(() =>
+{
+	var msBuildSettings = new DotNetCoreMSBuildSettings ();
+	var dotNetCoreBuildSettings = new DotNetCoreBuildSettings { 
+		Configuration = "Release",
+		Verbosity = DotNetCoreVerbosity.Diagnostic,
+		MSBuildSettings = msBuildSettings
+	};
+	
+	foreach (var target in SOURCES_TARGETS)
+		msBuildSettings.Targets.Add($@"source\{target}");
+	
+	DotNetCoreBuild(SOLUTION_PATH, dotNetCoreBuildSettings);
+});
+
+Task ("samples")
+	.IsDependentOn("libs")
+	.Does(() =>
+{
+	var msBuildSettings = new DotNetCoreMSBuildSettings ();
+	var dotNetCoreBuildSettings = new DotNetCoreBuildSettings { 
+		Configuration = "Release",
+		Verbosity = DotNetCoreVerbosity.Diagnostic,
+		MSBuildSettings = msBuildSettings
+	};
+	
+	foreach (var target in SAMPLES_TARGETS)
+		msBuildSettings.Targets.Add($@"samples-using-source\{target}");
+	
+	DotNetCoreBuild(SOLUTION_PATH, dotNetCoreBuildSettings);
+});
+
+Task ("nuget")
+	.IsDependentOn("libs")
+	.Does(() =>
+{
+	EnsureDirectoryExists("./output/");
+
+	var dotNetCorePackSettings = new DotNetCorePackSettings {
+		Configuration = "Release",
+		NoRestore = true,
+		NoBuild = true,
+		OutputDirectory = "./output/",
+		Verbosity = DotNetCoreVerbosity.Diagnostic,
+	};
+
+	foreach (var target in SOURCES_TARGETS)
+		DotNetCorePack($"./source/{target}", dotNetCorePackSettings);
+});
+
+Task ("clean")
+	.Does (() => 
+{
+	CleanVisualStudioSolution ();
+
+	var deleteDirectorySettings = new DeleteDirectorySettings {
+		Recursive = true,
+		Force = true
+	};
+
+	if (DirectoryExists ("./externals/"))
+		DeleteDirectory ("./externals", deleteDirectorySettings);
+
+	if (DirectoryExists ("./output/"))
+		DeleteDirectory ("./output", deleteDirectorySettings);
+});
+
+Task ("ci")
+	.IsDependentOn("externals")
+	.IsDependentOn("libs")
+	.IsDependentOn("nuget")
+	.IsDependentOn("samples");
+
+Teardown (context =>
+{
+	var artifacts = GetFiles ("./output/**/*");
+
+	if (artifacts?.Count () <= 0)
+		return;
+
+	Information ($"Found Artifacts ({artifacts.Count ()})");
+	foreach (var a in artifacts)
+		Information ("{0}", a);
+});
+
+RunTarget (TARGET);

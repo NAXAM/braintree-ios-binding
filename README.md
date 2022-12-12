@@ -1,80 +1,54 @@
-<img src="./art/repo_header.png" alt="Braintree SDK for Xamarin.iOS" width="728" />
+# BrainTree for Xamarin.iOS
 
-# Braintree SDK for Xamarin.iOS
+A Xamarin.Android binding library for [Braintree DropIn iOS](https://cocoapods.org/pods/BraintreeDropIn) library.
 
-A Xamarin.iOS binding library for [BrainTree iOS](https://github.com/braintree/braintree_ios) library.
-
-## About
-This project is maintained by Naxam Co.,Ltd.<br>
-We specialize in developing mobile applications using Xamarin and native technology stack.<br>
-
-**Looking for developers for your project?**<br>
-
-<a href="mailto:tuyen@naxam.net"> 
-<img src="https://github.com/NAXAM/naxam.github.io/blob/master/assets/img/hire_button.png?raw=true" height="40"></a> <br>
+> The library used to be under the name of `Naxam.BraintreeDropIn.iOS`. Naxam is no longer in business for years hence I remove the trademark from the name and hope it more neutral for the community to contribute.
 
 ## Installation
 
-### Braintree Core
 ```
-Install-Package Naxam.BraintreeCore.iOS
-```
-
-### Braintree UI
-```
-Install-Package Naxam.BraintreeUI.iOS
-```
-
-### Pay with Card
-```
-Install-Package Naxam.BraintreeCore.iOS
-```
-### Pay with ApplePay
-```
-Install-Package Naxam.BraintreeApplePay.iOS
-```
-### Pay with PayPal
-```
-Install-Package Naxam.BraintreePayPal.iOS
-```
-
-### Pay with Card via 3rd
-```
-Install-Package Naxam.Braintree3DSecure.iOS
-Install-Package Naxam.BraintreeUnionPay.iOS
-Install-Package Naxam.BraintreeVenmo.iOS
+Install-Package BraintreeDropIn.iOS
 ```
 
 ## Usage
 
-Plz follow official guide [here](https://github.com/braintree/braintree_ios/blob/master/README.md)
+This project is to provide C# libraries for corresponding libraries in Swift/Objective, however, the APIs are very similar.
 
-## Upgrade
+Here are snippets which could be found in [ViewController](./samples/DropInQs/ViewController.cs) in the demo project.
+### Action
+```c#
+private void ShowDropIn(string clientTokenOrTokenizationKey)
+{
+    var request = new BTDropInRequest();
 
-1. Run Carthage to upgrade to latest package
-2. Run Carthage to build out framework assets
-3. Copy built framework assets to `frameworks` folder
-4. Check for changes and update/create API definitions
+    var dropIn = new BTDropInController(authorization: clientTokenOrTokenizationKey, request: request, handler: HandleDropInResult);
+
+    PresentViewController(dropIn!, animated: true, completionHandler: null);
+}
+```
+
+Plz follow official guide from Braintree [here](https://developer.paypal.com/braintree/docs/start/hello-client/ios/v5) for further details.
+
+## Run on your machine
+
+- Generate project files
+```
+sh build.sh --target=binderate
+```
+- Pack nuget packages
+```
+sh build.sh --target=nuget --base-path=$PWD
+```
+
+## Maintainer
+This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>
+
+If you find this project is useful, please give it a star, become a sponsor of the project and/or buy him a coffee.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tuyen.vuduc)
 
 ## License
 
-BrainTree binding library for iOS is released under the MIT license.
-See [LICENSE](./LICENSE) for details.
+Braintree native libraries and its dependencies are licensed under their original owners' licenses. Please check out their main website for further information.
 
-# Get our showcases on AppStore/PlayStore
-Try our showcases to know more about our capabilities. 
-
-<a href="https://itunes.apple.com/us/developer/tuyen-vu/id1255432728/" > 
-<img src="https://github.com/NAXAM/imagepicker-android-binding/raw/master/art/apple_store.png" width="117" height="34"></a>
-
-<a href="https://play.google.com/store/apps/developer?id=NAXAM+CO.,+LTD" > 
-<img src="https://github.com/NAXAM/imagepicker-android-binding/raw/master/art/google_store.png" width="117" height="34"></a>
-
-Contact us if interested.
-
-<a href="mailto:tuyen@naxam.net"> 
-<img src="https://github.com/NAXAM/naxam.github.io/blob/master/assets/img/hire_button.png" height="34"></a> <br>
-<br>
-
-Follow us for the latest updates<br>[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/naxam/imagepicker-android-binding)
-[![Twitter Follow](https://img.shields.io/twitter/follow/naxamco.svg?style=social)](https://twitter.com/naxamco)
+Braintree binding libraries for iOS is released under the MIT license. See [LICENSE](./LICENSE) for details.

@@ -1,0 +1,37 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BraintreePayPalNativeCheckout
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import BraintreeCore
+import BraintreePayPal
+import Foundation
+import PayPalCheckout
+import Swift
+import _Concurrency
+import _StringProcessing
+@objc public class BTPayPalNativeCheckoutClient : ObjectiveC.NSObject {
+  @objc(initWithAPIClient:) public init(apiClient: BraintreeCore.BTAPIClient)
+  @objc(tokenizePayPalAccountWithPayPalRequest:completion:) public func tokenizePayPalAccount(with nativeRequest: BraintreePayPal.BTPayPalRequest, completion: @escaping (BraintreePayPalNativeCheckout.BTPayPalNativeCheckoutAccountNonce?, Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BTPayPalNativeCheckoutRequest : BraintreePayPal.BTPayPalCheckoutRequest {
+  @objc override dynamic public init(amount: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class BTPayPalNativeCheckoutAccountNonce : ObjectiveC.NSObject {
+  final public let type: Swift.String
+  final public let nonce: Swift.String
+  final public let isDefault: Swift.Bool
+  final public let email: Swift.String?
+  final public let firstName: Swift.String?
+  final public let lastName: Swift.String?
+  final public let phone: Swift.String?
+  final public let billingAddress: BraintreeCore.BTPostalAddress?
+  final public let shippingAddress: BraintreeCore.BTPostalAddress?
+  final public let clientMetadataID: Swift.String?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BTPayPalNativeVaultRequest : BraintreePayPal.BTPayPalVaultRequest {
+  @objc override dynamic public init()
+  @objc deinit
+}

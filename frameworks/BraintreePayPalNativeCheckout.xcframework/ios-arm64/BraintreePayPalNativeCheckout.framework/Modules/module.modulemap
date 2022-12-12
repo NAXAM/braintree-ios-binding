@@ -1,0 +1,4 @@
+framework module BraintreePayPalNativeCheckout {
+  header "BraintreePayPalNativeCheckout-Swift.h"
+  requires objc
+}
