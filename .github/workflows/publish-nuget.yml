@@ -32,6 +32,8 @@ jobs:
   
   publish:
     runs-on: macos-latest
+    env:
+      NUGET_PUSH_API_KEY: ${{ secrets.NUGET_PUSH_API_KEY }}
     steps:
     - name: Setup .NET Core SDK 6.0.403
       uses: actions/setup-dotnet@v3
@@ -39,7 +41,7 @@ jobs:
         dotnet-version: '6.0.403'
     - name: Publish with Dotnet CLI
       run: |
-        dotnet nuget push nugets/*.nupkg --api-key ${{ secrets.NUGET_PUSH_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push nugets/*.nupkg --api-key $NUGET_PUSH_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
 
   # publish:
   #   runs-on: macos-latest
