@@ -47,32 +47,32 @@ namespace BraintreeApplePay
 		void TokenizeApplePayPayment (PKPayment payment, Action<BTApplePayCardNonce, NSError> completionBlock);
 	}
 
-	// @interface ApplePay
-	[BaseType(typeof(NSObject))]
-	interface ApplePay
+	// @interface BTConfiguration (ApplePay)
+	[Category, BaseType(typeof(BTConfiguration))]
+	interface BTConfiguration_ApplePay
 	{
 		// @property (readonly, assign, nonatomic) BOOL isApplePayEnabled;
 		[Export ("isApplePayEnabled")]
-		bool IsApplePayEnabled { get; }
+		bool IsApplePayEnabled ();
 
 		// @property (readonly, nonatomic) NSArray<PKPaymentNetwork> * _Nullable applePaySupportedNetworks;
 		[NullAllowed, Export ("applePaySupportedNetworks")]
-		string[] ApplePaySupportedNetworks { get; }
+		string[] ApplePaySupportedNetworks ();
 
 		// @property (readonly, assign, nonatomic) BOOL canMakeApplePayPayments;
 		[Export ("canMakeApplePayPayments")]
-		bool CanMakeApplePayPayments { get; }
+		bool CanMakeApplePayPayments ();
 
 		// @property (readonly, nonatomic) NSString * _Nullable applePayCountryCode;
 		[NullAllowed, Export ("applePayCountryCode")]
-		string ApplePayCountryCode { get; }
+		string ApplePayCountryCode ();
 
 		// @property (readonly, nonatomic) NSString * _Nullable applePayCurrencyCode;
 		[NullAllowed, Export ("applePayCurrencyCode")]
-		string ApplePayCurrencyCode { get; }
+		string ApplePayCurrencyCode ();
 
 		// @property (readonly, nonatomic) NSString * _Nullable applePayMerchantIdentifier;
 		[NullAllowed, Export ("applePayMerchantIdentifier")]
-		string ApplePayMerchantIdentifier { get; }
+		string ApplePayMerchantIdentifier ();
 	}
 }
