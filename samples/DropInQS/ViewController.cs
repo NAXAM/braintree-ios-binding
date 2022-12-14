@@ -10,11 +10,17 @@ namespace DropInQS2
         public ViewController (IntPtr handle) : base (handle)
         {
 			var x = KountDataCollector.KDataCollector.SharedCollector;
-			var y = new BraintreePayPal.BTPayPalVaultRequest();
-			var z = new BraintreeThreeDSecure.BTThreeDSecureRequest();
+			var xx = new BraintreePayPal.BTPayPalVaultRequest();
+			var xxx = new BraintreeThreeDSecure.BTThreeDSecureRequest();
+
+			var z = new BraintreeDataCollector.BTDataCollector();
+			var zz = new BraintreeApplePay.BTApplePayCardNonce();
+			var zzz = new BraintreeCard.BTCardNonce();
+			var zzzz = new BraintreeCore.BTPaymentMethodNonce();
+			var zzzzz = new BraintreePayPal.BTPayPalAccountNonce();
 		}
 
-        public override void ViewDidLoad()
+		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.

@@ -15,6 +15,15 @@ namespace BraintreeCard
 		string RegulationEnvironment { get; set; }
 	}
 
+	// @interface BTConfiguration (Card)
+	[Category, BaseType (typeof(BTConfiguration))]
+	interface BTConfiguration_Card
+	{
+		// @property (nonatomic, readonly, assign) BOOL collectFraudData;
+		[NullAllowed, Export ("collectFraudData")]
+		bool CollectFraudData ();
+	}
+
 	// @interface BTCard : NSObject
 	[BaseType (typeof(NSObject))]
 	interface BTCard
