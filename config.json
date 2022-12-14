@@ -2,7 +2,7 @@
     "slnFile": "generated/braintree-ios.sln",
     "platformVersion": "12.0",
     "additionalProjects": [],
-    "nugetVersionSuffix": "-1",
+    "nugetVersionSuffix": "-rc",
     "templates": [
       {
         "templateFile": "source/BraintreePaymentsTargets.cshtml",
