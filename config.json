@@ -5,11 +5,11 @@
     "nugetVersionSuffix": "-rc",
     "templates": [
       {
-        "templateFile": "source/BraintreePaymentsTargets.cshtml",
+        "templateFile": "source/Targets.cshtml",
         "outputFileRule": "{generated}/{name}/{nugetid}.targets"
       },
       {
-        "templateFile": "source/BraintreePaymentsProject.cshtml",
+        "templateFile": "source/Project.cshtml",
         "outputFileRule": "{generated}/{name}/{nugetid}.csproj"
       }
     ],
