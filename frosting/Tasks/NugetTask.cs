@@ -19,19 +19,27 @@ public class NugetTask : FrostingTask<BuildContext>
 		var path = PathIO.Combine(context.BasePath, "generated", "braintree-ios.sln");
 		var outputDir = PathIO.Combine(context.BasePath, "nugets");
 
-		var settings = new MSBuildSettings()
-			.SetConfiguration("Release")
-			//.SetMaxCpuCount(MAX_CPU_COUNT)
-			.EnableBinaryLogger("./output/nuget.binlog");
-		settings.Targets.Clear();
-		settings.Targets.Add("Restore");
-		settings.Targets.Add("Rebuild");
-		settings.Targets.Add("Pack");
-		settings.Properties.Add("PackageOutputPath", new[] { outputDir });
-		settings.Properties.Add("PackageRequireLicenseAcceptance", new[] { "true" });
-		settings.Properties.Add("DesignTimeBuild", new[] { "false" });
+		//var settings = new MSBuildSettings()
+		//	.SetConfiguration("Release")
+		//	//.SetMaxCpuCount(MAX_CPU_COUNT)
+		//	.EnableBinaryLogger("./output/nuget.binlog");
+		//settings.Targets.Clear();
+		//settings.Targets.Add("Restore");
+		//settings.Targets.Add("Rebuild");
+		//settings.Targets.Add("Pack");
+		//settings.Properties.Add("PackageOutputPath", new[] { outputDir });
+		//settings.Properties.Add("PackageRequireLicenseAcceptance", new[] { "true" });
+		//settings.Properties.Add("DesignTimeBuild", new[] { "false" });
 
-		context.MSBuild(path, settings);
+		//context.MSBuild(path, settings);
+
+		var settings = new DotNetPackSettings
+		{
+			Configuration = "Release",
+			OutputDirectory  = outputDir,
+		};
+
+		context.DotNetPack(path, settings);
 	}
 }
 

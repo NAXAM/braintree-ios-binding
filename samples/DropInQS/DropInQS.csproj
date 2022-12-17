@@ -74,46 +74,46 @@
     <ItemGroup>
       <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
       <PackageReference Include="BraintreeVenmo.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeCard.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="PayPalDataCollector.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeDataCollector.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeUnionPay.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="PPRiskMagnes.iOS">
-        <Version>5.4.0-1</Version>
+        <Version>5.4.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeCore.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeThreeDSecure.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="CardinalMobile.iOS">
-        <Version>2.2.5.3-1</Version>
+        <Version>2.2.5.1-3</Version>
       </PackageReference>
       <PackageReference Include="BraintreePaymentFlow.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeApplePay.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreePayPal.iOS">
-        <Version>5.12.0-1</Version>
+        <Version>5.12.0.1</Version>
       </PackageReference>
       <PackageReference Include="KountDataCollector.iOS">
-        <Version>4.1.5-1</Version>
+        <Version>4.1.5.1</Version>
       </PackageReference>
       <PackageReference Include="BraintreeDropIn.iOS">
-        <Version>9.7.0-1</Version>
+        <Version>9.7.0.1</Version>
       </PackageReference>
     </ItemGroup>
     <ItemGroup>
