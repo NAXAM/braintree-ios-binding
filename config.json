@@ -20,7 +20,7 @@
       {
         "name": "BraintreeDropIn",
         "version": "9.7.0",
-        "nugetVersion": "9.7.0.1",
+        "nugetVersion": "9.7.0.2",
         "libraryType": "static",
         "packageType": "pod",
         "dependencyOnly": false,
@@ -46,7 +46,7 @@
       {
         "name": "Braintree",
         "version": "5.12.0",
-        "nugetVersion": "5.12.0.1",
+        "nugetVersion": "5.12.0.2",
         "libraryType": "dynamic",
         "packageType": "spm",
         "dependencyOnly": false,
@@ -164,8 +164,8 @@
       },
       {
         "name": "CardinalMobile",
-        "version": "2.2.5-3",
-        "nugetVersion": "2.2.5.1-3",
+        "version": "2.2.5.3",
+        "nugetVersion": "2.2.5.301",
         "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
