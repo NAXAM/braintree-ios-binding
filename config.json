@@ -2,7 +2,7 @@
     "slnFile": "generated/braintree-ios.sln",
     "platformVersion": "12.0",
     "additionalProjects": [],
-    "nugetVersionSuffix": "-rc",
+    "nugetVersionSuffix": "",
     "templates": [
       {
         "templateFile": "source/Targets.cshtml",
@@ -20,7 +20,7 @@
       {
         "name": "BraintreeDropIn",
         "version": "9.7.0",
-        "nugetVersion": "9.7.0",
+        "nugetVersion": "9.7.0.1",
         "libraryType": "static",
         "packageType": "pod",
         "dependencyOnly": false,
@@ -37,8 +37,7 @@
               "BraintreeThreeDSecure",
               "BraintreeUnionPay",
               "BraintreeVenmo",
-              "PayPalDataCollector",
-              "Xamarin.Swift"
+              "PayPalDataCollector"              
             ]
           }
         ],
@@ -47,7 +46,7 @@
       {
         "name": "Braintree",
         "version": "5.12.0",
-        "nugetVersion": "5.12.0",
+        "nugetVersion": "5.12.0.1",
         "libraryType": "dynamic",
         "packageType": "spm",
         "dependencyOnly": false,
@@ -106,7 +105,7 @@
             "nugetId": "BraintreePayPalNativeCheckout.iOS",
             "name": "BraintreePayPalNativeCheckout",
             "deps": [
-              "BraintreeCore", "BraintreePayPal", "Xamarin.Swift"
+              "BraintreeCore", "BraintreePayPal"
             ]
           },
           {
@@ -141,7 +140,7 @@
             "nugetId": "PayPalDataCollector.iOS",
             "name": "PayPalDataCollector",
             "deps": [
-              "BraintreeCore", "PPRiskMagnes", "Xamarin.Swift"
+              "BraintreeCore", "PPRiskMagnes"
             ]
           }
         ],
@@ -150,64 +149,60 @@
       {
         "name": "PayPalCheckout",
         "version": "0.100.0",
-        "nugetVersion": "0.100.0",
-        "nugetId": "PayPalCheckout.iOS",
+        "nugetVersion": "0.100.0.1",
+        "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
           {
             "nugetId": "PayPalCheckout.iOS",
             "name": "PayPalCheckout",
             "deps": [
-              "Xamarin.Swift"
+              
             ]
           }
         ]
       },
       {
         "name": "CardinalMobile",
-        "version": "2.2.5.3",
-        "nugetVersion": "2.2.5.3",
-        "nugetId": "CardinalMobile.iOS",
+        "version": "2.2.5-3",
+        "nugetVersion": "2.2.5.1-3",
+        "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
           {
             "nugetId": "CardinalMobile.iOS",
-            "name": "CardinalMobile"
+            "name": "CardinalMobile",
+            "deps": []
           }
         ]
       },
       {
         "name": "KountDataCollector",
         "version": "4.1.5",
-        "nugetVersion": "4.1.5",
-        "nugetId": "KountDataCollector.iOS",
+        "nugetVersion": "4.1.5.1",
+        "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
           {
             "nugetId": "KountDataCollector.iOS",
-            "name": "KountDataCollector"
+            "name": "KountDataCollector",
+            "deps": []
           }
         ]
       },
       {
         "name": "PPRiskMagnes",
         "version": "5.4.0",
-        "nugetVersion": "5.4.0",
-        "nugetId": "PPRiskMagnes.iOS",
+        "nugetVersion": "5.4.0.1",
+        "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
           {
             "nugetId": "PPRiskMagnes.iOS",
-            "name": "PPRiskMagnes"
+            "name": "PPRiskMagnes",
+            "deps": []
           }
         ]
-      },
-      {
-        "name": "Xamarin.Swift",
-        "version": "1.0.11",
-        "nugetVersion": "1.0.11",
-        "nugetId": "Xamarin.Swift",
-        "dependencyOnly": true
       }
     ]
   }
