@@ -20,7 +20,7 @@
       {
         "name": "BraintreeDropIn",
         "version": "9.7.0",
-        "nugetVersion": "9.7.0.2",
+        "nugetVersion": "9.7.0.24",
         "libraryType": "static",
         "packageType": "pod",
         "dependencyOnly": false,
@@ -46,7 +46,7 @@
       {
         "name": "Braintree",
         "version": "5.12.0",
-        "nugetVersion": "5.12.0.2",
+        "nugetVersion": "5.12.0.24",
         "libraryType": "dynamic",
         "packageType": "spm",
         "dependencyOnly": false,
@@ -149,7 +149,7 @@
       {
         "name": "PayPalCheckout",
         "version": "0.100.0",
-        "nugetVersion": "0.100.0.1",
+        "nugetVersion": "0.100.0.24",
         "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
@@ -165,7 +165,7 @@
       {
         "name": "CardinalMobile",
         "version": "2.2.5.3",
-        "nugetVersion": "2.2.5.301",
+        "nugetVersion": "2.2.5.324",
         "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
@@ -179,7 +179,7 @@
       {
         "name": "KountDataCollector",
         "version": "4.1.5",
-        "nugetVersion": "4.1.5.1",
+        "nugetVersion": "4.1.5.24",
         "packageType": "pod",
         "dependencyOnly": false,
         "targets": [
@@ -193,7 +193,7 @@
       {
         "name": "PPRiskMagnes",
         "version": "5.4.0",
-        "nugetVersion": "5.4.0.1",
+        "nugetVersion": "5.4.0.24",
         "packageType": "pod",
         "dependencyOnly": false,
         "targets": [

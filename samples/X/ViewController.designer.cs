@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace DropInQS2
+namespace X
 {
 	[Register ("ViewController")]
 	partial class ViewController

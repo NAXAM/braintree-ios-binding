@@ -10,23 +10,15 @@
     var sourceFolder = sourceFolderDir + Model.Name.Replace("/", "\\");
     var projId = System.Guid.NewGuid();
 }
-<Project Sdk="Xamarin.Legacy.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
-    <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <IsBindingProject>true</IsBindingProject>
-    <NoBindingEmbedding>false</NoBindingEmbedding>
-    <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
-    <RootNamespace>@(Model.NormalizedName)</RootNamespace>
-    <AssemblyName>@(Model.NuGetPackageId)</AssemblyName>
-    <AssemblyVersion>@(Model.NuGetVersion.Replace("-", "00"))</AssemblyVersion>
-    <FileVersion>@(Model.NuGetVersion.Replace("-", "00"))</FileVersion>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <TargetFramework>net8.0-ios</TargetFramework>
+      <Nullable>enable</Nullable>
+      <ImplicitUsings>true</ImplicitUsings>
+      <IsBindingProject>true</IsBindingProject>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
+      <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>@(Model.NuGetPackageId)</PackageId>
@@ -43,9 +35,6 @@
     <PackageVersion>@(Model.NuGetVersion)</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="@(sourceFolderDir)AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -53,10 +42,6 @@
     <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="buildTransitive/@(Model.NuGetPackageId).targets" />
     <None Include="@(sourceFolderDir)External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
     <None Include="../../LICENSE" Pack="True" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
-    <Compile Remove="ApiDefinitions.cs" />
-    <Compile Remove="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="@(sourceFolder)\StructsAndEnums.cs" />

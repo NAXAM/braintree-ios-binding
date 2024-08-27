@@ -7,8 +7,8 @@ A Xamarin.Android binding library for [Braintree DropIn iOS](https://cocoapods.o
 ## Installation
 
 ```
-dotnet add package BraintreeDropIn.iOS --version 9.7.2
-dotnet add package Xamarin.Swift --version 1.0.11
+dotnet add package BraintreeDropIn.iOS --version 9.7.2.3
+dotnet add package Xamarin.Swift --version 1.2.0
 ```
 
 ## Usage
